@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Клипер.Про — экосистема рекламных и цифровых сервисов</title>
+  <meta name="description" content="Клипер.Про — экосистема рекламных и цифровых сервисов для бизнеса: реклама, площадки, производство, сайты, городские сервисы и единый аккаунт." />
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="assets/favicon-192x192.png">
+  <link rel="preload" as="image" href="assets/kliper-brand.png">
+  <style>
+    :root{
+      --bg:#020204;
+      --panel:rgba(255,255,255,.035);
+      --panel-strong:rgba(255,255,255,.065);
+      --text:#ffffff;
+      --muted:#a6a6b4;
+      --soft:#d7d7e2;
+      --pink:#ff006e;
+      --violet:#8a2cff;
+      --blue:#006cff;
+      --green:#00d833;
+      --line:rgba(255,255,255,.12);
+      --line-soft:rgba(255,255,255,.075);
+      --glow-pink:0 0 24px rgba(255,0,110,.45),0 0 74px rgba(255,0,110,.16);
+      --glow-violet:0 0 24px rgba(138,44,255,.38),0 0 70px rgba(138,44,255,.12);
+      --radius:30px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Arial, Helvetica, sans-serif;
+      overflow-x:hidden;
+    }
+
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-3;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 50% -12%,rgba(255,0,110,.26),transparent 31%),
+        radial-gradient(circle at 78% 22%,rgba(138,44,255,.16),transparent 24%),
+        radial-gradient(circle at 14% 62%,rgba(0,108,255,.11),transparent 24%),
+        linear-gradient(180deg,#030306 0%,#020204 62%,#000 100%);
+    }
+
+    body:after{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+      opacity:.44;
+      background:
+        linear-gradient(90deg,transparent 0,rgba(255,0,110,.15) 1px,transparent 1px),
+        linear-gradient(0deg,transparent 0,rgba(255,255,255,.035) 1px,transparent 1px);
+      background-size:86px 86px;
+      mask-image:radial-gradient(circle at 50% 8%,#000 0,transparent 68%);
+    }
+
+    .scanline{
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      pointer-events:none;
+      background:linear-gradient(180deg,transparent,rgba(255,0,110,.06),transparent);
+      height:36vh;
+      animation:scan 7s linear infinite;
+      opacity:.55;
+    }
+    @keyframes scan{from{transform:translateY(-45vh)}to{transform:translateY(115vh)}}
+
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1160px,calc(100% - 36px));margin:0 auto}
+
+    .header{
+      position:sticky;
+      top:14px;
+      z-index:50;
+      margin-top:14px;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(3,3,7,.62);
+      backdrop-filter:blur(20px);
+      box-shadow:0 18px 70px rgba(0,0,0,.38), inset 0 0 0 1px rgba(255,255,255,.025);
+    }
+    .brand{display:flex;align-items:center}
+    .brand img{
+      display:block;
+      width:min(218px,27vw);
+      height:auto;
+      filter:drop-shadow(0 0 18px rgba(255,0,110,.32));
+    }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:4px;
+      padding:4px;
+      border:1px solid var(--line-soft);
+      border-radius:999px;
+      background:rgba(255,255,255,.035);
+    }
+    .nav-links a{
+      padding:9px 12px;
+      border-radius:999px;
+      color:#d4d4df;
+      font-size:12px;
+      font-weight:800;
+      white-space:nowrap;
+      transition:.22s ease;
+    }
+    .nav-links a:hover{background:rgba(255,0,110,.12);color:#fff;box-shadow:0 0 18px rgba(255,0,110,.22)}
+    .nav-actions{display:flex;align-items:center;gap:9px}
+    .login-btn,.nav-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:950;
+      white-space:nowrap;
+      transition:.22s ease;
+    }
+    .login-btn{
+      width:42px;
+      height:42px;
+      padding:0;
+      color:#fff;
+      background:rgba(255,255,255,.045);
+      border:1px solid var(--line);
+    }
+    .login-btn:hover{box-shadow:0 0 22px rgba(255,255,255,.12);background:rgba(255,255,255,.08)}
+    .login-btn svg{width:17px;height:17px}
+    .nav-cta{
+      padding:11px 16px;
+      border:1px solid rgba(255,0,110,.48);
+      background:linear-gradient(135deg,rgba(255,0,110,.92),rgba(138,44,255,.82));
+      box-shadow:var(--glow-pink);
+    }
+
+    .hero{
+      min-height:calc(100vh - 80px);
+      display:grid;
+      align-items:center;
+      padding:74px 0 52px;
+      text-align:center;
+      position:relative;
+    }
+    .hero:before{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:min(860px,90vw);
+      height:min(860px,90vw);
+      transform:translate(-50%,-50%);
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(255,0,110,.13),transparent 62%);
+      filter:blur(4px);
+      pointer-events:none;
+    }
+    .hero-inner{position:relative;z-index:1}
+    .hero-logo{
+      display:block;
+      width:min(980px,92vw);
+      height:auto;
+      margin:0 auto;
+      filter:drop-shadow(0 0 26px rgba(255,0,110,.22));
+    }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      margin:28px auto 0;
+      padding:9px 13px;
+      border:1px solid rgba(255,0,110,.34);
+      border-radius:999px;
+      background:rgba(255,0,110,.065);
+      color:#ffd8e8;
+      font-size:12px;
+      font-weight:950;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      box-shadow:0 0 28px rgba(255,0,110,.13);
+    }
+    .kicker:before{
+      content:"";
+      width:8px;height:8px;border-radius:50%;
+      background:var(--pink);
+      box-shadow:0 0 16px var(--pink),0 0 34px var(--pink);
+    }
+    .hero h1{
+      margin:22px auto 0;
+      max-width:920px;
+      font-size:clamp(34px,5.3vw,78px);
+      line-height:.98;
+      letter-spacing:-.055em;
+      text-transform:uppercase;
+    }
+    .hero h1 b{
+      color:var(--pink);
+      text-shadow:0 0 26px rgba(255,0,110,.46);
+    }
+    .lead{
+      margin:24px auto 0;
+      max-width:760px;
+      color:#c2c2cd;
+      font-size:18px;
+      line-height:1.68;
+    }
+    .hero-actions{
+      display:flex;
+      gap:13px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:34px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:54px;
+      padding:15px 22px;
+      border-radius:999px;
+      font-weight:950;
+      border:1px solid var(--line);
+      transition:.22s ease;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{
+      border-color:rgba(255,0,110,.5);
+      background:linear-gradient(135deg,var(--pink),var(--violet));
+      box-shadow:var(--glow-pink);
+    }
+    .btn-secondary{
+      background:rgba(255,255,255,.045);
+      color:#f1f1f6;
+    }
+    .btn-secondary:hover{background:rgba(255,255,255,.075);box-shadow:0 0 24px rgba(255,255,255,.09)}
+    .hero-proof{
+      margin:44px auto 0;
+      max-width:980px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      border:1px solid var(--line);
+      border-radius:26px;
+      overflow:hidden;
+      background:rgba(255,255,255,.028);
+      backdrop-filter:blur(10px);
+    }
+    .proof{
+      padding:20px 18px;
+      text-align:left;
+      border-right:1px solid var(--line-soft);
+      position:relative;
+    }
+    .proof:last-child{border-right:0}
+    .proof:before{
+      content:"";
+      position:absolute;
+      left:18px;right:18px;top:0;
+      height:2px;
+      background:linear-gradient(90deg,transparent,var(--pink),transparent);
+      opacity:.75;
+    }
+    .proof strong{
+      display:block;
+      font-size:26px;
+      color:#fff;
+      text-shadow:0 0 22px rgba(255,255,255,.15);
+    }
+    .proof span{
+      display:block;
+      margin-top:6px;
+      color:#a9a9b8;
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    .section{padding:70px 0}
+    .section-head{
+      display:grid;
+      grid-template-columns:1fr minmax(260px,440px);
+      gap:28px;
+      align-items:end;
+      margin-bottom:30px;
+    }
+    .eyebrow{
+      color:var(--pink);
+      font-size:12px;
+      font-weight:950;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      text-shadow:0 0 16px rgba(255,0,110,.35);
+    }
+    .section h2{
+      margin:10px 0 0;
+      font-size:clamp(32px,4vw,58px);
+      line-height:.98;
+      letter-spacing:-.045em;
+      text-transform:uppercase;
+    }
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:16px;
+    }
+
+    .scenario-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:12px;
+    }
+    .scenario{
+      min-height:210px;
+      padding:21px;
+      border:1px solid var(--line);
+      border-radius:26px;
+      background:rgba(255,255,255,.028);
+      box-shadow:0 20px 60px rgba(0,0,0,.28);
+      position:relative;
+      overflow:hidden;
+      transition:.25s ease;
+    }
+    .scenario:hover{
+      transform:translateY(-5px);
+      border-color:color-mix(in srgb,var(--c) 55%,rgba(255,255,255,.12));
+      box-shadow:0 0 34px color-mix(in srgb,var(--c) 22%,transparent),0 30px 80px rgba(0,0,0,.34);
+      background:linear-gradient(180deg,color-mix(in srgb,var(--c) 8%,transparent),rgba(255,255,255,.025));
+    }
+    .scenario:after{
+      content:"";
+      position:absolute;
+      left:20px;right:20px;bottom:0;
+      height:2px;
+      background:var(--c);
+      box-shadow:0 0 20px var(--c);
+    }
+    .s-icon,.thesis-icon,.icon{
+      display:grid;
+      place-items:center;
+      color:var(--c);
+      border:1px solid color-mix(in srgb,var(--c) 52%,rgba(255,255,255,.08));
+      background:color-mix(in srgb,var(--c) 8%,transparent);
+      box-shadow:0 0 24px color-mix(in srgb,var(--c) 22%,transparent), inset 0 0 18px rgba(255,255,255,.03);
+    }
+    .s-icon{
+      width:46px;height:46px;border-radius:16px;
+      font-size:24px;
+      margin-bottom:18px;
+    }
+    .scenario h3{margin:0;font-size:18px;line-height:1.17}
+    .scenario p{margin:12px 0 0;color:#b8b8c6;line-height:1.52;font-size:14px}
+
+    .thesis-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin-bottom:18px;
+    }
+    .thesis{
+      padding:20px;
+      border:1px solid var(--line);
+      border-radius:25px;
+      background:rgba(255,255,255,.027);
+      position:relative;
+      overflow:hidden;
+    }
+    .thesis:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at 20% 0%,color-mix(in srgb,var(--c) 13%,transparent),transparent 35%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .thesis-icon{
+      position:relative;
+      width:44px;height:44px;border-radius:15px;
+      margin-bottom:15px;
+      font-size:22px;
+    }
+    .thesis strong{position:relative;display:block;font-size:17px;line-height:1.25}
+    .thesis span{position:relative;display:block;margin-top:8px;color:#aaaaba;line-height:1.45;font-size:14px}
+
+    .about-slider{
+      position:relative;
+      border:1px solid var(--line);
+      border-radius:34px;
+      background:rgba(255,255,255,.03);
+      box-shadow:0 28px 90px rgba(0,0,0,.36);
+      overflow:hidden;
+    }
+    .about-slider:before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      pointer-events:none;
+      border-radius:34px;
+      background:linear-gradient(135deg,rgba(255,0,110,.36),transparent 28%,rgba(138,44,255,.26) 65%,transparent);
+      mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+      mask-composite:exclude;
+      padding:1px;
+      opacity:.55;
+    }
+    .about-track{display:flex;transition:transform .45s ease}
+    .about-slide{
+      min-width:100%;
+      display:grid;
+      grid-template-columns:1.12fr .88fr;
+      gap:22px;
+      align-items:stretch;
+      padding:30px;
+    }
+    .slide-copy{padding:18px 12px 72px 18px}
+    .slide-copy h3{
+      margin:0 0 18px;
+      font-size:clamp(29px,3.4vw,50px);
+      line-height:1;
+      letter-spacing:-.04em;
+      text-transform:uppercase;
+    }
+    .slide-copy h3 b{color:var(--pink);text-shadow:0 0 24px rgba(255,0,110,.45)}
+    .slide-copy p{margin:0;color:#c7c7d1;font-size:17px;line-height:1.72}
+    .slide-copy ul{display:grid;gap:9px;margin:18px 0 0;padding:0;list-style:none}
+    .slide-copy li{display:flex;gap:10px;color:#eeeeF5;line-height:1.45}
+    .slide-copy li:before{
+      content:"";
+      width:8px;height:8px;border-radius:50%;
+      background:var(--pink);
+      box-shadow:0 0 12px var(--pink);
+      margin-top:7px;flex:none;
+    }
+    .slide-visual{
+      min-height:330px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:radial-gradient(circle at 50% 30%,rgba(255,0,110,.17),transparent 45%),rgba(255,255,255,.025);
+      overflow:hidden;
+    }
+    .slide-visual img{max-width:90%;border-radius:22px;filter:drop-shadow(0 28px 64px rgba(0,0,0,.5))}
+    .big-mark{
+      font-size:112px;
+      font-weight:950;
+      color:transparent;
+      -webkit-text-stroke:2px var(--pink);
+      text-shadow:0 0 30px rgba(255,0,110,.42);
+    }
+    .slider-nav{
+      position:absolute;
+      left:28px;right:28px;bottom:24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+    .slider-dots{display:flex;gap:8px}
+    .dot-btn{
+      width:9px;height:9px;border:0;border-radius:999px;
+      background:rgba(255,255,255,.3);
+      cursor:pointer;
+    }
+    .dot-btn.active{
+      width:34px;
+      background:var(--pink);
+      box-shadow:0 0 16px rgba(255,0,110,.85);
+    }
+    .arrow-group{display:flex;gap:8px}
+    .arrow{
+      width:42px;height:42px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.045);
+      color:#fff;
+      font-size:22px;
+      cursor:pointer;
+    }
+    .arrow:hover{box-shadow:0 0 22px rgba(255,255,255,.13)}
+
+    .experience-grid{
+      display:grid;
+      grid-template-columns:.92fr 1.08fr;
+      gap:18px;
+    }
+    .experience-copy,.chips,.account-card,.final{
+      border:1px solid var(--line);
+      border-radius:34px;
+      background:rgba(255,255,255,.03);
+      box-shadow:0 28px 80px rgba(0,0,0,.32);
+    }
+    .experience-copy{padding:32px}
+    .experience-copy p{margin:0;color:#cacad4;line-height:1.75;font-size:18px}
+    .chips{
+      padding:28px;
+      display:flex;
+      flex-wrap:wrap;
+      align-content:flex-start;
+      gap:10px;
+    }
+    .chip{
+      padding:11px 13px;
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      color:#eeeef5;
+      font-size:13px;
+      font-weight:900;
+    }
+    .chip:nth-child(3n+1){box-shadow:0 0 16px rgba(255,0,110,.1);border-color:rgba(255,0,110,.22)}
+    .chip:nth-child(3n+2){box-shadow:0 0 16px rgba(138,44,255,.09);border-color:rgba(138,44,255,.2)}
+    .chip:nth-child(3n+3){box-shadow:0 0 16px rgba(0,108,255,.08);border-color:rgba(0,108,255,.2)}
+
+    .service-blocks{display:grid;gap:14px}
+    .service-detail{
+      display:grid;
+      grid-template-columns:290px 1fr 138px;
+      gap:22px;
+      align-items:center;
+      padding:24px;
+      border:1px solid var(--line);
+      border-radius:30px;
+      background:rgba(255,255,255,.028);
+      position:relative;
+      overflow:hidden;
+      transition:.24s ease;
+    }
+    .service-detail:hover{
+      transform:translateY(-3px);
+      border-color:color-mix(in srgb,var(--c) 46%,rgba(255,255,255,.12));
+      box-shadow:0 0 34px color-mix(in srgb,var(--c) 18%,transparent),0 26px 70px rgba(0,0,0,.32);
+    }
+    .service-detail:before{
+      content:"";
+      position:absolute;
+      left:0;top:18px;bottom:18px;
+      width:3px;
+      background:var(--c);
+      box-shadow:0 0 22px var(--c);
+      border-radius:0 99px 99px 0;
+    }
+    .service-title{display:flex;align-items:center;gap:15px}
+    .icon{
+      width:62px;height:62px;border-radius:21px;
+      font-size:31px;flex:none;
+    }
+    .service-title h3{
+      margin:0;
+      font-size:25px;
+      line-height:1.08;
+      letter-spacing:-.03em;
+      text-transform:uppercase;
+    }
+    .service-title h3 b{color:var(--c);text-shadow:0 0 16px color-mix(in srgb,var(--c) 35%,transparent)}
+    .service-detail p{margin:0;color:#c2c2cd;line-height:1.62;font-size:15px}
+    .service-meta{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:8px;
+      margin-top:13px;
+    }
+    .meta{
+      padding:10px;
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:14px;
+      background:rgba(255,255,255,.028);
+    }
+    .meta small{
+      display:block;
+      color:#8f8e9e;
+      font-size:9px;
+      text-transform:uppercase;
+      font-weight:950;
+      letter-spacing:.08em;
+    }
+    .meta span{display:block;margin-top:5px;color:#eeeeF5;font-size:12px;line-height:1.3}
+    .service-link{
+      justify-self:end;
+      padding:13px 17px;
+      border-radius:999px;
+      border:1px solid color-mix(in srgb,var(--c) 50%,rgba(255,255,255,.11));
+      background:color-mix(in srgb,var(--c) 12%,rgba(255,255,255,.025));
+      color:#fff;
+      font-weight:950;
+      text-align:center;
+      box-shadow:0 0 18px color-mix(in srgb,var(--c) 16%,transparent);
+    }
+
+    .account{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    .account-card{
+      padding:34px;
+      background:radial-gradient(circle at 12% 0%,rgba(255,0,110,.18),transparent 34%),rgba(255,255,255,.03);
+    }
+    .account-card h3{
+      margin:10px 0 16px;
+      font-size:clamp(30px,3.6vw,52px);
+      line-height:1;
+      letter-spacing:-.05em;
+      text-transform:uppercase;
+    }
+    .account-card h3 b{color:var(--pink);text-shadow:0 0 24px rgba(255,0,110,.44)}
+    .account-card p{margin:0;color:#c6c6d0;line-height:1.72;font-size:17px}
+    .account-list{display:grid;gap:12px}
+    .account-list div{
+      padding:20px;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:rgba(255,255,255,.03);
+      color:#d9d9e2;
+      line-height:1.5;
+    }
+    .account-list b{color:#fff}
+
+    .final{
+      padding:38px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:28px;
+      align-items:center;
+      background:radial-gradient(circle at 78% 18%,rgba(255,0,110,.18),transparent 34%),rgba(255,255,255,.032);
+      position:relative;
+      overflow:hidden;
+    }
+    .final:after{
+      content:"";
+      position:absolute;
+      left:38px;right:38px;bottom:0;
+      height:2px;
+      background:linear-gradient(90deg,transparent,var(--pink),var(--violet),transparent);
+      box-shadow:0 0 24px rgba(255,0,110,.5);
+    }
+    .final h2{
+      margin:10px 0 0;
+      font-size:clamp(32px,4vw,58px);
+      line-height:1;
+      letter-spacing:-.045em;
+      text-transform:uppercase;
+    }
+    .final p{margin:16px 0 0;color:#c8c8d2;line-height:1.7;font-size:18px;max-width:710px}
+    .final-actions{display:grid;gap:12px;min-width:225px}
+
+    .footer{padding:38px 0 48px;color:#9e9eac}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+    .footer b{color:#fff}
+    .contacts{display:flex;gap:10px;flex-wrap:wrap}
+    .contacts a{padding:10px 13px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035)}
+
+    @media(max-width:1100px){
+      .nav-links{display:none}
+      .scenario-grid{grid-template-columns:1fr 1fr}
+      .scenario:last-child{grid-column:1/-1}
+      .thesis-grid{grid-template-columns:1fr 1fr}
+      .section-head,.about-slide,.experience-grid,.account,.final{grid-template-columns:1fr}
+      .service-detail{grid-template-columns:1fr}
+      .service-link{justify-self:start}
+    }
+    @media(max-width:680px){
+      .wrap{width:min(100% - 22px,1160px)}
+      .brand img{width:min(176px,48vw)}
+      .login-btn span,.nav-cta{display:none}
+      .hero{min-height:auto;padding:54px 0 44px}
+      .hero h1{font-size:34px}
+      .lead{font-size:16px}
+      .btn{width:100%}
+      .hero-proof,.scenario-grid,.thesis-grid,.service-meta{grid-template-columns:1fr}
+      .proof{border-right:0;border-bottom:1px solid var(--line-soft)}
+      .proof:last-child{border-bottom:0}
+      .section{padding:50px 0}
+      .section h2{font-size:34px}
+      .about-slide{padding:18px}
+      .slide-copy{padding:12px 6px 62px}
+      .slide-copy p{font-size:16px}
+      .slide-visual{min-height:250px}
+      .slider-nav{left:18px;right:18px;bottom:18px}
+      .experience-copy,.chips,.account-card,.final{padding:22px}
+      .service-detail{padding:22px}
+      .service-title{align-items:flex-start}
+      .service-title h3{font-size:22px}
+      .final-actions{min-width:auto}
+    }
+  </style>
+</head>
+<body>
+  <div class="scanline" aria-hidden="true"></div>
+
+  <header class="header wrap">
+    <nav class="nav">
+      <a class="brand" href="#" aria-label="Клипер.Про"><img src="assets/kliper-brand.png" alt="Клипер"></a>
+      <div class="nav-links">
+        <a href="#services">Сервисы</a>
+        <a href="#about">О нас</a>
+        <a href="#contacts">Контакты</a>
+      </div>
+      <div class="nav-actions">
+        <a class="login-btn" href="#" aria-label="Войти в аккаунт">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="hero-inner">
+        <img class="hero-logo" src="assets/kliper-brand.png" alt="Клипер">
+        <div class="kicker">Клипер.Про</div>
+        <h1>Рекламная экосистема <b>для бизнеса</b></h1>
+        <p class="lead">Запускайте рекламу, находите площадки, управляйте производством и цифровыми сервисами в одной системе.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#services">Смотреть сервисы</a>
+          <a class="btn btn-secondary" href="#scenarios">Что можно сделать</a>
+        </div>
+
+        <div class="hero-proof" aria-label="Ключевые факты">
+          <div class="proof"><strong>2013</strong><span>работаем в рекламе и производстве</span></div>
+          <div class="proof"><strong>13+ лет</strong><span>практического опыта на рынке</span></div>
+          <div class="proof"><strong>360°</strong><span>видим задачи клиента, подрядчика и площадки</span></div>
+          <div class="proof"><strong>5 сервисов</strong><span>в одной экосистеме Клипер</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="scenarios">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Что можно сделать</div>
+          <h2>Понятная навигация по задачам</h2>
+        </div>
+        <p>Сайт работает как вход в экосистему: пользователь выбирает задачу и сразу понимает, какой сервис ему нужен.</p>
+      </div>
+
+      <div class="scenario-grid">
+        <a class="scenario" href="#service-pro" style="--c:var(--pink)">
+          <div class="s-icon">▣</div>
+          <h3>Запустить рекламу</h3>
+          <p>Собрать задачу, передать материалы, контролировать этапы и результат.</p>
+        </a>
+        <a class="scenario" href="#service-map" style="--c:var(--violet)">
+          <div class="s-icon">⌖</div>
+          <h3>Найти площадку</h3>
+          <p>Выбрать экраны, билборды и городские носители по карте.</p>
+        </a>
+        <a class="scenario" href="#service-market" style="--c:var(--blue)">
+          <div class="s-icon">▱</div>
+          <h3>Заказать производство</h3>
+          <p>Найти типографии, монтажные команды и производителей конструкций.</p>
+        </a>
+        <a class="scenario" href="#service-main" style="--c:#ff9f1c">
+          <div class="s-icon">◈</div>
+          <h3>Подключить digital</h3>
+          <p>Создать сайт, карточку компании, форму заявок или сервис.</p>
+        </a>
+        <a class="scenario" href="#service-city" style="--c:var(--green)">
+          <div class="s-icon">♡</div>
+          <h3>Разместиться в городе</h3>
+          <p>Попасть в городскую среду Клипер.Сити: компании, районы, рейтинги.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="section wrap" id="about">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">О нас</div>
+          <h2>Опыт рекламы, собранный в систему</h2>
+        </div>
+        <p>Меньше длинных текстов — больше коротких смысловых блоков, которые быстро объясняют путь компании.</p>
+      </div>
+
+      <div class="thesis-grid">
+        <div class="thesis" style="--c:var(--pink)"><div class="thesis-icon">↗</div><strong>Работаем с 2013 года</strong><span>Практика в рекламе, производстве и сопровождении бизнеса.</span></div>
+        <div class="thesis" style="--c:var(--violet)"><div class="thesis-icon">◈</div><strong>Полный цикл задач</strong><span>От идеи, дизайна и видео до изготовления, монтажа и размещения.</span></div>
+        <div class="thesis" style="--c:var(--blue)"><div class="thesis-icon">▦</div><strong>Видим рынок 360°</strong><span>Понимаем клиента, подрядчика, производство, монтаж и площадки.</span></div>
+        <div class="thesis" style="--c:var(--green)"><div class="thesis-icon">⚡</div><strong>Создаем экосистему</strong><span>Сервисы для быстрой работы бизнеса и рекламных компаний.</span></div>
+      </div>
+
+      <div class="about-slider" aria-label="О компании Клипер.Про">
+        <div class="about-track" id="aboutTrack">
+          <article class="about-slide">
+            <div class="slide-copy">
+              <h3><b>2013</b> — старт в рекламе</h3>
+              <p>Клипер.Про вырос из реальных задач бизнеса: нужно было не просто сделать макет, а довести рекламу до размещения, монтажа и результата.</p>
+              <ul><li>Экраны, билборды и городские носители.</li><li>Полиграфия, дизайн и видеомонтаж.</li><li>Понятный запуск рекламы для бизнеса.</li></ul>
+            </div>
+            <div class="slide-visual"><div class="big-mark">2013</div></div>
+          </article>
+          <article class="about-slide">
+            <div class="slide-copy">
+              <h3>Производство и <b>монтаж</b></h3>
+              <p>Мы прошли практическую сторону рынка: производство рекламных конструкций, монтажные работы и переоформление сетевых магазинов.</p>
+              <ul><li>Изготовление конструкций и носителей.</li><li>Оформление коммерческих пространств.</li><li>Понимание сроков, материалов и этапов.</li></ul>
+            </div>
+            <div class="slide-visual"><div class="big-mark">360°</div></div>
+          </article>
+          <article class="about-slide">
+            <div class="slide-copy">
+              <h3>Digital для <b>малого бизнеса</b></h3>
+              <p>Рекламные задачи постепенно перешли в цифровые решения: сайты, сервисы, карточки компаний, заявки, кабинеты и инструменты связи.</p>
+              <ul><li>Сайты и посадочные страницы.</li><li>Формы заявок и карточки компаний.</li><li>Инструменты для продаж и обслуживания.</li></ul>
+            </div>
+            <div class="slide-visual"><img src="assets/ecosystem-reference.webp" alt="Экосистема Клипер" loading="lazy"></div>
+          </article>
+          <article class="about-slide">
+            <div class="slide-copy">
+              <h3>Теперь — <b>экосистема</b></h3>
+              <p>За 13 лет мы собрали картину рекламного рынка и создаем единое пространство, где бизнесу проще работать с рекламой, производством и клиентами.</p>
+              <ul><li>Один аккаунт для сервисов Клипер.</li><li>Площадки, заявки и производство в одной логике.</li><li>Быстрее запуск, понятнее управление.</li></ul>
+            </div>
+            <div class="slide-visual"><div class="big-mark">K</div></div>
+          </article>
+        </div>
+
+        <div class="slider-nav">
+          <div class="slider-dots" id="aboutDots">
+            <button class="dot-btn active" aria-label="Слайд 1"></button>
+            <button class="dot-btn" aria-label="Слайд 2"></button>
+            <button class="dot-btn" aria-label="Слайд 3"></button>
+            <button class="dot-btn" aria-label="Слайд 4"></button>
+          </div>
+          <div class="arrow-group">
+            <button class="arrow" id="aboutPrev" aria-label="Назад">‹</button>
+            <button class="arrow" id="aboutNext" aria-label="Вперед">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="experience">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Наш опыт</div>
+          <h2>Рынок изнутри, а не только концепция</h2>
+        </div>
+        <p>За сервисом стоит реальная практика: реклама, производство, монтаж, дизайн, полиграфия и digital.</p>
+      </div>
+
+      <div class="experience-grid">
+        <div class="experience-copy">
+          <p>Мы прошли путь от создания макета и производства конструкции до размещения рекламы, монтажа, сопровождения клиента и разработки цифровых инструментов. Поэтому Клипер.Про строится вокруг реальных процессов, которые каждый день нужны бизнесу.</p>
+        </div>
+        <div class="chips" aria-label="Сферы работы">
+          <span class="chip">Реклама на экранах</span>
+          <span class="chip">Видеомонтаж</span>
+          <span class="chip">Билборды</span>
+          <span class="chip">Дизайн</span>
+          <span class="chip">Монтажные работы</span>
+          <span class="chip">Рекламные конструкции</span>
+          <span class="chip">Переоформление магазинов</span>
+          <span class="chip">Полиграфия</span>
+          <span class="chip">Сайты для бизнеса</span>
+          <span class="chip">Городские сервисы</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="services">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Сервисы</div>
+          <h2>Пять направлений одной экосистемы</h2>
+        </div>
+        <p>Каждый сервис отвечает за отдельную задачу, но вместе они складываются в единое пространство для рекламы, бизнеса и города.</p>
+      </div>
+
+      <div class="service-blocks">
+        <article class="service-detail" id="service-pro" style="--c:var(--pink)">
+          <div class="service-title"><div class="icon">▣</div><h3>Клипер<b>.Про</b></h3></div>
+          <div>
+            <p>Рабочее пространство для рекламных задач: заявки, клиенты, расчеты, производство, статусы заказов и управление проектами.</p>
+            <div class="service-meta"><div class="meta"><small>Для кого</small><span>бизнес, рекламные компании</span></div><div class="meta"><small>Решает</small><span>заявки, статусы, контроль</span></div><div class="meta"><small>Внутри</small><span>кабинеты, задачи, производство</span></div></div>
+          </div>
+          <a class="service-link" href="#contacts">Перейти</a>
+        </article>
+
+        <article class="service-detail" id="service-map" style="--c:var(--violet)">
+          <div class="service-title"><div class="icon">⌖</div><h3>Клипер<b>.Мап</b></h3></div>
+          <div>
+            <p>Карта рекламных площадок: экраны, билборды, баннерные места, городские точки и другие носители.</p>
+            <div class="service-meta"><div class="meta"><small>Для кого</small><span>клиенты, агентства, владельцы мест</span></div><div class="meta"><small>Решает</small><span>поиск и выбор площадок</span></div><div class="meta"><small>Внутри</small><span>карта, фильтры, карточки</span></div></div>
+          </div>
+          <a class="service-link" href="#contacts">Перейти</a>
+        </article>
+
+        <article class="service-detail" id="service-market" style="--c:var(--blue)">
+          <div class="service-title"><div class="icon">▱</div><h3>Клипер<b>.Маркет</b></h3></div>
+          <div>
+            <p>Маркет производств, типографий, монтажных команд и поставщиков для рекламных задач.</p>
+            <div class="service-meta"><div class="meta"><small>Для кого</small><span>заказчики и подрядчики</span></div><div class="meta"><small>Решает</small><span>поиск производства</span></div><div class="meta"><small>Внутри</small><span>каталог, заявки, предложения</span></div></div>
+          </div>
+          <a class="service-link" href="#contacts">Перейти</a>
+        </article>
+
+        <article class="service-detail" id="service-city" style="--c:var(--green)">
+          <div class="service-title"><div class="icon">♡</div><h3>Клипер<b>.Сити</b></h3></div>
+          <div>
+            <p>Городская социальная сеть, где жители следят за районами, находят компании, делятся рекомендациями и видят важные события.</p>
+            <div class="service-meta"><div class="meta"><small>Для кого</small><span>жители, компании, районы</span></div><div class="meta"><small>Решает</small><span>видимость и доверие</span></div><div class="meta"><small>Внутри</small><span>новости, рейтинги, компании</span></div></div>
+          </div>
+          <a class="service-link" href="https://kliper.city" target="_blank" rel="noopener">Перейти</a>
+        </article>
+
+        <article class="service-detail" id="service-main" style="--c:#ff2b8d">
+          <div class="service-title"><div class="icon">K</div><h3>Клипер</h3></div>
+          <div>
+            <p>Центральная точка входа во все сервисы: структура экосистемы, переходы, общий аккаунт и контакты.</p>
+            <div class="service-meta"><div class="meta"><small>Для кого</small><span>все пользователи Клипер</span></div><div class="meta"><small>Решает</small><span>навигацию по сервисам</span></div><div class="meta"><small>Внутри</small><span>переходы, аккаунт, контакты</span></div></div>
+          </div>
+          <a class="service-link" href="#contacts">Перейти</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="account">
+      <div class="account">
+        <div class="account-card">
+          <div class="eyebrow">Единый аккаунт</div>
+          <h3>Один вход для всей <b>экосистемы</b></h3>
+          <p>Кнопка «Войти» — будущая точка доступа ко всем сервисам Клипер. Пользователь сможет работать с заявками, площадками, компаниями, городскими проектами и своими данными из одного профиля.</p>
+          <div class="hero-actions" style="justify-content:flex-start;margin-top:26px">
+            <a class="btn btn-primary" href="#">Войти в аккаунт</a>
+          </div>
+        </div>
+        <div class="account-list">
+          <div><b>Для бизнеса:</b> заявки, размещения, карточки компаний, рекламные задачи и история обращений.</div>
+          <div><b>Для рекламных компаний:</b> клиенты, статусы, производства, площадки и коммуникации.</div>
+          <div><b>Для жителей:</b> любимые компании, районы, рекомендации и городские сервисы.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="contacts">
+      <div class="final">
+        <div>
+          <div class="eyebrow">Связаться</div>
+          <h2>Подключиться к Клипер или обсудить проект</h2>
+          <p>Напишите нам — подберем формат, площадку, производство или цифровое решение под вашу задачу.</p>
+        </div>
+        <div class="final-actions">
+          <a class="btn btn-primary" href="mailto:info@kliper.pro">Написать на почту</a>
+          <a class="btn btn-secondary" href="https://t.me/ik_center" target="_blank" rel="noopener">Telegram</a>
+          <a class="btn btn-secondary" href="https://kliper.city" target="_blank" rel="noopener">Клипер.Сити</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <div class="footer-inner">
+      <div><b>Клипер.Про</b> — экосистема рекламных решений</div>
+      <div class="contacts">
+        <a href="mailto:info@kliper.pro">info@kliper.pro</a>
+        <a href="https://t.me/ik_center" target="_blank" rel="noopener">@ik_center</a>
+        <a href="https://kliper.city" target="_blank" rel="noopener">kliper.city</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const track = document.getElementById('aboutTrack');
+    const dots = Array.from(document.querySelectorAll('#aboutDots .dot-btn'));
+    const prev = document.getElementById('aboutPrev');
+    const next = document.getElementById('aboutNext');
+    let index = 0;
+    let timer = null;
+
+    function setSlide(i){
+      index = (i + dots.length) % dots.length;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, n) => dot.classList.toggle('active', n === index));
+    }
+
+    function autoplay(){
+      clearInterval(timer);
+      timer = setInterval(() => setSlide(index + 1), 6500);
+    }
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { setSlide(i); autoplay(); }));
+    prev.addEventListener('click', () => { setSlide(index - 1); autoplay(); });
+    next.addEventListener('click', () => { setSlide(index + 1); autoplay(); });
+
+    autoplay();
+  </script>
+</body>
+</html>
