@@ -7,8 +7,8 @@
   <meta name="description" content="Клипер.Про — экосистема рекламных и цифровых сервисов для бизнеса: реклама, площадки, производство, сайты, городские сервисы и единый аккаунт." />
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/favicon-32x32.png">
-  <link rel="apple-touch-icon" href="assets/favicon-192x192.png">
-  <link rel="preload" as="image" href="assets/kliper-brand.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" as="image" href="assets/auth-logo-kliper-wide.png">
   <style>
     :root{
       --bg:#020204;
@@ -78,6 +78,7 @@
     @keyframes scan{from{transform:translateY(-45vh)}to{transform:translateY(115vh)}}
 
     a{color:inherit;text-decoration:none}
+    button{font:inherit;color:inherit}
     .wrap{width:min(1160px,calc(100% - 36px));margin:0 auto}
 
     .header{
@@ -127,7 +128,7 @@
     }
     .nav-links a:hover{background:rgba(255,0,110,.12);color:#fff;box-shadow:0 0 18px rgba(255,0,110,.22)}
     .nav-actions{display:flex;align-items:center;justify-content:flex-end;justify-self:end;gap:9px}
-    .login-btn,.nav-cta{
+    .login-btn,.nav-cta,.menu-btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
@@ -138,6 +139,17 @@
       white-space:nowrap;
       transition:.22s ease;
     }
+    .menu-btn{
+      display:none;
+      width:44px;
+      height:44px;
+      padding:0;
+      color:#fff;
+      background:rgba(255,255,255,.045);
+      border:1px solid var(--line);
+      cursor:pointer;
+    }
+    .menu-btn svg{width:19px;height:19px}
     .login-btn{
       width:44px;
       height:44px;
@@ -146,7 +158,7 @@
       background:rgba(255,255,255,.045);
       border:1px solid var(--line);
     }
-    .login-btn:hover{box-shadow:0 0 22px rgba(255,255,255,.12);background:rgba(255,255,255,.08)}
+    .login-btn:hover,.menu-btn:hover{box-shadow:0 0 22px rgba(255,255,255,.12);background:rgba(255,255,255,.08)}
     .login-btn svg{width:17px;height:17px}
     .nav-cta{
       padding:11px 16px;
@@ -294,6 +306,165 @@
       font-size:13px;
       line-height:1.4;
     }
+    .hero-console{
+      margin:34px auto 0;
+      max-width:1040px;
+      display:grid;
+      grid-template-columns:1.06fr .94fr;
+      gap:14px;
+      text-align:left;
+    }
+    .console-panel,.entry-panel,.command-card{
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:rgba(255,255,255,.032);
+      box-shadow:0 26px 80px rgba(0,0,0,.34), inset 0 0 0 1px rgba(255,255,255,.02);
+      backdrop-filter:blur(14px);
+    }
+    .console-panel{
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .console-panel:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(110deg,transparent,rgba(255,0,110,.12),transparent);
+      transform:translateX(-100%);
+      animation:visualScan 6.5s linear infinite;
+      pointer-events:none;
+    }
+    .console-head,.console-row,.entry-row{
+      position:relative;
+      z-index:1;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .console-label{
+      color:#fff;
+      font-size:12px;
+      font-weight:950;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .console-live{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:#ffd8e8;
+      font-size:11px;
+      font-weight:950;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+    .console-live:before{
+      content:"";
+      width:8px;height:8px;border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 15px var(--green);
+    }
+    .console-grid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-top:16px;
+    }
+    .console-metric{
+      min-height:96px;
+      padding:14px;
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:18px;
+      background:rgba(255,255,255,.035);
+    }
+    .console-metric small{
+      display:block;
+      color:#9292a1;
+      font-size:10px;
+      font-weight:950;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .console-metric strong{
+      display:block;
+      margin-top:10px;
+      font-size:25px;
+      color:#fff;
+    }
+    .console-metric span{
+      display:block;
+      margin-top:5px;
+      color:#bdbdca;
+      font-size:12px;
+      line-height:1.35;
+    }
+    .console-row{
+      margin-top:14px;
+      padding:13px 14px;
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:18px;
+      background:linear-gradient(90deg,rgba(255,0,110,.09),rgba(138,44,255,.06));
+    }
+    .console-route{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:#eeeeF5;
+      font-weight:900;
+      font-size:13px;
+    }
+    .console-route i{
+      width:10px;height:10px;border-radius:50%;
+      background:var(--pink);
+      box-shadow:0 0 15px var(--pink);
+      flex:none;
+    }
+    .entry-panel{
+      padding:22px;
+      display:grid;
+      align-content:space-between;
+      gap:16px;
+      background:
+        radial-gradient(circle at 82% 10%,rgba(255,0,110,.16),transparent 34%),
+        rgba(255,255,255,.032);
+    }
+    .entry-panel h3{
+      margin:0;
+      font-size:26px;
+      line-height:1.05;
+      letter-spacing:-.035em;
+      text-transform:uppercase;
+    }
+    .entry-panel p{
+      margin:10px 0 0;
+      color:#bdbdca;
+      line-height:1.55;
+      font-size:14px;
+    }
+    .entry-row{
+      align-items:stretch;
+    }
+    .entry-option{
+      flex:1;
+      padding:14px;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:18px;
+      background:rgba(255,255,255,.035);
+      color:#fff;
+      font-weight:950;
+    }
+    .entry-option small{
+      display:block;
+      margin-top:7px;
+      color:#9f9fad;
+      font-size:11px;
+      line-height:1.35;
+      font-weight:700;
+    }
 
     .section{padding:70px 0}
     .section-head{
@@ -370,6 +541,116 @@
     }
     .scenario h3{margin:0;font-size:18px;line-height:1.17}
     .scenario p{margin:12px 0 0;color:#b8b8c6;line-height:1.52;font-size:14px}
+
+    .command-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:14px;
+    }
+    .command-card{
+      padding:26px;
+      position:relative;
+      overflow:hidden;
+    }
+    .command-card:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at 18% 0%,rgba(255,0,110,.16),transparent 32%);
+      pointer-events:none;
+    }
+    .command-card h3{
+      position:relative;
+      margin:0;
+      font-size:clamp(28px,3.2vw,46px);
+      line-height:1;
+      letter-spacing:-.045em;
+      text-transform:uppercase;
+    }
+    .command-card h3 b{color:var(--pink);text-shadow:0 0 22px rgba(255,0,110,.42)}
+    .command-card p{
+      position:relative;
+      max-width:700px;
+      margin:16px 0 0;
+      color:#c5c5d0;
+      line-height:1.65;
+    }
+    .command-steps{
+      position:relative;
+      display:grid;
+      gap:10px;
+      margin-top:22px;
+    }
+    .command-step{
+      display:grid;
+      grid-template-columns:42px 1fr auto;
+      gap:14px;
+      align-items:center;
+      padding:14px;
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:18px;
+      background:rgba(255,255,255,.035);
+    }
+    .step-num{
+      width:42px;height:42px;border-radius:15px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--pink),var(--violet));
+      font-weight:950;
+      box-shadow:0 0 22px rgba(255,0,110,.25);
+    }
+    .command-step strong{display:block;color:#fff}
+    .command-step span{display:block;margin-top:4px;color:#aaaaba;font-size:13px;line-height:1.35}
+    .step-state{
+      padding:7px 10px;
+      border:1px solid rgba(0,216,51,.32);
+      border-radius:999px;
+      color:#caffe0;
+      background:rgba(0,216,51,.08);
+      font-size:10px;
+      font-weight:950;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+    .cabinet-grid{
+      display:grid;
+      gap:10px;
+    }
+    .cabinet-link{
+      display:grid;
+      grid-template-columns:44px 1fr auto;
+      gap:12px;
+      align-items:center;
+      padding:14px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:rgba(255,255,255,.032);
+      transition:.22s ease;
+      width:100%;
+      text-align:left;
+      cursor:pointer;
+    }
+    .cabinet-link:hover{
+      transform:translateY(-2px);
+      border-color:color-mix(in srgb,var(--c) 45%,rgba(255,255,255,.12));
+      box-shadow:0 0 26px color-mix(in srgb,var(--c) 15%,transparent);
+    }
+    .cabinet-mark{
+      width:44px;height:44px;border-radius:15px;
+      display:grid;place-items:center;
+      color:#fff;
+      background:color-mix(in srgb,var(--c) 20%,rgba(255,255,255,.04));
+      border:1px solid color-mix(in srgb,var(--c) 42%,rgba(255,255,255,.08));
+      font-weight:950;
+    }
+    .cabinet-link strong{display:block;color:#fff}
+    .cabinet-link > span:not(.cabinet-mark):not(.cabinet-arrow) > span{
+      display:block;
+      margin-top:3px;
+      color:#aaaaba;
+      font-size:13px;
+      line-height:1.35;
+    }
+    .cabinet-arrow{color:var(--c);font-weight:950;font-size:20px}
 
     .thesis-grid{
       display:grid;
@@ -600,6 +881,20 @@
       font-weight:950;
       text-align:center;
       box-shadow:0 0 18px color-mix(in srgb,var(--c) 16%,transparent);
+      cursor:pointer;
+    }
+    .service-actions{
+      justify-self:end;
+      display:grid;
+      gap:9px;
+      min-width:150px;
+    }
+    .service-actions .service-link{justify-self:stretch}
+    .service-link.secondary{
+      background:rgba(255,255,255,.035);
+      border-color:rgba(255,255,255,.12);
+      box-shadow:none;
+      color:#dedeeb;
     }
 
     .account{
@@ -971,15 +1266,40 @@
       border-bottom:1px solid rgba(255,0,110,.55);
     }
 
+    body.home #about,
+    body.home #experience,
+    body.home #services,
+    body.home #account,
+    body.home #contacts{
+      display:none;
+    }
+
     @media(max-width:1100px){
-      .nav{grid-template-columns:1fr auto}
-      .nav-links{display:none}
+      .nav{grid-template-columns:1fr auto;position:relative}
+      .menu-btn{display:inline-flex}
+      .nav-links{
+        display:none;
+        position:absolute;
+        top:calc(100% + 10px);
+        left:0;
+        right:0;
+        z-index:30;
+        flex-direction:column;
+        align-items:stretch;
+        padding:10px;
+        border-radius:24px;
+        background:rgba(3,3,7,.96);
+        box-shadow:0 22px 70px rgba(0,0,0,.5),0 0 28px rgba(255,0,110,.12);
+      }
+      .nav.open .nav-links{display:flex}
+      .nav-links a{width:100%;text-align:center}
+      .hero-console,.command-grid{grid-template-columns:1fr}
       .scenario-grid{grid-template-columns:1fr 1fr}
       .scenario:last-child{grid-column:1/-1}
       .thesis-grid{grid-template-columns:1fr 1fr}
       .section-head,.about-slide,.experience-grid,.account,.final{grid-template-columns:1fr}
       .service-detail{grid-template-columns:1fr}
-      .service-link{justify-self:start}
+      .service-link,.service-actions{justify-self:start}
     }
     @media(max-width:680px){
       .wrap{width:min(100% - 22px,1160px)}
@@ -989,9 +1309,12 @@
       .hero h1{font-size:34px}
       .lead{font-size:16px}
       .btn{width:100%}
-      .hero-proof,.scenario-grid,.thesis-grid,.service-meta{grid-template-columns:1fr}
+      .hero-proof,.console-grid,.entry-row,.scenario-grid,.thesis-grid,.service-meta{grid-template-columns:1fr}
       .proof{border-right:0;border-bottom:1px solid var(--line-soft)}
       .proof:last-child{border-bottom:0}
+      .console-row,.command-step,.cabinet-link{grid-template-columns:1fr}
+      .console-row,.entry-row{display:grid}
+      .step-state,.cabinet-arrow{justify-self:start}
       .section{padding:50px 0}
       .section h2{font-size:34px}
       .about-slide{padding:18px}
@@ -1003,6 +1326,7 @@
       .service-detail{padding:22px}
       .service-title{align-items:flex-start}
       .service-title h3{font-size:22px}
+      .service-actions{width:100%}
       .final-actions{min-width:auto}
     }
   
@@ -1150,18 +1474,22 @@
 
 </style>
 </head>
-<body>
+<body class="home">
   <div class="scanline" aria-hidden="true"></div>
 
   <header class="header wrap">
     <nav class="nav">
-      <a class="brand" href="#" aria-label="Клипер.Про"><img src="assets/kliper-brand.png" alt="Клипер"></a>
+      <a class="brand" href="index.html" aria-label="Клипер.Про"><img src="assets/auth-logo-kliper-wide.png" alt="Клипер"></a>
       <div class="nav-links">
-        <a href="#services">Сервисы</a>
-        <a href="#about">О нас</a>
-        <a href="#contacts">Контакты</a>
+        <a href="services.html">Сервисы</a>
+        <a href="cabinet.html">Кабинеты</a>
+        <a href="about.html">О нас</a>
+        <a href="contacts.html">Контакты</a>
       </div>
       <div class="nav-actions">
+        <button class="menu-btn" id="menuToggle" type="button" aria-label="Открыть меню" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
         <button class="login-btn" id="openAuth" type="button" aria-label="Войти в аккаунт">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
         </button>
@@ -1173,11 +1501,39 @@
     <section class="hero wrap">
       <div class="hero-inner">
         <div class="kicker">Клипер.Про</div>
-        <h1>Рекламная экосистема <b>для бизнеса</b></h1>
-        <p class="lead">Запускайте рекламу, находите площадки, управляйте производством и цифровыми сервисами в одной системе.</p>
+        <h1>Центр управления <b>экосистемой Клипер</b></h1>
+        <p class="lead">Главная точка входа в рекламные, цифровые и городские сервисы: понятный выбор направления, быстрый вход в кабинет и единая логика работы для бизнеса, подрядчиков и жителей.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#services">Смотреть сервисы</a>
-          <a class="btn btn-secondary" href="#scenarios">Возможности</a>
+          <button class="btn btn-primary" type="button" data-auth-open>Войти в кабинет</button>
+          <a class="btn btn-secondary" href="services.html">Выбрать сервис</a>
+        </div>
+
+        <div class="hero-console" aria-label="Единый центр Клипер">
+          <div class="console-panel">
+            <div class="console-head">
+              <div class="console-label">Kliper command center</div>
+              <div class="console-live">online</div>
+            </div>
+            <div class="console-grid">
+              <div class="console-metric"><small>Сервисы</small><strong>5</strong><span>единая навигация и аккаунт</span></div>
+              <div class="console-metric"><small>Роли</small><strong>3</strong><span>бизнес, подрядчики, жители</span></div>
+              <div class="console-metric"><small>Цикл</small><strong>360°</strong><span>от задачи до результата</span></div>
+            </div>
+            <div class="console-row">
+              <div class="console-route"><i></i><span>Заявка → площадка → производство → размещение → аналитика</span></div>
+              <div class="console-live">ready</div>
+            </div>
+          </div>
+          <div class="entry-panel">
+            <div>
+              <h3>Один вход. Разные кабинеты.</h3>
+              <p>Пользователь выбирает роль и попадает в нужное рабочее пространство: рекламные задачи, карта площадок, маркет производств или городской сервис.</p>
+            </div>
+            <div class="entry-row">
+              <div class="entry-option">Бизнес<small>заявки, размещения, компании</small></div>
+              <div class="entry-option">Партнер<small>площадки, производство, статусы</small></div>
+            </div>
+          </div>
         </div>
 
         <div class="hero-proof" aria-label="Ключевые факты">
@@ -1185,6 +1541,43 @@
           <div class="proof"><strong>13+ лет</strong><span>практического опыта на рынке</span></div>
           <div class="proof"><strong>360°</strong><span>видим задачи клиента, подрядчика и площадки</span></div>
           <div class="proof"><strong>5 сервисов</strong><span>в одной экосистеме Клипер</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="cabinet">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Кабинеты</div>
+          <h2>Быстрый вход в нужный контур</h2>
+        </div>
+        <p>Центральный сайт должен не заставлять искать, а сразу направлять пользователя туда, где он решает свою задачу.</p>
+      </div>
+
+      <div class="command-grid">
+        <div class="command-card">
+          <h3>Сайт как <b>операционная панель</b>, а не витрина</h3>
+          <p>Клипер.Про объединяет вход, маршрутизацию по сервисам и понимание ролей. Подробные описания вынесены на отдельные страницы, а главная остается быстрым стартовым экраном.</p>
+          <div class="command-steps">
+            <div class="command-step"><div class="step-num">1</div><div><strong>Выбор роли</strong><span>Бизнес, рекламная компания, владелец площадки, подрядчик или житель.</span></div><div class="step-state">понятно</div></div>
+            <div class="command-step"><div class="step-num">2</div><div><strong>Выбор сервиса</strong><span>Каталог сервисов живет на отдельной странице и ведет к кабинету или контактному маршруту.</span></div><div class="step-state">быстро</div></div>
+            <div class="command-step"><div class="step-num">3</div><div><strong>Единый аккаунт</strong><span>Один профиль для заявок, площадок, компаний, проектов и истории обращений.</span></div><div class="step-state">готово</div></div>
+          </div>
+        </div>
+
+        <div class="cabinet-grid" aria-label="Переходы в кабинеты">
+          <button class="cabinet-link" type="button" data-auth-open style="--c:var(--pink)">
+            <span class="cabinet-mark">Pro</span><span><strong>Кабинет Клипер.Про</strong><span>рекламные заявки, проекты и контроль</span></span><span class="cabinet-arrow">→</span>
+          </button>
+          <button class="cabinet-link" type="button" data-auth-open style="--c:var(--violet)">
+            <span class="cabinet-mark">Map</span><span><strong>Кабинет Клипер.Мап</strong><span>площадки, карта, владельцы мест</span></span><span class="cabinet-arrow">→</span>
+          </button>
+          <button class="cabinet-link" type="button" data-auth-open style="--c:var(--blue)">
+            <span class="cabinet-mark">Mkt</span><span><strong>Кабинет Клипер.Маркет</strong><span>производства, подрядчики, предложения</span></span><span class="cabinet-arrow">→</span>
+          </button>
+          <a class="cabinet-link" href="https://kliper.city" target="_blank" rel="noopener" style="--c:var(--green)">
+            <span class="cabinet-mark">City</span><span><strong>Клипер.Сити</strong><span>город, компании, районы и рейтинги</span></span><span class="cabinet-arrow">→</span>
+          </a>
         </div>
       </div>
     </section>
@@ -1199,27 +1592,27 @@
       </div>
 
       <div class="scenario-grid">
-        <a class="scenario" href="#service-pro" style="--c:var(--pink)">
+        <a class="scenario" href="services.html#service-pro" style="--c:var(--pink)">
           <div class="s-icon">▣</div>
           <h3>Запустить рекламу</h3>
           <p>Собрать задачу, передать материалы, контролировать этапы и результат.</p>
         </a>
-        <a class="scenario" href="#service-map" style="--c:var(--violet)">
+        <a class="scenario" href="services.html#service-map" style="--c:var(--violet)">
           <div class="s-icon">⌖</div>
           <h3>Найти площадку</h3>
           <p>Выбрать экраны, билборды и городские носители по карте.</p>
         </a>
-        <a class="scenario" href="#service-market" style="--c:var(--blue)">
+        <a class="scenario" href="services.html#service-market" style="--c:var(--blue)">
           <div class="s-icon">▱</div>
           <h3>Заказать производство</h3>
           <p>Найти типографии, монтажные команды и производителей конструкций.</p>
         </a>
-        <a class="scenario" href="#service-main" style="--c:#ff9f1c">
+        <a class="scenario" href="services.html" style="--c:#ff9f1c">
           <div class="s-icon">◈</div>
           <h3>Подключить digital</h3>
           <p>Создать сайт, карточку компании, форму заявок или сервис.</p>
         </a>
-        <a class="scenario" href="#service-city" style="--c:var(--green)">
+        <a class="scenario" href="services.html#service-city" style="--c:var(--green)">
           <div class="s-icon">♡</div>
           <h3>Разместиться в городе</h3>
           <p>Попасть в городскую среду Клипер.Сити: компании, районы, рейтинги.</p>
@@ -1387,7 +1780,10 @@
             <p>Рабочее пространство для рекламных задач: заявки, клиенты, расчеты, производство, статусы заказов и управление проектами.</p>
             <div class="service-meta"><div class="meta"><small>Для кого</small><span>бизнес, рекламные компании</span></div><div class="meta"><small>Решает</small><span>заявки, статусы, контроль</span></div><div class="meta"><small>Внутри</small><span>кабинеты, задачи, производство</span></div></div>
           </div>
-          <a class="service-link" href="#contacts">Перейти</a>
+          <div class="service-actions">
+            <button class="service-link" type="button" data-auth-open>Открыть кабинет</button>
+            <a class="service-link secondary" href="#contacts">Обсудить подключение</a>
+          </div>
         </article>
 
         <article class="service-detail" id="service-map" style="--c:var(--violet)">
@@ -1396,7 +1792,10 @@
             <p>Карта рекламных площадок: экраны, билборды, баннерные места, городские точки и другие носители.</p>
             <div class="service-meta"><div class="meta"><small>Для кого</small><span>клиенты, агентства, владельцы мест</span></div><div class="meta"><small>Решает</small><span>поиск и выбор площадок</span></div><div class="meta"><small>Внутри</small><span>карта, фильтры, карточки</span></div></div>
           </div>
-          <a class="service-link" href="#contacts">Перейти</a>
+          <div class="service-actions">
+            <button class="service-link" type="button" data-auth-open>Открыть кабинет</button>
+            <a class="service-link secondary" href="#contacts">Добавить площадку</a>
+          </div>
         </article>
 
         <article class="service-detail" id="service-market" style="--c:var(--blue)">
@@ -1405,7 +1804,10 @@
             <p>Маркет производств, типографий, монтажных команд и поставщиков для рекламных задач.</p>
             <div class="service-meta"><div class="meta"><small>Для кого</small><span>заказчики и подрядчики</span></div><div class="meta"><small>Решает</small><span>поиск производства</span></div><div class="meta"><small>Внутри</small><span>каталог, заявки, предложения</span></div></div>
           </div>
-          <a class="service-link" href="#contacts">Перейти</a>
+          <div class="service-actions">
+            <button class="service-link" type="button" data-auth-open>Открыть кабинет</button>
+            <a class="service-link secondary" href="#contacts">Стать подрядчиком</a>
+          </div>
         </article>
 
         <article class="service-detail" id="service-city" style="--c:var(--green)">
@@ -1414,7 +1816,10 @@
             <p>Городская социальная сеть, где жители следят за районами, находят компании, делятся рекомендациями и видят важные события.</p>
             <div class="service-meta"><div class="meta"><small>Для кого</small><span>жители, компании, районы</span></div><div class="meta"><small>Решает</small><span>видимость и доверие</span></div><div class="meta"><small>Внутри</small><span>новости, рейтинги, компании</span></div></div>
           </div>
-          <a class="service-link" href="https://kliper.city" target="_blank" rel="noopener">Перейти</a>
+          <div class="service-actions">
+            <a class="service-link" href="https://kliper.city" target="_blank" rel="noopener">Открыть сервис</a>
+            <a class="service-link secondary" href="#contacts">Добавить компанию</a>
+          </div>
         </article>
 
         <article class="service-detail" id="service-main" style="--c:#ff2b8d">
@@ -1423,7 +1828,10 @@
             <p>Центральная точка входа во все сервисы: структура экосистемы, переходы, общий аккаунт и контакты.</p>
             <div class="service-meta"><div class="meta"><small>Для кого</small><span>все пользователи Клипер</span></div><div class="meta"><small>Решает</small><span>навигацию по сервисам</span></div><div class="meta"><small>Внутри</small><span>переходы, аккаунт, контакты</span></div></div>
           </div>
-          <a class="service-link" href="#contacts">Перейти</a>
+          <div class="service-actions">
+            <button class="service-link" type="button" data-auth-open>Войти</button>
+            <a class="service-link secondary" href="#cabinet">Все кабинеты</a>
+          </div>
         </article>
       </div>
     </section>
@@ -1435,7 +1843,7 @@
           <h3>Один вход для всей <b>экосистемы</b></h3>
           <p>Кнопка «Войти» — будущая точка доступа ко всем сервисам Клипер. Пользователь сможет работать с заявками, площадками, компаниями, городскими проектами и своими данными из одного профиля.</p>
           <div class="hero-actions" style="justify-content:flex-start;margin-top:26px">
-            <a class="btn btn-primary" href="#">Войти в аккаунт</a>
+            <button class="btn btn-primary" type="button" data-auth-open>Войти в аккаунт</button>
           </div>
         </div>
         <div class="account-list">
@@ -1465,7 +1873,7 @@
   <div class="auth-modal" id="authModal" aria-hidden="true">
     <div class="auth-box" role="dialog" aria-modal="true" aria-label="Вход и регистрация">
       <button class="auth-close" id="closeAuth" type="button" aria-label="Закрыть">×</button>
-      <img class="auth-logo" src="assets/favicon-192x192.png?v=4" alt="Клипер">
+      <img class="auth-logo" src="assets/auth-logo-kliper-wide.png?v=4" alt="Клипер">
       <div class="auth-tabs">
         <button class="auth-tab active" type="button" data-auth-tab="login">Вход</button>
         <button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button>
@@ -1483,7 +1891,7 @@
           </label>
           <button class="auth-submit" type="submit">Войти</button>
         </form>
-        <p class="auth-foot">Модуль подготовлен как интерфейс. Для реальной авторизации позже нужно подключить backend/API.</p>
+        <p class="auth-foot">Вход ведет в единый контур сервисов Клипер. Доступы и роли настраиваются под пользователя.</p>
       </div>
 
       <div class="auth-panel" id="auth-register">
@@ -1499,7 +1907,7 @@
           </label>
           <button class="auth-submit" type="submit">Создать аккаунт</button>
         </form>
-        <p class="auth-foot">После подключения сервера форма сможет создавать реальные аккаунты пользователей.</p>
+        <p class="auth-foot">Профиль объединяет заявки, площадки, компании, городские сервисы и историю обращений.</p>
       </div>
     </div>
   </div>
@@ -1675,6 +2083,9 @@
     const authModal = document.getElementById('authModal');
     const openAuth = document.getElementById('openAuth');
     const closeAuth = document.getElementById('closeAuth');
+    const nav = document.querySelector('.nav');
+    const menuToggle = document.getElementById('menuToggle');
+    const authOpeners = Array.from(document.querySelectorAll('[data-auth-open]'));
     const authTabs = Array.from(document.querySelectorAll('[data-auth-tab]'));
     const authPanels = {
       login: document.getElementById('auth-login'),
@@ -1699,6 +2110,17 @@
     }
 
     openAuth.addEventListener('click', openAuthModal);
+    authOpeners.forEach(button => button.addEventListener('click', openAuthModal));
+    menuToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+    });
+    nav.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Открыть меню');
+    }));
     closeAuth.addEventListener('click', closeAuthModal);
     authModal.addEventListener('click', (e) => {
       if(e.target === authModal) closeAuthModal();
