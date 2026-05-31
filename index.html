@@ -218,6 +218,12 @@
       background:var(--pink);
       box-shadow:0 0 16px var(--pink),0 0 34px var(--pink);
     }
+    h1,h2,h3{
+      text-wrap:balance;
+    }
+    p,.lead,.card p,.section-head p{
+      text-wrap:pretty;
+    }
     .hero h1{
       margin:22px auto 0;
       max-width:920px;
@@ -1273,6 +1279,219 @@
     body.home #contacts{
       display:none;
     }
+    .layer-system{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:14px;
+    }
+    .map-core{
+      border:1px solid var(--line);
+      border-radius:34px;
+      padding:28px;
+      background:
+        radial-gradient(circle at 18% 0%,rgba(138,44,255,.18),transparent 34%),
+        rgba(255,255,255,.03);
+      box-shadow:0 28px 80px rgba(0,0,0,.32);
+      position:relative;
+      overflow:hidden;
+    }
+    .map-core:before{
+      content:"";
+      position:absolute;
+      right:-70px;
+      bottom:-90px;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      border:1px solid rgba(255,0,110,.25);
+      background:
+        linear-gradient(90deg,rgba(255,0,110,.12) 1px,transparent 1px),
+        linear-gradient(0deg,rgba(255,255,255,.06) 1px,transparent 1px);
+      background-size:24px 24px;
+      opacity:.8;
+    }
+    .map-core > *{position:relative}
+    .map-core h3{
+      margin:0;
+      font-size:clamp(30px,3.5vw,52px);
+      line-height:1;
+      letter-spacing:-.05em;
+      text-transform:uppercase;
+    }
+    .map-core p{margin:16px 0 0;color:#c7c7d1;line-height:1.7;font-size:17px}
+    .layer-grid{display:grid;gap:12px}
+    .layer-card{
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:20px;
+      background:rgba(255,255,255,.03);
+      position:relative;
+      overflow:hidden;
+    }
+    .layer-card:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at 12% 0%,color-mix(in srgb,var(--c) 16%,transparent),transparent 34%);
+      pointer-events:none;
+    }
+    .layer-card > *{position:relative}
+    .layer-card strong{display:block;color:#fff;font-size:18px}
+    .layer-card span{display:block;margin-top:8px;color:#aaaaba;line-height:1.5;font-size:14px}
+    .scenario-actions{
+      position:relative;
+      z-index:1;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+    .mini-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:38px;
+      padding:9px 12px;
+      border:1px solid color-mix(in srgb,var(--c) 46%,rgba(255,255,255,.12));
+      border-radius:999px;
+      background:color-mix(in srgb,var(--c) 12%,rgba(255,255,255,.025));
+      color:#fff;
+      font-size:12px;
+      font-weight:950;
+      cursor:pointer;
+    }
+    .mini-btn.secondary{
+      border-color:rgba(255,255,255,.12);
+      background:rgba(255,255,255,.035);
+    }
+    .status-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .status-card{
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:20px;
+      background:rgba(255,255,255,.03);
+    }
+    .status-badge{
+      display:inline-flex;
+      padding:7px 9px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      color:#d9d9e5;
+      background:rgba(255,255,255,.04);
+      font-size:10px;
+      font-weight:950;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .status-card h3{margin:14px 0 0;font-size:21px;line-height:1.08;text-transform:uppercase}
+    .status-card p{margin:10px 0 0;color:#aaaaba;line-height:1.55;font-size:14px}
+    .bonus-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .bonus-step{
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:rgba(255,255,255,.03);
+    }
+    .bonus-step b{display:block;color:var(--pink);font-size:24px}
+    .bonus-step span{display:block;margin-top:8px;color:#c2c2cd;line-height:1.45;font-size:14px}
+    .service-modal{
+      position:fixed;
+      inset:0;
+      z-index:120;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:22px;
+      background:rgba(0,0,0,.76);
+      backdrop-filter:blur(18px);
+    }
+    .service-modal.active{display:flex}
+    .service-modal-box{
+      width:min(1040px,100%);
+      max-height:min(88vh,820px);
+      overflow:auto;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:34px;
+      background:
+        radial-gradient(circle at 82% 0%,rgba(255,0,110,.18),transparent 36%),
+        linear-gradient(180deg,rgba(18,18,28,.97),rgba(5,5,9,.97));
+      box-shadow:0 36px 120px rgba(0,0,0,.62),0 0 50px rgba(255,0,110,.16);
+      padding:24px;
+      position:relative;
+      scrollbar-color:rgba(255,0,110,.55) rgba(255,255,255,.06);
+      scrollbar-width:thin;
+    }
+    .service-modal-box::-webkit-scrollbar{width:8px}
+    .service-modal-box::-webkit-scrollbar-track{background:rgba(255,255,255,.06);border-radius:999px}
+    .service-modal-box::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--pink),var(--violet));border-radius:999px}
+    .service-modal-close{
+      position:absolute;
+      right:18px;
+      top:18px;
+      width:40px;
+      height:40px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:50%;
+      background:rgba(255,255,255,.045);
+      color:#fff;
+      cursor:pointer;
+      font-size:22px;
+    }
+    .service-modal-head{padding:4px 54px 20px 2px}
+    .service-modal-head h3{margin:0;font-size:clamp(28px,3.2vw,46px);line-height:1;text-transform:uppercase}
+    .service-modal-head p{margin:12px 0 0;color:#aaaaba;line-height:1.6;max-width:760px}
+    .slide-shell{
+      display:grid;
+      grid-template-columns:1fr .92fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .slide-preview{
+      min-height:330px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:26px;
+      background:
+        linear-gradient(90deg,rgba(255,0,110,.12) 1px,transparent 1px),
+        linear-gradient(0deg,rgba(255,255,255,.05) 1px,transparent 1px),
+        radial-gradient(circle at 50% 20%,rgba(255,0,110,.18),transparent 42%),
+        rgba(255,255,255,.025);
+      background-size:34px 34px,34px 34px,auto,auto;
+      display:grid;
+      place-items:center;
+      padding:24px;
+      text-align:center;
+      overflow:hidden;
+    }
+    .slide-preview strong{display:block;font-size:24px;text-transform:uppercase}
+    .slide-preview span{display:block;margin-top:10px;color:#aaaaba;line-height:1.45}
+    .slide-copy{
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:26px;
+      background:rgba(255,255,255,.035);
+      padding:24px;
+      display:grid;
+      align-content:space-between;
+      gap:20px;
+    }
+    .slide-copy h4{margin:0;font-size:30px;line-height:1.02;text-transform:uppercase;letter-spacing:-.04em}
+    .slide-copy p{margin:14px 0 0;color:#c7c7d1;line-height:1.68}
+    .slide-controls{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+    .slide-arrow{
+      width:44px;
+      height:44px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:50%;
+      background:rgba(255,255,255,.045);
+      color:#fff;
+      cursor:pointer;
+      font-size:22px;
+    }
+    .slide-dots{display:flex;gap:8px}
+    .slide-dot{
+      width:10px;height:10px;border:0;border-radius:999px;background:rgba(255,255,255,.25);cursor:pointer;
+    }
+    .slide-dot.active{width:30px;background:var(--pink);box-shadow:0 0 14px rgba(255,0,110,.8)}
+    .service-modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 
     @media(max-width:1100px){
       .nav{grid-template-columns:1fr auto;position:relative}
@@ -1293,7 +1512,7 @@
       }
       .nav.open .nav-links{display:flex}
       .nav-links a{width:100%;text-align:center}
-      .hero-console,.command-grid{grid-template-columns:1fr}
+      .hero-console,.command-grid,.layer-system,.slide-shell{grid-template-columns:1fr}
       .scenario-grid{grid-template-columns:1fr 1fr}
       .scenario:last-child{grid-column:1/-1}
       .thesis-grid{grid-template-columns:1fr 1fr}
@@ -1309,7 +1528,7 @@
       .hero h1{font-size:34px}
       .lead{font-size:16px}
       .btn{width:100%}
-      .hero-proof,.console-grid,.entry-row,.scenario-grid,.thesis-grid,.service-meta{grid-template-columns:1fr}
+      .hero-proof,.console-grid,.entry-row,.scenario-grid,.thesis-grid,.service-meta,.status-grid,.bonus-flow{grid-template-columns:1fr}
       .proof{border-right:0;border-bottom:1px solid var(--line-soft)}
       .proof:last-child{border-bottom:0}
       .console-row,.command-step,.cabinet-link{grid-template-columns:1fr}
@@ -1328,6 +1547,12 @@
       .service-title h3{font-size:22px}
       .service-actions{width:100%}
       .final-actions{min-width:auto}
+      .service-modal{padding:10px}
+      .service-modal-box{max-height:94vh;border-radius:24px;padding:18px}
+      .slide-preview{min-height:230px}
+      .slide-copy h4{font-size:25px}
+      .service-modal-head h3{font-size:28px}
+      .service-modal-head p{font-size:15px}
     }
   
 /* Styled legal checkbox like Kliper.City */
@@ -1500,47 +1725,48 @@
   <main>
     <section class="hero wrap">
       <div class="hero-inner">
-        <div class="kicker">Клипер.Про</div>
-        <h1>Центр управления <b>экосистемой Клипер</b></h1>
-        <p class="lead">Главная точка входа в рекламные, цифровые и городские сервисы: понятный выбор направления, быстрый вход в кабинет и единая логика работы для бизнеса, подрядчиков и жителей.</p>
+        <div class="kicker">Kliper.pro</div>
+        <h1>Центр экосистемы <b>Kliper</b></h1>
+        <p class="lead">Единый кабинет, Kliper City и Kliper Map — карта рекламных объектов с тремя слоями: ProCups, Площадка и Лифты.</p>
         <div class="hero-actions">
           <button class="btn btn-primary" type="button" data-auth-open>Войти в кабинет</button>
           <a class="btn btn-secondary" href="services.html">Выбрать сервис</a>
+          <a class="btn btn-secondary" href="contacts.html">Оставить заявку</a>
         </div>
 
         <div class="hero-console" aria-label="Единый центр Клипер">
           <div class="console-panel">
             <div class="console-head">
-              <div class="console-label">Kliper command center</div>
+              <div class="console-label">Kliper control center</div>
               <div class="console-live">online</div>
             </div>
             <div class="console-grid">
-              <div class="console-metric"><small>Сервисы</small><strong>5</strong><span>единая навигация и аккаунт</span></div>
-              <div class="console-metric"><small>Роли</small><strong>3</strong><span>бизнес, подрядчики, жители</span></div>
-              <div class="console-metric"><small>Цикл</small><strong>360°</strong><span>от задачи до результата</span></div>
+              <div class="console-metric"><small>Кабинет</small><strong>1</strong><span>заявки, документы, бонусы</span></div>
+              <div class="console-metric"><small>Карта</small><strong>1</strong><span>рекламные объекты города</span></div>
+              <div class="console-metric"><small>Слои</small><strong>3</strong><span>ProCups, Площадка, Лифты</span></div>
             </div>
             <div class="console-row">
-              <div class="console-route"><i></i><span>Заявка → площадка → производство → размещение → аналитика</span></div>
+              <div class="console-route"><i></i><span>Район → объект → период → заявка → статус в кабинете</span></div>
               <div class="console-live">ready</div>
             </div>
           </div>
           <div class="entry-panel">
             <div>
               <h3>Один вход. Разные кабинеты.</h3>
-              <p>Пользователь выбирает роль и попадает в нужное рабочее пространство: рекламные задачи, карта площадок, маркет производств или городской сервис.</p>
+              <p>Пользователь выбирает роль и сразу переходит туда, где решается его задача: кабинет, карта рекламных объектов или Kliper City.</p>
             </div>
             <div class="entry-row">
-              <div class="entry-option">Бизнес<small>заявки, размещения, компании</small></div>
-              <div class="entry-option">Партнер<small>площадки, производство, статусы</small></div>
+              <div class="entry-option">Бизнес<small>заявки, размещения, бонусы</small></div>
+              <div class="entry-option">Партнёр<small>объекты карты, статусы, заявки</small></div>
             </div>
           </div>
         </div>
 
         <div class="hero-proof" aria-label="Ключевые факты">
-          <div class="proof"><strong>2013</strong><span>работаем в рекламе и производстве</span></div>
-          <div class="proof"><strong>13+ лет</strong><span>практического опыта на рынке</span></div>
-          <div class="proof"><strong>360°</strong><span>видим задачи клиента, подрядчика и площадки</span></div>
-          <div class="proof"><strong>5 сервисов</strong><span>в одной экосистеме Клипер</span></div>
+          <div class="proof"><strong>1 кабинет</strong><span>заявки, размещения, бонусы и документы</span></div>
+          <div class="proof"><strong>1 карта</strong><span>рекламные объекты города в Kliper Map</span></div>
+          <div class="proof"><strong>3 слоя</strong><span>ProCups, Площадка и Лифты внутри карты</span></div>
+          <div class="proof"><strong>Бонусы</strong><span>копятся с покупок и действий в экосистеме</span></div>
         </div>
       </div>
     </section>
@@ -1549,34 +1775,34 @@
       <div class="section-head">
         <div>
           <div class="eyebrow">Кабинеты</div>
-          <h2>Быстрый вход в нужный контур</h2>
+          <h2>Быстрый вход в нужное направление</h2>
         </div>
-        <p>Центральный сайт должен не заставлять искать, а сразу направлять пользователя туда, где он решает свою задачу.</p>
+        <p>Пользователь должен быстро понять, куда перейти: в кабинет, на карту рекламных объектов, в Kliper City или к заявке.</p>
       </div>
 
       <div class="command-grid">
         <div class="command-card">
-          <h3>Сайт как <b>операционная панель</b>, а не витрина</h3>
-          <p>Клипер.Про объединяет вход, маршрутизацию по сервисам и понимание ролей. Подробные описания вынесены на отдельные страницы, а главная остается быстрым стартовым экраном.</p>
+          <h3>Сайт как <b>центр управления</b>, а не витрина</h3>
+          <p>Kliper.pro объединяет вход, роли и быстрые переходы. Подробности вынесены на отдельные страницы, а главная остаётся стартовой панелью.</p>
           <div class="command-steps">
             <div class="command-step"><div class="step-num">1</div><div><strong>Выбор роли</strong><span>Бизнес, рекламная компания, владелец площадки, подрядчик или житель.</span></div><div class="step-state">понятно</div></div>
-            <div class="command-step"><div class="step-num">2</div><div><strong>Выбор сервиса</strong><span>Каталог сервисов живет на отдельной странице и ведет к кабинету или контактному маршруту.</span></div><div class="step-state">быстро</div></div>
-            <div class="command-step"><div class="step-num">3</div><div><strong>Единый аккаунт</strong><span>Один профиль для заявок, площадок, компаний, проектов и истории обращений.</span></div><div class="step-state">готово</div></div>
+            <div class="command-step"><div class="step-num">2</div><div><strong>Выбор направления</strong><span>Каталог показывает текущий запуск и будущие направления.</span></div><div class="step-state">быстро</div></div>
+            <div class="command-step"><div class="step-num">3</div><div><strong>Единый аккаунт</strong><span>Один профиль для заявок, объектов карты, компаний, бонусов и истории действий.</span></div><div class="step-state">готово</div></div>
           </div>
         </div>
 
         <div class="cabinet-grid" aria-label="Переходы в кабинеты">
           <button class="cabinet-link" type="button" data-auth-open style="--c:var(--pink)">
-            <span class="cabinet-mark">Pro</span><span><strong>Кабинет Клипер.Про</strong><span>рекламные заявки, проекты и контроль</span></span><span class="cabinet-arrow">→</span>
+            <span class="cabinet-mark">Pro</span><span><strong>Кабинет Kliper.pro</strong><span>заявки, бонусы, документы и статусы</span></span><span class="cabinet-arrow">→</span>
           </button>
           <button class="cabinet-link" type="button" data-auth-open style="--c:var(--violet)">
-            <span class="cabinet-mark">Map</span><span><strong>Кабинет Клипер.Мап</strong><span>площадки, карта, владельцы мест</span></span><span class="cabinet-arrow">→</span>
+            <span class="cabinet-mark">Map</span><span><strong>Kliper Map</strong><span>карта рекламных объектов и три слоя</span></span><span class="cabinet-arrow">→</span>
           </button>
-          <button class="cabinet-link" type="button" data-auth-open style="--c:var(--blue)">
-            <span class="cabinet-mark">Mkt</span><span><strong>Кабинет Клипер.Маркет</strong><span>производства, подрядчики, предложения</span></span><span class="cabinet-arrow">→</span>
+          <button class="cabinet-link" type="button" data-service-modal="future" style="--c:var(--blue)">
+            <span class="cabinet-mark">Soon</span><span><strong>Будущие направления</strong><span>Market, ProCups Plus, Spec, Space, Media, Pack</span></span><span class="cabinet-arrow">→</span>
           </button>
           <a class="cabinet-link" href="https://kliper.city" target="_blank" rel="noopener" style="--c:var(--green)">
-            <span class="cabinet-mark">City</span><span><strong>Клипер.Сити</strong><span>город, компании, районы и рейтинги</span></span><span class="cabinet-arrow">→</span>
+            <span class="cabinet-mark">City</span><span><strong>Kliper City</strong><span>город, компании, районы и рейтинги</span></span><span class="cabinet-arrow">→</span>
           </a>
         </div>
       </div>
@@ -1586,37 +1812,99 @@
       <div class="section-head">
         <div>
           <div class="eyebrow">Возможности</div>
-          <h2>Сервисы под задачи бизнеса</h2>
+          <h2>Что запускается сейчас</h2>
         </div>
-        <p>Выберите задачу — от запуска рекламы до городского размещения — и перейдите к нужному сервису экосистемы.</p>
+        <p>Главная логика запуска: Kliper.pro как кабинет, Kliper City как городская сеть и Kliper Map как карта с тремя слоями.</p>
       </div>
 
       <div class="scenario-grid">
-        <a class="scenario" href="services.html#service-pro" style="--c:var(--pink)">
+        <article class="scenario" style="--c:var(--pink)">
           <div class="s-icon">▣</div>
-          <h3>Запустить рекламу</h3>
-          <p>Собрать задачу, передать материалы, контролировать этапы и результат.</p>
-        </a>
-        <a class="scenario" href="services.html#service-map" style="--c:var(--violet)">
+          <h3>Единый кабинет</h3>
+          <p>Заявки, размещения, бонусы, документы, роли пользователей и статусы.</p>
+          <div class="scenario-actions"><button class="mini-btn" type="button" data-service-modal="cabinet">Смотреть как работает</button><a class="mini-btn secondary" href="cabinet.html">Страница</a></div>
+        </article>
+        <article class="scenario" style="--c:var(--violet)">
           <div class="s-icon">⌖</div>
-          <h3>Найти площадку</h3>
-          <p>Выбрать экраны, билборды и городские носители по карте.</p>
-        </a>
-        <a class="scenario" href="services.html#service-market" style="--c:var(--blue)">
+          <h3>Kliper Map</h3>
+          <p>Карта рекламных объектов города с тремя слоями: ProCups, Площадка и Лифты.</p>
+          <div class="scenario-actions"><button class="mini-btn" type="button" data-service-modal="map">Смотреть как работает</button><a class="mini-btn secondary" href="services.html#service-map">Подробнее</a></div>
+        </article>
+        <article class="scenario" style="--c:var(--blue)">
           <div class="s-icon">▱</div>
-          <h3>Заказать производство</h3>
-          <p>Найти типографии, монтажные команды и производителей конструкций.</p>
-        </a>
-        <a class="scenario" href="services.html" style="--c:#ff9f1c">
+          <h3>ProCups</h3>
+          <p>Слой Kliper Map с кофейнями и рекламой на стаканчиках.</p>
+          <div class="scenario-actions"><button class="mini-btn" type="button" data-service-modal="procups">Смотреть как работает</button><a class="mini-btn secondary" href="services.html#layer-procups">Слой карты</a></div>
+        </article>
+        <article class="scenario" style="--c:#ff9f1c">
           <div class="s-icon">◈</div>
-          <h3>Подключить digital</h3>
-          <p>Создать сайт, карточку компании, форму заявок или сервис.</p>
-        </a>
-        <a class="scenario" href="services.html#service-city" style="--c:var(--green)">
+          <h3>Площадка / Лифты</h3>
+          <p>Слои Kliper Map для наружных объектов, домов, ЖК и районов.</p>
+          <div class="scenario-actions"><button class="mini-btn" type="button" data-service-modal="platform">Площадка</button><button class="mini-btn secondary" type="button" data-service-modal="lifts">Лифты</button></div>
+        </article>
+        <article class="scenario" style="--c:var(--green)">
           <div class="s-icon">♡</div>
-          <h3>Разместиться в городе</h3>
-          <p>Попасть в городскую среду Клипер.Сити: компании, районы, рейтинги.</p>
-        </a>
+          <h3>Kliper City</h3>
+          <p>Городская сеть компаний, жителей, рейтингов, любимых мест и привилегий.</p>
+          <div class="scenario-actions"><button class="mini-btn" type="button" data-service-modal="city">Смотреть как работает</button><a class="mini-btn secondary" href="https://kliper.city" target="_blank" rel="noopener">Открыть</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="map-logic">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Логика карты</div>
+          <h2>Kliper Map — <b>карта-основа</b></h2>
+        </div>
+        <p>Это не четыре равных сервиса. Kliper Map — единая карта рекламных объектов города, а ProCups, Площадка и Лифты включаются как слои внутри неё.</p>
+      </div>
+      <div class="layer-system">
+        <div class="map-core">
+          <h3>Карта рекламных объектов города</h3>
+          <p>Выбирайте район, объект и период. Заявка уходит в кабинет, где видны расчёт, документы и статус размещения.</p>
+          <div class="service-modal-actions"><button class="btn btn-primary" type="button" data-service-modal="map">Смотреть как работает</button><a class="btn btn-secondary" href="contacts.html">Оставить заявку</a></div>
+        </div>
+        <div class="layer-grid">
+          <div class="layer-card" id="layer-procups" style="--c:var(--pink)"><strong>Слой 1 — ProCups</strong><span>Кофейни на карте, реклама на стаканчиках и подключение кофейных точек.</span></div>
+          <div class="layer-card" style="--c:var(--violet)"><strong>Слой 2 — Площадка</strong><span>Билборды, экраны, поверхности, фасады и другие городские носители.</span></div>
+          <div class="layer-card" style="--c:var(--green)"><strong>Слой 3 — Лифты</strong><span>Реклама в лифтах, домах, ЖК и районах с выбором периода и стоимости.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="future">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Следующий этап</div>
+          <h2>Будущие направления экосистемы</h2>
+        </div>
+        <p>Эти направления показываем отдельно от ближайшего запуска и обязательно помечаем как будущие.</p>
+      </div>
+      <div class="status-grid">
+        <div class="status-card"><span class="status-badge">будущий сервис</span><h3>Kliper Market</h3><p>Производство рекламы и бизнес-заказы: визитки, баннеры, вывески, монтаж.</p></div>
+        <div class="status-card"><span class="status-badge">скоро</span><h3>ProCups Plus</h3><p>Обслуживание кофейных точек: поставки, акции, стандарты и фотоотчеты.</p></div>
+        <div class="status-card"><span class="status-badge">следующий этап</span><h3>Kliper Spec</h3><p>Кабинет специалистов: дизайнеры, монтажники, инженеры, обучение и заказы.</p></div>
+        <div class="status-card"><span class="status-badge">позже</span><h3>Kliper Space</h3><p>Интернет-реклама под ключ: сайты, карты, площадки и продвижение.</p></div>
+        <div class="status-card"><span class="status-badge">позже</span><h3>Kliper Media</h3><p>Радио и телевидение без сложных договоров.</p></div>
+        <div class="status-card"><span class="status-badge">позже</span><h3>Kliper Pack</h3><p>Конструктор готового бизнеса: стиль, инструменты, продукт, реклама и запуск.</p></div>
+      </div>
+      <div class="hero-actions"><button class="btn btn-secondary" type="button" data-service-modal="future">Смотреть будущие направления</button></div>
+    </section>
+
+    <section class="section wrap" id="bonus">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Бонусы</div>
+          <h2>Бонусы с каждой покупки</h2>
+        </div>
+        <p>Бонусы начисляются за покупки и действия внутри экосистемы. Их можно использовать на следующее размещение, продвижение или дополнительные услуги.</p>
+      </div>
+      <div class="bonus-flow">
+        <div class="bonus-step"><b>1</b><span>Заказали рекламу или услугу.</span></div>
+        <div class="bonus-step"><b>2</b><span>Получили бонусы за действие.</span></div>
+        <div class="bonus-step"><b>3</b><span>Увидели баланс в кабинете.</span></div>
+        <div class="bonus-step"><b>4</b><span>Использовали на следующий заказ.</span></div>
       </div>
     </section>
 
@@ -1768,17 +2056,17 @@
       <div class="section-head">
         <div>
           <div class="eyebrow">Сервисы</div>
-          <h2>Пять направлений одной экосистемы</h2>
+          <h2>Направления экосистемы</h2>
         </div>
-        <p>Каждый сервис отвечает за отдельную задачу, но вместе они складываются в единое пространство для рекламы, бизнеса и города.</p>
+        <p>Текущие направления работают вокруг кабинета, Kliper City и Kliper Map с рекламными слоями.</p>
       </div>
 
       <div class="service-blocks">
         <article class="service-detail" id="service-pro" style="--c:var(--pink)">
-          <div class="service-title"><div class="icon">▣</div><h3>Клипер<b>.Про</b></h3></div>
+          <div class="service-title"><div class="icon">▣</div><h3>Kliper<b>.pro</b></h3></div>
           <div>
-            <p>Рабочее пространство для рекламных задач: заявки, клиенты, расчеты, производство, статусы заказов и управление проектами.</p>
-            <div class="service-meta"><div class="meta"><small>Для кого</small><span>бизнес, рекламные компании</span></div><div class="meta"><small>Решает</small><span>заявки, статусы, контроль</span></div><div class="meta"><small>Внутри</small><span>кабинеты, задачи, производство</span></div></div>
+            <p>Единый кабинет для заявок, размещений, бонусов, документов и статусов.</p>
+            <div class="service-meta"><div class="meta"><small>Для кого</small><span>рекламодатели и партнёры</span></div><div class="meta"><small>Решает</small><span>заявки, статусы, бонусы</span></div><div class="meta"><small>Внутри</small><span>роли, документы, история</span></div></div>
           </div>
           <div class="service-actions">
             <button class="service-link" type="button" data-auth-open>Открыть кабинет</button>
@@ -1787,10 +2075,10 @@
         </article>
 
         <article class="service-detail" id="service-map" style="--c:var(--violet)">
-          <div class="service-title"><div class="icon">⌖</div><h3>Клипер<b>.Мап</b></h3></div>
+          <div class="service-title"><div class="icon">⌖</div><h3>Kliper<b> Map</b></h3></div>
           <div>
-            <p>Карта рекламных площадок: экраны, билборды, баннерные места, городские точки и другие носители.</p>
-            <div class="service-meta"><div class="meta"><small>Для кого</small><span>клиенты, агентства, владельцы мест</span></div><div class="meta"><small>Решает</small><span>поиск и выбор площадок</span></div><div class="meta"><small>Внутри</small><span>карта, фильтры, карточки</span></div></div>
+            <p>Карта рекламных объектов города с тремя слоями: ProCups, Площадка и Лифты.</p>
+            <div class="service-meta"><div class="meta"><small>Для кого</small><span>рекламодатели и владельцы объектов</span></div><div class="meta"><small>Решает</small><span>выбор объекта на карте</span></div><div class="meta"><small>Внутри</small><span>слои, заявки, статусы</span></div></div>
           </div>
           <div class="service-actions">
             <button class="service-link" type="button" data-auth-open>Открыть кабинет</button>
@@ -1799,10 +2087,10 @@
         </article>
 
         <article class="service-detail" id="service-market" style="--c:var(--blue)">
-          <div class="service-title"><div class="icon">▱</div><h3>Клипер<b>.Маркет</b></h3></div>
+          <div class="service-title"><div class="icon">▱</div><h3>Kliper<b> Market</b></h3></div>
           <div>
-            <p>Маркет производств, типографий, монтажных команд и поставщиков для рекламных задач.</p>
-            <div class="service-meta"><div class="meta"><small>Для кого</small><span>заказчики и подрядчики</span></div><div class="meta"><small>Решает</small><span>поиск производства</span></div><div class="meta"><small>Внутри</small><span>каталог, заявки, предложения</span></div></div>
+            <p>Будущее направление для производства рекламы и бизнес-заказов.</p>
+            <div class="service-meta"><div class="meta"><small>Статус</small><span>будущий сервис</span></div><div class="meta"><small>Решает</small><span>производство и монтаж</span></div><div class="meta"><small>Внутри</small><span>каталог, заявки, предложения</span></div></div>
           </div>
           <div class="service-actions">
             <button class="service-link" type="button" data-auth-open>Открыть кабинет</button>
@@ -1811,9 +2099,9 @@
         </article>
 
         <article class="service-detail" id="service-city" style="--c:var(--green)">
-          <div class="service-title"><div class="icon">♡</div><h3>Клипер<b>.Сити</b></h3></div>
+          <div class="service-title"><div class="icon">♡</div><h3>Kliper<b> City</b></h3></div>
           <div>
-            <p>Городская социальная сеть, где жители следят за районами, находят компании, делятся рекомендациями и видят важные события.</p>
+            <p>Городская сеть для компаний, жителей, районов, рейтингов и любимых мест.</p>
             <div class="service-meta"><div class="meta"><small>Для кого</small><span>жители, компании, районы</span></div><div class="meta"><small>Решает</small><span>видимость и доверие</span></div><div class="meta"><small>Внутри</small><span>новости, рейтинги, компании</span></div></div>
           </div>
           <div class="service-actions">
@@ -1823,7 +2111,7 @@
         </article>
 
         <article class="service-detail" id="service-main" style="--c:#ff2b8d">
-          <div class="service-title"><div class="icon">K</div><h3>Клипер</h3></div>
+          <div class="service-title"><div class="icon">K</div><h3>Kliper</h3></div>
           <div>
             <p>Центральная точка входа во все сервисы: структура экосистемы, переходы, общий аккаунт и контакты.</p>
             <div class="service-meta"><div class="meta"><small>Для кого</small><span>все пользователи Клипер</span></div><div class="meta"><small>Решает</small><span>навигацию по сервисам</span></div><div class="meta"><small>Внутри</small><span>переходы, аккаунт, контакты</span></div></div>
@@ -1840,7 +2128,7 @@
       <div class="account">
         <div class="account-card">
           <div class="eyebrow">Единый аккаунт</div>
-          <h3>Один вход для всей <b>экосистемы</b></h3>
+          <h3>Единый вход в <b>экосистему</b></h3>
           <p>Кнопка «Войти» — будущая точка доступа ко всем сервисам Клипер. Пользователь сможет работать с заявками, площадками, компаниями, городскими проектами и своими данными из одного профиля.</p>
           <div class="hero-actions" style="justify-content:flex-start;margin-top:26px">
             <button class="btn btn-primary" type="button" data-auth-open>Войти в аккаунт</button>
@@ -1864,11 +2152,43 @@
         <div class="final-actions">
           <a class="btn btn-primary" href="mailto:info@kliper.pro">Написать на почту</a>
           <a class="btn btn-secondary" href="https://t.me/ik_center" target="_blank" rel="noopener">Telegram</a>
-          <a class="btn btn-secondary" href="https://kliper.city" target="_blank" rel="noopener">Клипер.Сити</a>
+          <a class="btn btn-secondary" href="https://kliper.city" target="_blank" rel="noopener">Kliper City</a>
         </div>
       </div>
     </section>
   </main>
+
+  <div class="service-modal" id="serviceModal" aria-hidden="true">
+    <div class="service-modal-box" role="dialog" aria-modal="true" aria-label="Презентация сервиса">
+      <button class="service-modal-close" id="serviceModalClose" type="button" aria-label="Закрыть">×</button>
+      <div class="service-modal-head">
+        <h3 id="serviceModalTitle">Сервис</h3>
+        <p id="serviceModalDescription">Краткое описание сервиса.</p>
+      </div>
+      <div class="slide-shell">
+        <div class="slide-preview" id="serviceSlidePreview" aria-live="polite">
+          <div><strong>Здесь будет скрин интерфейса</strong><span>Карта объектов / Кабинет / Карточка / Заявка / Бонусы</span></div>
+        </div>
+        <div class="slide-copy">
+          <div>
+            <h4 id="serviceSlideTitle">Слайд</h4>
+            <p id="serviceSlideText">Описание слайда.</p>
+          </div>
+          <div>
+            <div class="slide-controls">
+              <button class="slide-arrow" id="serviceSlidePrev" type="button" aria-label="Предыдущий слайд">‹</button>
+              <div class="slide-dots" id="serviceSlideDots" aria-label="Слайды"></div>
+              <button class="slide-arrow" id="serviceSlideNext" type="button" aria-label="Следующий слайд">›</button>
+            </div>
+            <div class="service-modal-actions">
+              <a class="btn btn-primary" id="serviceRequestLink" href="contacts.html">Оставить заявку</a>
+              <a class="btn btn-secondary" id="servicePageLink" href="services.html">Открыть страницу сервиса</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="auth-modal" id="authModal" aria-hidden="true">
     <div class="auth-box" role="dialog" aria-modal="true" aria-label="Вход и регистрация">
@@ -1891,7 +2211,7 @@
           </label>
           <button class="auth-submit" type="submit">Войти</button>
         </form>
-        <p class="auth-foot">Вход ведет в единый контур сервисов Клипер. Доступы и роли настраиваются под пользователя.</p>
+        <p class="auth-foot">Вход ведет в единую систему сервисов Клипер. Доступы и роли настраиваются под пользователя.</p>
       </div>
 
       <div class="auth-panel" id="auth-register">
@@ -2080,6 +2400,152 @@
     setPosition(false);
     startAutoplay();
 
+    const serviceModalData = {
+      map: {
+        title: 'Kliper Map',
+        description: 'Карта рекламных объектов города. Внутри карты включаются три слоя: ProCups, Площадка и Лифты.',
+        page: 'services.html#service-map',
+        request: 'contacts.html',
+        slides: [
+          {title:'Карта рекламных объектов', text:'Пользователь видит районы, адреса, типы объектов, свободные даты и стоимость размещения.', imageAlt:'Карта объектов'},
+          {title:'Три слоя карты', text:'ProCups, Площадка и Лифты не являются отдельными равными сервисами — это переключаемые слои Kliper Map.', imageAlt:'Слои карты'},
+          {title:'Карточка объекта', text:'У каждого объекта есть описание, период, условия, фотоотчеты в будущем и кнопка заявки.', imageAlt:'Карточка объекта'},
+          {title:'Заявка и кабинет', text:'После выбора объекта заявка уходит в единый кабинет, где пользователь видит расчет, документы и статус.', imageAlt:'Заявка и кабинет'}
+        ]
+      },
+      procups: {
+        title: 'ProCups',
+        description: 'Слой Kliper Map с кофейнями, рекламой на стаканчиках и подключением кофейных точек.',
+        page: 'services.html#layer-procups',
+        request: 'contacts.html',
+        slides: [
+          {title:'Кофейни на карте', text:'Кофейные точки отображаются как объекты внутри Kliper Map, а не как отдельная карта.', imageAlt:'Кофейни на карте'},
+          {title:'Реклама на стаканчиках', text:'Рекламодатель выбирает район, кофейню, период и формат размещения на стаканчиках.', imageAlt:'Реклама на стаканчиках'},
+          {title:'Для кофеен', text:'Кофейня может подключиться к системе, получать заявки и участвовать в рекламных механиках.', imageAlt:'Кабинет кофейни'},
+          {title:'Игровая механика', text:'В будущем слой может поддерживать акции, бонусы, QR-механики и отчеты по вовлечению.', imageAlt:'Игровая механика'}
+        ]
+      },
+      platform: {
+        title: 'Площадка',
+        description: 'Слой Kliper Map с наружными рекламными объектами: билбордами, экранами, фасадами и городскими носителями.',
+        page: 'services.html#service-map',
+        request: 'contacts.html',
+        slides: [
+          {title:'Объекты на карте', text:'Билборды, экраны, поверхности и фасады отображаются как слой рекламных объектов Kliper Map.', imageAlt:'Наружные объекты'},
+          {title:'Фильтры и районы', text:'Пользователь выбирает район, тип носителя, период, параметры и доступные даты.', imageAlt:'Фильтры карты'},
+          {title:'Бронирование', text:'Заявка на объект попадает в кабинет, где видно расчет, согласование и статус размещения.', imageAlt:'Бронирование объекта'}
+        ]
+      },
+      lifts: {
+        title: 'Лифты',
+        description: 'Слой Kliper Map для рекламы в лифтах, домах, ЖК и районах.',
+        page: 'services.html#service-map',
+        request: 'contacts.html',
+        slides: [
+          {title:'Районы и дома', text:'Выбор домов, ЖК и районов происходит внутри общей карты рекламных объектов.', imageAlt:'Районы и дома'},
+          {title:'Расчет размещения', text:'Пользователь выбирает период и получает понятный расчет стоимости и охвата.', imageAlt:'Расчет размещения'},
+          {title:'Фотоотчет', text:'После размещения в кабинете можно будет видеть подтверждения, статусы и материалы отчета.', imageAlt:'Фотоотчет'}
+        ]
+      },
+      city: {
+        title: 'Kliper City',
+        description: 'Отдельная городская сеть компаний, жителей, рейтингов, любимых мест и привилегий.',
+        page: 'https://kliper.city',
+        request: 'contacts.html',
+        slides: [
+          {title:'Городская сеть', text:'Жители находят компании, районы, события и рекомендации в городской среде.', imageAlt:'Городская сеть'},
+          {title:'Рейтинг компаний', text:'Компании получают видимость, рейтинг, подписчиков, отзывы и доверие жителей.', imageAlt:'Рейтинг компаний'},
+          {title:'Страница компании', text:'Карточка компании может стать центром коммуникации, акций и локального продвижения.', imageAlt:'Страница компании'},
+          {title:'Профиль пользователя', text:'Пользователь сохраняет любимые места, получает рекомендации и будущие привилегии.', imageAlt:'Профиль пользователя'}
+        ]
+      },
+      cabinet: {
+        title: 'Единый кабинет Kliper.pro',
+        description: 'Центр заявок, размещений, бонусов, документов, ролей пользователей и статусов.',
+        page: 'cabinet.html',
+        request: 'contacts.html',
+        slides: [
+          {title:'Все заявки в одном месте', text:'Рекламодатель, партнер или компания видит заявки, расчеты, статусы и историю обращений.', imageAlt:'Заявки в кабинете'},
+          {title:'Бонусный счет', text:'Бонусы копятся с каждой покупки и действия внутри экосистемы.', imageAlt:'Бонусный счет'},
+          {title:'Статусы и документы', text:'Размещения, согласования, документы и отчеты собираются в одной понятной системе.', imageAlt:'Статусы и документы'}
+        ]
+      },
+      future: {
+        title: 'Будущие направления',
+        description: 'Следующий этап экосистемы: Market, ProCups Plus, Spec, Space, Media и Pack. Все эти направления будущие.',
+        page: 'services.html#future-contour',
+        request: 'contacts.html',
+        slides: [
+          {title:'Kliper Market', text:'Будущий сервис производства рекламы и бизнес-заказов: визитки, баннеры, вывески и монтаж.', imageAlt:'Kliper Market'},
+          {title:'ProCups Plus', text:'Будущий сервис обслуживания кофейных точек: поставки, акции, стандарты и фотоотчеты.', imageAlt:'ProCups Plus'},
+          {title:'Kliper Spec', text:'Будущий кабинет специалистов: дизайнеры, монтажники, инженеры, обучение, уровни и заказы.', imageAlt:'Kliper Spec'},
+          {title:'Space / Media / Pack', text:'Будущие направления для интернет-рекламы, радио, ТВ и готовых бизнес-пакетов.', imageAlt:'Будущие направления'}
+        ]
+      }
+    };
+
+    const serviceModal = document.getElementById('serviceModal');
+    const serviceModalTitle = document.getElementById('serviceModalTitle');
+    const serviceModalDescription = document.getElementById('serviceModalDescription');
+    const serviceSlidePreview = document.getElementById('serviceSlidePreview');
+    const serviceSlideTitle = document.getElementById('serviceSlideTitle');
+    const serviceSlideText = document.getElementById('serviceSlideText');
+    const serviceSlideDots = document.getElementById('serviceSlideDots');
+    const serviceRequestLink = document.getElementById('serviceRequestLink');
+    const servicePageLink = document.getElementById('servicePageLink');
+    const serviceModalClose = document.getElementById('serviceModalClose');
+    const serviceSlidePrev = document.getElementById('serviceSlidePrev');
+    const serviceSlideNext = document.getElementById('serviceSlideNext');
+    let activeService = null;
+    let activeSlide = 0;
+
+    function renderServiceSlide(){
+      const data = serviceModalData[activeService];
+      const slide = data.slides[activeSlide];
+      serviceModalTitle.textContent = data.title;
+      serviceModalDescription.textContent = data.description;
+      serviceSlideTitle.textContent = slide.title;
+      serviceSlideText.textContent = slide.text;
+      serviceRequestLink.href = data.request;
+      servicePageLink.href = data.page;
+      serviceSlidePreview.innerHTML = `<div><strong>Здесь будет скрин интерфейса</strong><span>${slide.imageAlt}</span></div>`;
+      serviceSlideDots.innerHTML = data.slides.map((_, index) => `<button class="slide-dot${index === activeSlide ? ' active' : ''}" type="button" aria-label="Слайд ${index + 1}" data-slide-index="${index}"></button>`).join('');
+      serviceSlideDots.querySelectorAll('[data-slide-index]').forEach(dot => dot.addEventListener('click', () => {
+        activeSlide = Number(dot.dataset.slideIndex);
+        renderServiceSlide();
+      }));
+    }
+
+    function openServiceModal(name){
+      activeService = name;
+      activeSlide = 0;
+      renderServiceSlide();
+      serviceModal.classList.add('active');
+      serviceModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      serviceSlideNext.focus();
+    }
+
+    function closeServiceModal(){
+      serviceModal.classList.remove('active');
+      serviceModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function moveServiceSlide(direction){
+      const count = serviceModalData[activeService].slides.length;
+      activeSlide = (activeSlide + direction + count) % count;
+      renderServiceSlide();
+    }
+
+    document.querySelectorAll('[data-service-modal]').forEach(button => button.addEventListener('click', () => openServiceModal(button.dataset.serviceModal)));
+    serviceModalClose.addEventListener('click', closeServiceModal);
+    serviceModal.addEventListener('click', (e) => {
+      if(e.target === serviceModal) closeServiceModal();
+    });
+    serviceSlidePrev.addEventListener('click', () => moveServiceSlide(-1));
+    serviceSlideNext.addEventListener('click', () => moveServiceSlide(1));
+
     const authModal = document.getElementById('authModal');
     const openAuth = document.getElementById('openAuth');
     const closeAuth = document.getElementById('closeAuth');
@@ -2126,6 +2592,7 @@
       if(e.target === authModal) closeAuthModal();
     });
     window.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && serviceModal.classList.contains('active')) closeServiceModal();
       if(e.key === 'Escape') closeAuthModal();
     });
     authTabs.forEach(tab => tab.addEventListener('click', () => setAuthTab(tab.dataset.authTab)));
