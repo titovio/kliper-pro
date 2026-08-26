@@ -1,3 +1,68 @@
+const sunIcon = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+const moonIcon = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 14.2A8 8 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
+
+function createThemeToggle(className, mobile = false){
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = className;
+  button.dataset.themeToggle = '';
+  if(mobile) button.dataset.mobileThemeToggle = '';
+  return button;
+}
+
+const pageNav = document.querySelector('.nav');
+const pageNavActions = document.querySelector('.nav-actions');
+const pageNavLinks = document.querySelector('.nav-links');
+if(pageNavActions){
+  pageNavActions.prepend(createThemeToggle('theme-toggle theme-toggle-desktop'));
+  if(pageNavLinks) pageNavLinks.append(createThemeToggle('theme-toggle-menu', true));
+}else if(pageNav){
+  const backLink = pageNav.querySelector('.back');
+  if(backLink) pageNav.insertBefore(createThemeToggle('legal-theme-toggle'), backLink);
+}
+
+function updateThemeLogos(theme){
+  document.querySelectorAll('.brand img,.logo,.auth-logo').forEach(image => {
+    if(!image.dataset.darkSrc) image.dataset.darkSrc = image.getAttribute('src');
+    image.src = theme === 'light' ? 'assets/kliper-logo-light.png' : image.dataset.darkSrc;
+  });
+}
+
+function setPageTheme(theme){
+  const nextTheme = theme === 'light' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = nextTheme;
+  try{
+    localStorage.setItem('kliper-theme', nextTheme);
+  }catch(error){
+    // The selected theme still applies for this page when storage is unavailable.
+  }
+  document.querySelectorAll('[data-theme-toggle]').forEach(button => {
+    const action = nextTheme === 'dark' ? 'Включить светлую тему' : 'Включить тёмную тему';
+    button.setAttribute('aria-label', action);
+    button.setAttribute('title', action);
+    button.innerHTML = button.hasAttribute('data-mobile-theme-toggle')
+      ? (nextTheme === 'dark' ? 'Светлая тема' : 'Тёмная тема')
+      : (nextTheme === 'dark' ? sunIcon : moonIcon);
+  });
+  updateThemeLogos(nextTheme);
+}
+
+setPageTheme(document.documentElement.dataset.theme);
+document.querySelectorAll('[data-theme-toggle]').forEach(button => {
+  button.addEventListener('click', () => {
+    const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    setPageTheme(nextTheme);
+    if(pageNav){
+      pageNav.classList.remove('open');
+      const pageMenuToggle = pageNav.querySelector('[data-menu-toggle]');
+      if(pageMenuToggle){
+        pageMenuToggle.setAttribute('aria-expanded', 'false');
+        pageMenuToggle.setAttribute('aria-label', 'Открыть меню');
+      }
+    }
+  });
+});
+
 const authModal = document.getElementById('authModal');
 const closeAuth = document.getElementById('closeAuth');
 const nav = document.querySelector('.nav');
@@ -102,6 +167,12 @@ window.addEventListener('keydown', (e) => {
   if(e.key === 'Escape') closeAuthModal();
 });
 authTabs.forEach(tab => tab.addEventListener('click', () => setAuthTab(tab.dataset.authTab)));
+
+const requestedAuthTab = new URLSearchParams(window.location.search).get('auth');
+if(requestedAuthTab === 'login' || requestedAuthTab === 'register'){
+  setAuthTab(requestedAuthTab);
+  openAuthModal();
+}
 
 document.querySelectorAll('a[href]').forEach(link => {
   link.addEventListener('click', event => {

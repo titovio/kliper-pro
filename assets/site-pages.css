@@ -204,3 +204,182 @@ h1 b,h2 b,h3 b{color:var(--pink);text-shadow:0 0 26px rgba(255,0,110,.46)}
   *,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
   body,[data-reveal]{opacity:1!important;transform:none!important}
 }
+
+.theme-toggle {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--text);
+  background: rgba(255,255,255,.045);
+  cursor: pointer;
+  transition: .22s ease;
+}
+
+.theme-toggle svg {
+  width: 19px;
+  height: 19px;
+}
+
+.theme-toggle-menu {
+  display: none;
+}
+
+:root[data-theme="light"] {
+  --bg: #f4f8ff;
+  --panel: rgba(255,255,255,.9);
+  --text: #07143e;
+  --muted: #526488;
+  --line: rgba(7,20,62,.14);
+  --line-soft: rgba(7,20,62,.09);
+}
+
+:root[data-theme="light"] {
+  background: #f4f8ff;
+}
+
+:root[data-theme="light"] body {
+  background:
+    radial-gradient(circle at 50% -12%,rgba(245,29,79,.1),transparent 31%),
+    radial-gradient(circle at 80% 20%,rgba(44,111,255,.08),transparent 24%),
+    #f4f8ff;
+}
+
+:root[data-theme="light"] body::before {
+  opacity: .5;
+  background:
+    linear-gradient(90deg,transparent 0,rgba(44,111,255,.08) 1px,transparent 1px),
+    linear-gradient(0deg,transparent 0,rgba(7,20,62,.035) 1px,transparent 1px);
+}
+
+:root[data-theme="light"] .nav {
+  border-color: rgba(7,20,62,.13);
+  background: rgba(255,255,255,.88);
+  box-shadow: 0 18px 55px rgba(25,55,112,.16), inset 0 0 0 1px rgba(255,255,255,.7);
+}
+
+:root[data-theme="light"] .nav-links {
+  border-color: rgba(7,20,62,.09);
+  background: rgba(44,111,255,.045);
+}
+
+:root[data-theme="light"] .nav-links a {
+  color: #26345f;
+}
+
+:root[data-theme="light"] .nav-links a.active,
+:root[data-theme="light"] .nav-links a:hover {
+  color: #07143e;
+  background: rgba(245,29,79,.09);
+  box-shadow: 0 0 18px rgba(245,29,79,.12);
+}
+
+:root[data-theme="light"] .login-btn,
+:root[data-theme="light"] .menu-btn,
+:root[data-theme="light"] .theme-toggle {
+  border-color: rgba(7,20,62,.14);
+  color: #07143e;
+  background: rgba(44,111,255,.055);
+}
+
+:root[data-theme="light"] .kicker {
+  color: #c7194a;
+  background: rgba(245,29,79,.055);
+}
+
+:root[data-theme="light"] .lead,
+:root[data-theme="light"] .card p,
+:root[data-theme="light"] .auth-note,
+:root[data-theme="light"] .auth-foot {
+  color: #526488;
+}
+
+:root[data-theme="light"] .card,
+:root[data-theme="light"] .meta {
+  border-color: rgba(7,20,62,.13);
+  background: rgba(255,255,255,.88);
+  box-shadow: 0 22px 60px rgba(25,55,112,.1);
+}
+
+:root[data-theme="light"] .card::before {
+  opacity: .62;
+}
+
+:root[data-theme="light"] .meta small {
+  color: #64779b;
+}
+
+:root[data-theme="light"] .meta span,
+:root[data-theme="light"] .wide-card .meta span {
+  color: #25385f;
+}
+
+:root[data-theme="light"] .wide-card .meta,
+:root[data-theme="light"] .pill,
+:root[data-theme="light"] .legal-links a,
+:root[data-theme="light"] .contacts a {
+  border-color: rgba(7,20,62,.13);
+  background: #f2f6ff;
+}
+
+:root[data-theme="light"] .btn-secondary {
+  border-color: rgba(7,20,62,.16);
+  color: #07143e;
+  background: #f2f6ff;
+}
+
+:root[data-theme="light"] .footer,
+:root[data-theme="light"] .footer b {
+  color: #526488;
+}
+
+:root[data-theme="light"] .footer b {
+  color: #07143e;
+}
+
+:root[data-theme="light"] .auth-modal {
+  background: rgba(230,237,249,.78);
+}
+
+:root[data-theme="light"] .auth-box {
+  border-color: rgba(7,20,62,.14);
+  color: #07143e;
+  background: linear-gradient(180deg,rgba(255,255,255,.98),rgba(242,247,255,.98));
+  box-shadow: 0 36px 100px rgba(25,55,112,.24);
+}
+
+:root[data-theme="light"] .auth-close,
+:root[data-theme="light"] .auth-tabs,
+:root[data-theme="light"] .auth-form input {
+  border-color: rgba(7,20,62,.12);
+  color: #07143e;
+  background: rgba(44,111,255,.05);
+}
+
+:root[data-theme="light"] .auth-check {
+  color: #526488;
+}
+
+@media(max-width:1100px){
+  .theme-toggle-desktop{display:none}
+  .theme-toggle-menu{
+    display:flex;
+    width:100%;
+    min-height:40px;
+    align-items:center;
+    justify-content:center;
+    border:1px solid var(--line);
+    border-radius:14px;
+    color:var(--text);
+    background:rgba(255,255,255,.045);
+    font-size:12px;
+    font-weight:900;
+    cursor:pointer;
+  }
+  :root[data-theme="light"] .nav-links{background:rgba(255,255,255,.97)}
+  :root[data-theme="light"] .theme-toggle-menu{background:rgba(44,111,255,.055)}
+}

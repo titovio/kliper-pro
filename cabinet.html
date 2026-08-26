@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Кабинеты Клипер — единый вход</title>
+  <title>Для кого KLIPER — направления экосистемы</title>
   <meta name="description" content="Единый вход в кабинеты экосистемы Клипер для бизнеса, партнеров, подрядчиков и городских сервисов." />
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/favicon-32x32.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/site-pages.css?v=14">
+  <script src="assets/theme-bootstrap.js?v=1"></script>
+  <link rel="stylesheet" href="assets/site-pages.css?v=15">
 </head>
 <body>
-  <header class="header wrap"><nav class="nav"><a class="brand" href="index.html"><img src="assets/auth-logo-kliper-wide.png" alt="Клипер"></a><div class="nav-links"><a href="services.html">Сервисы</a><a class="active" href="cabinet.html">Кабинеты</a><a href="about.html">О нас</a><a href="contacts.html">Контакты</a></div><div class="nav-actions"><button class="menu-btn" type="button" data-menu-toggle aria-label="Открыть меню" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><button class="login-btn" type="button" data-auth-open aria-label="Войти"><svg viewBox="0 0 24 24" fill="none"><path d="M20 21a8 8 0 0 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg></button></div></nav></header>
+  <header class="header wrap"><nav class="nav"><a class="brand" href="index.html?v=20260825-6"><img src="assets/auth-logo-kliper-wide.png" alt="Клипер"></a><div class="nav-links"><a href="index.html?v=20260825-6">Продукты</a><a class="active" href="cabinet.html?v=20260825-6">Для кого</a><a href="about.html?v=20260825-6">О нас</a><a href="contacts.html?v=20260825-6">Контакты</a></div><div class="nav-actions"><button class="menu-btn" type="button" data-menu-toggle aria-label="Открыть меню" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><button class="login-btn" type="button" data-auth-open aria-label="Войти"><svg viewBox="0 0 24 24" fill="none"><path d="M20 21a8 8 0 0 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg></button></div></nav></header>
   <main>
     <section class="hero wrap">
       <div class="kicker">Единый аккаунт</div>
       <h1>Единый вход в <b>Kliper</b></h1>
       <p class="lead">Здесь пользователь выбирает роль, открывает кабинет, переходит в Kliper Map или оставляет заявку без лишних шагов.</p>
-      <div class="actions"><button class="btn btn-primary" type="button" data-auth-open>Войти в аккаунт</button><a class="btn btn-secondary" href="services.html">Выбрать сервис</a></div>
+      <div class="actions"><button class="btn btn-primary" type="button" data-auth-open>Войти в аккаунт</button><a class="btn btn-secondary" href="services.html">Выбрать продукт</a></div>
     </section>
     <section class="section wrap">
       <div class="section-head"><div><div class="eyebrow">Роли</div><h2>Выберите своё направление</h2></div><p>Каждая роль получает понятный сценарий входа и работает внутри единой экосистемы Kliper.</p></div>
@@ -37,6 +38,6 @@
   </main>
   <footer class="footer wrap"><div class="footer-inner"><div><b>Клипер</b> — единый вход в экосистему<div class="legal-links"><a href="privacy.html">Политика</a><a href="consent.html">Согласие</a><a href="terms.html">Соглашение</a></div></div><div class="contacts"><a href="mailto:info@kliper.pro">info@kliper.pro</a><a href="https://t.me/ik_center" target="_blank" rel="noopener">@ik_center</a></div></div></footer>
   <div class="auth-modal" id="authModal" aria-hidden="true"><div class="auth-box" role="dialog" aria-modal="true"><button class="auth-close" id="closeAuth" type="button" aria-label="Закрыть">×</button><img class="auth-logo" src="assets/auth-logo-kliper-wide.png" alt="Клипер"><div class="auth-tabs"><button class="auth-tab active" type="button" data-auth-tab="login">Вход</button><button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button></div><div class="auth-panel active" id="auth-login"><h3 class="auth-title">Вход в аккаунт</h3><p class="auth-note">Единый аккаунт Клипер для сервисов, заявок, площадок и городских проектов.</p><form class="auth-form" onsubmit="return false;"><input type="email" placeholder="Email"><input type="password" placeholder="Пароль"><label class="auth-check"><input type="checkbox" required><span>Я принимаю <a href="terms.html" target="_blank">Пользовательское соглашение</a>.</span></label><button class="auth-submit" type="submit">Войти</button></form></div><div class="auth-panel" id="auth-register"><h3 class="auth-title">Регистрация</h3><p class="auth-note">Создайте общий профиль для работы с экосистемой Клипер.</p><form class="auth-form" onsubmit="return false;"><input type="text" placeholder="Имя или компания"><input type="email" placeholder="Email"><input type="password" placeholder="Пароль"><label class="auth-check"><input type="checkbox" required><span>Я принимаю <a href="terms.html" target="_blank">Пользовательское соглашение</a> и <a href="privacy.html" target="_blank">Политику конфиденциальности</a>.</span></label><button class="auth-submit" type="submit">Создать аккаунт</button></form></div></div></div>
-  <script src="assets/site-pages.js?v=4"></script>
+  <script src="assets/site-pages.js?v=6"></script>
 </body>
 </html>

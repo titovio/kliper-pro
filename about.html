@@ -8,13 +8,14 @@
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/favicon-32x32.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/site-pages.css?v=14">
+  <script src="assets/theme-bootstrap.js?v=1"></script>
+  <link rel="stylesheet" href="assets/site-pages.css?v=15">
 </head>
 <body>
   <header class="header wrap">
     <nav class="nav">
-      <a class="brand" href="index.html"><img src="assets/auth-logo-kliper-wide.png" alt="Клипер"></a>
-      <div class="nav-links"><a href="services.html">Сервисы</a><a href="cabinet.html">Кабинеты</a><a class="active" href="about.html">О нас</a><a href="contacts.html">Контакты</a></div>
+      <a class="brand" href="index.html?v=20260825-6"><img src="assets/auth-logo-kliper-wide.png" alt="Клипер"></a>
+      <div class="nav-links"><a href="index.html?v=20260825-6">Продукты</a><a href="cabinet.html?v=20260825-6">Для кого</a><a class="active" href="about.html?v=20260825-6">О нас</a><a href="contacts.html?v=20260825-6">Контакты</a></div>
       <div class="nav-actions">
         <button class="menu-btn" type="button" data-menu-toggle aria-label="Открыть меню" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
         <button class="login-btn" type="button" data-auth-open aria-label="Войти"><svg viewBox="0 0 24 24" fill="none"><path d="M20 21a8 8 0 0 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg></button>
@@ -24,10 +25,10 @@
 
   <main>
     <section class="hero wrap">
-      <div class="kicker">О компании</div>
+      <div class="kicker">О нас</div>
       <h1>Опыт рекламы, собранный <b>в систему</b></h1>
       <p class="lead">Клипер вырос из практических задач рынка: реклама, производство, монтаж, digital и городские сервисы. Поэтому экосистема строится вокруг реальных процессов, а не абстрактных модулей.</p>
-      <div class="actions"><a class="btn btn-primary" href="services.html">Смотреть сервисы</a><a class="btn btn-secondary" href="contacts.html">Связаться</a></div>
+      <div class="actions"><a class="btn btn-primary" href="services.html">Смотреть продукты</a><a class="btn btn-secondary" href="#contacts">Связаться</a></div>
     </section>
 
     <section class="section wrap">
@@ -49,10 +50,19 @@
         <article class="card" style="--c:var(--green)"><h3>Теперь — <b>экосистема</b></h3><p>Единое пространство, где бизнесу проще работать с рекламой, производством, площадками и клиентами.</p><div class="card-actions"><span class="pill">аккаунт</span><span class="pill">сервисы</span><span class="pill">город</span></div></article>
       </div>
     </section>
+
+    <section class="section wrap" id="contacts">
+      <div class="section-head"><div><div class="eyebrow">Контакты</div><h2>Связаться с KLIPER</h2></div><p>По вопросам рекламы, подключения объектов, городских сервисов и партнёрства.</p></div>
+      <div class="grid cards-3">
+        <article class="card" style="--c:var(--pink)"><div class="icon">Mail</div><h3>Написать нам</h3><p>Основная почта для заявок, предложений и рабочих вопросов.</p><div class="card-actions"><a class="btn btn-primary" href="mailto:info@kliper.pro">info@kliper.pro</a></div></article>
+        <article class="card" style="--c:var(--blue)"><div class="icon">TG</div><h3>Telegram</h3><p>Быстрый способ обсудить подключение продукта или рекламную задачу.</p><div class="card-actions"><a class="btn btn-primary" href="https://t.me/ik_center" target="_blank" rel="noopener">@ik_center</a></div></article>
+        <article class="card" style="--c:var(--violet)"><div class="icon">ID</div><h3>Реквизиты</h3><p>ИП Титов Игорь Олегович<br>ИНН 890307182374<br>ОГРНИП 315890300000072</p><div class="card-actions"><a class="btn btn-secondary" href="privacy.html">Политика</a><a class="btn btn-secondary" href="terms.html">Соглашение</a></div></article>
+      </div>
+    </section>
   </main>
 
   <footer class="footer wrap"><div class="footer-inner"><div><b>Клипер</b> — экосистема рекламных решений<div class="legal-links"><a href="privacy.html">Политика</a><a href="consent.html">Согласие</a><a href="terms.html">Соглашение</a></div></div><div class="contacts"><a href="mailto:info@kliper.pro">info@kliper.pro</a><a href="https://t.me/ik_center" target="_blank" rel="noopener">@ik_center</a></div></div></footer>
   <div class="auth-modal" id="authModal" aria-hidden="true"><div class="auth-box" role="dialog" aria-modal="true"><button class="auth-close" id="closeAuth" type="button" aria-label="Закрыть">×</button><img class="auth-logo" src="assets/auth-logo-kliper-wide.png" alt="Клипер"><div class="auth-tabs"><button class="auth-tab active" type="button" data-auth-tab="login">Вход</button><button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button></div><div class="auth-panel active" id="auth-login"><h3 class="auth-title">Вход в аккаунт</h3><p class="auth-note">Единый аккаунт Клипер для сервисов, заявок, площадок и городских проектов.</p><form class="auth-form" onsubmit="return false;"><input type="email" placeholder="Email"><input type="password" placeholder="Пароль"><label class="auth-check"><input type="checkbox" required><span>Я принимаю <a href="terms.html" target="_blank">Пользовательское соглашение</a>.</span></label><button class="auth-submit" type="submit">Войти</button></form></div><div class="auth-panel" id="auth-register"><h3 class="auth-title">Регистрация</h3><p class="auth-note">Создайте общий профиль для работы с экосистемой Клипер.</p><form class="auth-form" onsubmit="return false;"><input type="text" placeholder="Имя или компания"><input type="email" placeholder="Email"><input type="password" placeholder="Пароль"><label class="auth-check"><input type="checkbox" required><span>Я принимаю <a href="terms.html" target="_blank">Пользовательское соглашение</a> и <a href="privacy.html" target="_blank">Политику конфиденциальности</a>.</span></label><button class="auth-submit" type="submit">Создать аккаунт</button></form></div></div></div>
-  <script src="assets/site-pages.js?v=4"></script>
+  <script src="assets/site-pages.js?v=6"></script>
 </body>
 </html>
