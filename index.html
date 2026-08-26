@@ -66,22 +66,72 @@
             <h1 id="hero-title">Одна экосистема для <span>города, рекламы и бизнеса</span></h1>
             <p class="ecosystem-lead">Меньше ручной работы. Больше возможностей для роста.</p>
             <div class="hero-actions">
-              <a class="button button-primary button-large" href=".//for-whom/?auth=register">Начать работу</a>
+              <a class="button button-primary button-large" href="/for-whom/?auth=register">Начать работу</a>
               <a class="button button-secondary button-large" href="#products">Посмотреть продукты</a>
+            </div>
+            <div class="hero-benefits" aria-label="Преимущества экосистемы">
+              <article>
+                <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg></span>
+                <div><strong>Единый аккаунт</strong><small>Для всех сервисов</small></div>
+              </article>
+              <article>
+                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10M8 4v6M8 14v6M16 4v6M16 14v6"></path></svg></span>
+                <div><strong>Удобное управление</strong><small>И автоматизация</small></div>
+              </article>
+              <article>
+                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20V7"></path><path d="m4 8 5-5 5 5 6-6"></path></svg></span>
+                <div><strong>Инструменты</strong><small>Для роста</small></div>
+              </article>
             </div>
           </div>
 
-          <div class="ecosystem-map ecosystem-map-illustrated" aria-label="Схема экосистемы КЛИПЕР: три действующих и четыре будущих продукта связаны с единым ядром">
-            <picture class="ecosystem-art ecosystem-art-universal" aria-hidden="true">
-              <img src="/assets/kliper-ecosystem-original-transparent-v10.png" alt="" fetchpriority="high" decoding="async" />
-            </picture>
-          </div>
-        </div>
+          <div class="ecosystem-network reveal" aria-label="Схема экосистемы KLIPER: три действующих и четыре будущих продукта связаны с единым ядром">
+            <svg class="network-connectors" viewBox="0 0 760 620" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="active-connection" x1="0" x2="1"><stop stop-color="#ff1f61"/><stop offset=".5" stop-color="#a749ff"/><stop offset="1" stop-color="#19c9ff"/></linearGradient>
+              </defs>
+              <circle cx="380" cy="306" r="188"></circle>
+              <circle cx="380" cy="306" r="244"></circle>
+              <path class="connection-active" d="M380 306V126M380 306 172 248M380 306l208-58"></path>
+              <path class="connection-future" d="M380 306 95 510M380 306 285 510M380 306l95 204M380 306l285 204"></path>
+            </svg>
 
-        <div class="container ecosystem-benefit-strip reveal" aria-label="Преимущества экосистемы">
-          <article><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7v5c0 5 3.4 8.2 8 9 4.6-.8 8-4 8-9V7l-8-4Z"></path><path d="m8.5 12 2.2 2.2 4.8-5"></path></svg></span><div><strong>Продукты KLIPER</strong><small>Для разных задач бизнеса</small></div></article>
-          <article><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l2-2a5 5 0 0 0-7-7L11 6"></path><path d="M14 11a5 5 0 0 0-7.5-.5l-2 2a5 5 0 0 0 7 7L13 18"></path></svg></span><div><strong>Единый вход</strong><small>Один аккаунт для сервисов</small></div></article>
-          <article><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20V7"></path></svg></span><div><strong>Общие сервисы</strong><small>Меньше повторной работы</small></div></article>
+            <article class="network-card network-core">
+              <span class="core-k" aria-hidden="true">K</span>
+              <strong>KLIPER</strong>
+              <small>Единое цифровое ядро</small>
+            </article>
+
+            <a class="network-card network-product network-pro" href="/products/kliper-pro/">
+              <span class="network-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg></span>
+              <strong>KLIPER.PRO</strong><small>Рабочая среда</small>
+            </a>
+            <a class="network-card network-product network-city" href="/products/kliper-city/">
+              <span class="network-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V9l6-3v15M9 21V3l7 3v15M16 21v-9l5-2v11"></path><path d="M6 12h.01M6 16h.01M12 8h.01M12 12h.01M12 16h.01M19 15h.01"></path></svg></span>
+              <strong>KLIPER.CITY</strong><small>Городская среда</small>
+            </a>
+            <a class="network-card network-product network-map" href="/products/kliper-map/">
+              <span class="network-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span>
+              <strong>KLIPER.MAP</strong><small>Реклама на карте</small>
+            </a>
+
+            <article class="network-card network-future future-my">
+              <span class="network-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M5 21a7 7 0 0 1 14 0"></path></svg></span>
+              <strong>МОЙ КЛИПЕР</strong><small>Личный кабинет</small>
+            </article>
+            <article class="network-card network-future future-market">
+              <span class="network-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2 11h10l3-8H7"></path><circle cx="9" cy="20" r="1"></circle><circle cx="18" cy="20" r="1"></circle></svg></span>
+              <strong>KLIPER.MARKET</strong><small>Товары и услуги</small>
+            </article>
+            <article class="network-card network-future future-space">
+              <span class="network-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 13 12-7v12L4 13Z"></path><path d="M7 14v5h4l-1-4M18 9c1 1 1 5 0 6"></path></svg></span>
+              <strong>KLIPER.SPACE</strong><small>Digital-направление</small>
+            </article>
+            <article class="network-card network-future future-pack">
+              <span class="network-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5-9 5-9-5 9-5Z"></path><path d="m3 7 9 5 9-5M3 7v10l9 5 9-5V7M12 12v10"></path></svg></span>
+              <strong>4PACK</strong><small>Комплексные решения</small>
+            </article>
+          </div>
         </div>
       </section>
 
