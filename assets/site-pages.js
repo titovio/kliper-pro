@@ -1,6 +1,23 @@
 const sunIcon = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
 const moonIcon = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 14.2A8 8 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
 
+const legacyRoutes = {
+  '/about.html': '/about/',
+  '/cabinet.html': '/for-whom/',
+  '/contacts.html': '/contacts/',
+  '/services.html': '/solutions/',
+  '/privacy.html': '/privacy/',
+  '/terms.html': '/terms/',
+  '/consent.html': '/consent/',
+  '/kliper-pro.html': '/products/kliper-pro/',
+  '/kliper-city.html': '/products/kliper-city/',
+  '/kliper-map.html': '/products/kliper-map/'
+};
+const cleanRoute = legacyRoutes[window.location.pathname];
+if(cleanRoute){
+  window.history.replaceState(null, '', `${cleanRoute}${window.location.search}${window.location.hash}`);
+}
+
 function createThemeToggle(className, mobile = false){
   const button = document.createElement('button');
   button.type = 'button';
@@ -24,7 +41,7 @@ if(pageNavActions){
 function updateThemeLogos(theme){
   document.querySelectorAll('.brand img,.logo,.auth-logo').forEach(image => {
     if(!image.dataset.darkSrc) image.dataset.darkSrc = image.getAttribute('src');
-    image.src = theme === 'light' ? 'assets/kliper-logo-light.png' : image.dataset.darkSrc;
+    image.src = theme === 'light' ? '/assets/kliper-logo-light.png' : image.dataset.darkSrc;
   });
 }
 

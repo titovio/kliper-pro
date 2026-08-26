@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="assets/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" href="assets/favicon-32x32.png" />
-    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/assets/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
     <meta
       name="description"
       content="КЛИПЕР объединяет жителей, специалистов по рекламе, бизнес и подрядчиков в одной технологической экосистеме."
@@ -20,6 +20,10 @@
     <title>КЛИПЕР - одна система, больше возможностей</title>
     <script>
       (() => {
+        if (window.location.pathname.endsWith("/index.html")) {
+          const cleanPath = window.location.pathname.slice(0, -"index.html".length);
+          window.history.replaceState(null, "", `${cleanPath}${window.location.search}${window.location.hash}`);
+        }
         const queryTheme = new URLSearchParams(window.location.search).get("theme");
         let savedTheme = null;
         try {
@@ -31,19 +35,19 @@
         document.documentElement.dataset.theme = queryTheme === "dark" || queryTheme === "light" ? queryTheme : savedTheme || systemTheme;
       })();
     </script>
-    <link rel="stylesheet" href="./styles.css?v=20260826-21" />
+    <link rel="stylesheet" href="/styles.css?v=20260826-21" />
   </head>
   <body class="landing-v2">
     <a class="skip-link" href="#main">Перейти к содержимому</a>
 
     <header class="header wrap">
       <nav class="nav" aria-label="Основная навигация">
-        <a class="brand" href="#top" aria-label="КЛИПЕР, на главную"><span class="header-brand-logo"><img class="header-logo-dark" src="assets/kliper-logo-dark.png" alt="Клипер" /><img class="header-logo-light" src="assets/kliper-logo-light.png" alt="" /></span></a>
+        <a class="brand" href="#top" aria-label="КЛИПЕР, на главную"><span class="header-brand-logo"><img class="header-logo-dark" src="/assets/kliper-logo-dark.png" alt="Клипер" /><img class="header-logo-light" src="/assets/kliper-logo-light.png" alt="" /></span></a>
         <div class="nav-links">
-          <a href="index.html?v=20260825-6">Продукты</a>
-          <a href="cabinet.html?v=20260825-6">Для кого</a>
-          <a href="about.html?v=20260825-6">О нас</a>
-          <a href="contacts.html?v=20260825-6">Контакты</a>
+          <a href="/">Продукты</a>
+          <a href="/for-whom/">Для кого</a>
+          <a href="/about/">О нас</a>
+          <a href="/contacts/">Контакты</a>
           <button class="mobile-theme-toggle" type="button" data-theme-toggle><span class="theme-action-label theme-action-light">Светлая тема</span><span class="theme-action-label theme-action-dark">Тёмная тема</span></button>
         </div>
         <div class="nav-actions">
@@ -62,14 +66,14 @@
             <h1 id="hero-title">Одна экосистема для <span>города, рекламы и бизнеса</span></h1>
             <p class="ecosystem-lead">Меньше ручной работы. Больше возможностей для роста.</p>
             <div class="hero-actions">
-              <a class="button button-primary button-large" href="./cabinet.html?auth=register">Начать работу</a>
+              <a class="button button-primary button-large" href=".//for-whom/?auth=register">Начать работу</a>
               <a class="button button-secondary button-large" href="#products">Посмотреть продукты</a>
             </div>
           </div>
 
           <div class="ecosystem-map ecosystem-map-illustrated" aria-label="Схема экосистемы КЛИПЕР: три действующих и четыре будущих продукта связаны с единым ядром">
             <picture class="ecosystem-art ecosystem-art-universal" aria-hidden="true">
-              <img src="./assets/kliper-ecosystem-original-transparent-v10.png" alt="" fetchpriority="high" decoding="async" />
+              <img src="/assets/kliper-ecosystem-original-transparent-v10.png" alt="" fetchpriority="high" decoding="async" />
             </picture>
           </div>
         </div>
@@ -104,26 +108,26 @@
       <section class="v2-final" id="company" aria-labelledby="final-title">
         <div class="container v2-final-inner reveal">
           <div><h2 id="final-title">Выберите свой<br />сценарий работы</h2><p>Определите направление или обсудите задачу с командой KLIPER.</p></div>
-          <div class="final-actions"><a class="button button-primary button-large" id="signup" href="./contacts.html">Связаться с нами</a><a class="button button-secondary button-large" href="./cabinet.html">Выбрать направление</a></div>
-          <div class="final-signature" aria-hidden="true"><img src="./assets/apple-touch-icon.png" alt="" /></div>
+          <div class="final-actions"><a class="button button-primary button-large" id="signup" href="/contacts/">Связаться с нами</a><a class="button button-secondary button-large" href="/for-whom/">Выбрать направление</a></div>
+          <div class="final-signature" aria-hidden="true"><img src="/assets/apple-touch-icon.png" alt="" /></div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer v2-footer">
       <div class="container v2-footer-grid">
-        <div class="v2-footer-brand"><a class="brand" href="#top"><span class="brand-logo-wrap"><img class="brand-logo brand-logo-dark" src="./assets/kliper-logo-dark.png" alt="КЛИПЕР" /><img class="brand-logo brand-logo-light" src="./assets/kliper-logo-light.png" alt="КЛИПЕР" /></span></a><p>Единая цифровая экосистема для города, бизнеса, специалистов и рекламной инфраструктуры.</p><small>© 2013–2026 КЛИПЕР</small></div>
-        <nav class="v2-footer-column" aria-label="Продукты"><strong>Продукты</strong><a href="./cabinet.html">Мой КЛИПЕР</a><a href="./kliper-pro.html">KLIPER.PRO</a><a href="./kliper-city.html">KLIPER.CITY</a><a href="./kliper-map.html">KLIPER.MAP</a></nav>
-        <nav class="v2-footer-column" aria-label="Решения"><strong>Решения</strong><a href="./services.html">Для бизнеса</a><a href="./cabinet.html">Для специалистов</a><a href="./cabinet.html">Для подрядчиков</a><a href="./contacts.html">Для агентств</a></nav>
-        <nav class="v2-footer-column" aria-label="О нас"><strong>О нас</strong><a href="./about.html">История KLIPER</a><a href="./about.html#contacts">Контакты</a><a href="./about.html#contacts">Реквизиты</a></nav>
-        <nav class="v2-footer-column" aria-label="Поддержка и документы"><strong>Поддержка</strong><a href="./contacts.html">Помощь</a><a href="./contacts.html">База знаний</a><a href="./contacts.html">Связаться с нами</a><strong class="footer-subhead">Документы</strong><a href="./terms.html">Пользовательское соглашение</a><a href="./privacy.html">Политика конфиденциальности</a><a href="./consent.html">Обработка данных</a></nav>
+        <div class="v2-footer-brand"><a class="brand" href="#top"><span class="brand-logo-wrap"><img class="brand-logo brand-logo-dark" src="/assets/kliper-logo-dark.png" alt="КЛИПЕР" /><img class="brand-logo brand-logo-light" src="/assets/kliper-logo-light.png" alt="КЛИПЕР" /></span></a><p>Единая цифровая экосистема для города, бизнеса, специалистов и рекламной инфраструктуры.</p><small>© 2013–2026 КЛИПЕР</small></div>
+        <nav class="v2-footer-column" aria-label="Продукты"><strong>Продукты</strong><a href="/for-whom/">Мой КЛИПЕР</a><a href="/products/kliper-pro/">KLIPER.PRO</a><a href="/products/kliper-city/">KLIPER.CITY</a><a href="/products/kliper-map/">KLIPER.MAP</a></nav>
+        <nav class="v2-footer-column" aria-label="Решения"><strong>Решения</strong><a href="/solutions/">Для бизнеса</a><a href="/for-whom/">Для специалистов</a><a href="/for-whom/">Для подрядчиков</a><a href="/contacts/">Для агентств</a></nav>
+        <nav class="v2-footer-column" aria-label="О нас"><strong>О нас</strong><a href="/about/">История KLIPER</a><a href="/about/#contacts">Контакты</a><a href="/about/#contacts">Реквизиты</a></nav>
+        <nav class="v2-footer-column" aria-label="Поддержка и документы"><strong>Поддержка</strong><a href="/contacts/">Помощь</a><a href="/contacts/">База знаний</a><a href="/contacts/">Связаться с нами</a><strong class="footer-subhead">Документы</strong><a href="/terms/">Пользовательское соглашение</a><a href="/privacy/">Политика конфиденциальности</a><a href="/consent/">Обработка данных</a></nav>
       </div>
     </footer>
 
     <div class="auth-modal" id="authModal" aria-hidden="true">
       <div class="auth-box" role="dialog" aria-modal="true" aria-labelledby="auth-title-login">
         <button class="auth-close" id="closeAuth" type="button" aria-label="Закрыть">×</button>
-        <img class="auth-logo" src="assets/auth-logo-kliper-wide.png" alt="Клипер" />
+        <img class="auth-logo" src="/assets/auth-logo-kliper-wide.png" alt="Клипер" />
         <div class="auth-tabs">
           <button class="auth-tab active" type="button" data-auth-tab="login">Вход</button>
           <button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button>
@@ -134,7 +138,7 @@
           <form class="auth-form" onsubmit="return false;">
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Пароль" />
-            <label class="auth-check"><input type="checkbox" required /><span>Я принимаю <a href="terms.html" target="_blank">Пользовательское соглашение</a>.</span></label>
+            <label class="auth-check"><input type="checkbox" required /><span>Я принимаю <a href="/terms/" target="_blank">Пользовательское соглашение</a>.</span></label>
             <button class="auth-submit" type="submit">Войти</button>
           </form>
         </div>
@@ -145,13 +149,13 @@
             <input type="text" placeholder="Имя или компания" />
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Пароль" />
-            <label class="auth-check"><input type="checkbox" required /><span>Я принимаю <a href="terms.html" target="_blank">Пользовательское соглашение</a> и <a href="privacy.html" target="_blank">Политику конфиденциальности</a>.</span></label>
+            <label class="auth-check"><input type="checkbox" required /><span>Я принимаю <a href="/terms/" target="_blank">Пользовательское соглашение</a> и <a href="/privacy/" target="_blank">Политику конфиденциальности</a>.</span></label>
             <button class="auth-submit" type="submit">Создать аккаунт</button>
           </form>
         </div>
       </div>
     </div>
 
-    <script src="./script.js?v=20260826-16" defer></script>
+    <script src="/script.js?v=20260826-16" defer></script>
   </body>
 </html>
