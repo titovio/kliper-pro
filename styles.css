@@ -5959,13 +5959,14 @@ a.network-card:focus-visible {
   place-items: center;
   width: 64px;
   height: 64px;
+  overflow: hidden;
   border-radius: 50%;
-  color: #fff;
-  background: var(--cta-gradient);
+  background-color: transparent;
+  background-image: url("/assets/kliper-logo-dark.png");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: auto 100%;
   box-shadow: 0 12px 30px color-mix(in srgb, var(--accent) 34%, transparent);
-  font-size: 2.9rem;
-  font-weight: 900;
-  line-height: 1;
 }
 
 .network-core strong {
@@ -6329,32 +6330,32 @@ a.network-card:focus-visible {
 .network-core {
   left: 50%;
   top: 49%;
-  width: 232px;
-  min-height: 184px;
+  width: 204px;
+  min-height: 162px;
 }
 
 .network-city {
   --node-accent: #ff2d6f;
   left: 50%;
   top: 13%;
-  width: 184px;
-  min-height: 126px;
+  width: 158px;
+  min-height: 108px;
 }
 
 .network-map {
   --node-accent: #2f9cff;
   left: 18%;
   top: 45%;
-  width: 178px;
-  min-height: 124px;
+  width: 152px;
+  min-height: 106px;
 }
 
 .network-market {
   --node-accent: #a75cff;
   left: 82%;
   top: 45%;
-  width: 178px;
-  min-height: 124px;
+  width: 152px;
+  min-height: 106px;
 }
 
 .network-planned {
@@ -6362,8 +6363,8 @@ a.network-card:focus-visible {
 }
 
 .network-future {
-  width: 142px;
-  min-height: 104px;
+  width: 128px;
+  min-height: 92px;
 }
 
 .future-space { left: 20%; top: 86%; }
