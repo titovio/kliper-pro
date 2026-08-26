@@ -5736,3 +5736,856 @@ html {
     width: min(calc(100% - 64px), 1160px);
   }
 }
+
+/* Card-based ecosystem hero. This block intentionally overrides the retired artwork layout. */
+.ecosystem-hero {
+  padding: clamp(28px, 4vw, 58px) 0 clamp(30px, 4vw, 54px);
+  overflow: clip;
+}
+
+.ecosystem-hero-grid {
+  grid-template-columns: minmax(430px, 0.88fr) minmax(580px, 1.12fr);
+  min-height: clamp(600px, 47vw, 690px);
+  gap: clamp(30px, 4vw, 72px);
+  align-items: center;
+}
+
+.ecosystem-hero-copy,
+.ecosystem-hero h1 {
+  width: auto;
+  max-width: 620px;
+}
+
+.ecosystem-hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.ecosystem-hero h1 {
+  font-size: clamp(3rem, 4vw, 4.25rem);
+  line-height: 1.08;
+}
+
+.hero-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: clamp(34px, 4vw, 56px);
+  max-width: 610px;
+}
+
+.hero-benefits article {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 11px;
+  align-items: center;
+  min-width: 0;
+}
+
+.hero-benefits article > span {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  border-radius: 50%;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.hero-benefits svg,
+.network-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero-benefits div {
+  min-width: 0;
+}
+
+.hero-benefits strong,
+.hero-benefits small {
+  display: block;
+}
+
+.hero-benefits strong {
+  color: var(--text-primary);
+  font-size: 0.86rem;
+  line-height: 1.3;
+}
+
+.hero-benefits small {
+  margin-top: 3px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.ecosystem-network {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 760px);
+  aspect-ratio: 760 / 620;
+  justify-self: end;
+}
+
+.ecosystem-network::before {
+  position: absolute;
+  inset: 8% 4% 5%;
+  z-index: -2;
+  content: "";
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(245, 29, 79, 0.14), transparent 30%),
+    radial-gradient(circle at 27% 46%, rgba(44, 138, 255, 0.1), transparent 28%),
+    radial-gradient(circle at 74% 46%, rgba(159, 71, 255, 0.1), transparent 28%);
+  filter: blur(8px);
+}
+
+.network-connectors {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.network-connectors circle {
+  fill: none;
+  stroke: rgba(69, 126, 194, 0.13);
+  stroke-width: 1;
+  stroke-dasharray: 3 9;
+}
+
+.network-connectors path {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.network-connectors .connection-active {
+  stroke: url(#active-connection);
+  stroke-width: 2;
+}
+
+.network-connectors .connection-future {
+  stroke: rgba(83, 137, 199, 0.42);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 6;
+}
+
+.network-card {
+  --node-accent: var(--accent);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 176px;
+  min-height: 122px;
+  padding: 15px 12px;
+  border: 1px solid color-mix(in srgb, var(--node-accent) 44%, var(--border));
+  border-radius: 8px;
+  color: var(--text-primary);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--surface-solid) 92%, var(--node-accent) 8%), var(--surface));
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24), inset 0 1px rgba(255, 255, 255, 0.045);
+  text-align: center;
+  transform: translate(-50%, -50%);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+a.network-card:hover,
+a.network-card:focus-visible {
+  border-color: var(--node-accent);
+  box-shadow: 0 18px 44px color-mix(in srgb, var(--node-accent) 22%, transparent);
+  transform: translate(-50%, calc(-50% - 4px));
+}
+
+.network-card strong,
+.network-card small {
+  display: block;
+  max-width: 100%;
+}
+
+.network-card strong {
+  margin-top: 9px;
+  font-size: 0.96rem;
+  line-height: 1.15;
+}
+
+.network-card small {
+  margin-top: 5px;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  line-height: 1.25;
+}
+
+.network-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  color: var(--node-accent);
+}
+
+.network-core {
+  left: 50%;
+  top: 49.5%;
+  width: 218px;
+  min-height: 176px;
+  border-color: color-mix(in srgb, var(--accent) 75%, white 8%);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--surface-solid) 86%, var(--accent) 14%), var(--surface-solid));
+  box-shadow: 0 0 0 1px rgba(245, 29, 79, 0.12), 0 20px 58px rgba(245, 29, 79, 0.2);
+}
+
+.network-core::before {
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  content: "";
+  border-radius: inherit;
+  box-shadow: 0 0 26px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+.core-k {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--cta-gradient);
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--accent) 34%, transparent);
+  font-size: 2.9rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.network-core strong {
+  margin-top: 10px;
+  font-size: 1.35rem;
+}
+
+.network-pro {
+  --node-accent: #2f9cff;
+  left: 50%;
+  top: 12.5%;
+}
+
+.network-city {
+  --node-accent: #ff2d6f;
+  left: 22%;
+  top: 40%;
+}
+
+.network-map {
+  --node-accent: #9d57ff;
+  left: 78%;
+  top: 40%;
+}
+
+.network-future {
+  --node-accent: #43bdf4;
+  width: 138px;
+  min-height: 104px;
+  padding: 12px 8px;
+  opacity: 0.68;
+  filter: saturate(0.72);
+}
+
+.network-future strong {
+  font-size: 0.74rem;
+}
+
+.network-future small {
+  font-size: 0.62rem;
+}
+
+.network-future .network-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.network-future .network-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.future-my { left: 12.5%; top: 83%; }
+.future-market { --node-accent: #ff3979; left: 37.5%; top: 83%; }
+.future-space { --node-accent: #9d57ff; left: 62.5%; top: 83%; }
+.future-pack { left: 87.5%; top: 83%; }
+
+:root[data-theme="light"] .ecosystem-network::before {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(44, 111, 255, 0.12), transparent 31%),
+    radial-gradient(circle at 24% 45%, rgba(17, 184, 214, 0.1), transparent 26%),
+    radial-gradient(circle at 76% 45%, rgba(122, 76, 255, 0.1), transparent 26%);
+}
+
+:root[data-theme="light"] .network-connectors circle {
+  stroke: rgba(44, 92, 164, 0.14);
+}
+
+:root[data-theme="light"] .network-connectors .connection-future {
+  stroke: rgba(44, 92, 164, 0.32);
+}
+
+:root[data-theme="light"] .network-card {
+  background: linear-gradient(145deg, #fff, color-mix(in srgb, #f4f8ff 92%, var(--node-accent) 8%));
+  box-shadow: 0 14px 34px rgba(26, 60, 126, 0.11), inset 0 1px #fff;
+}
+
+:root[data-theme="light"] .network-core {
+  border-color: rgba(44, 111, 255, 0.54);
+  box-shadow: 0 0 0 1px rgba(44, 111, 255, 0.08), 0 20px 56px rgba(44, 111, 255, 0.16);
+}
+
+@media (max-width: 1180px) {
+  .ecosystem-hero-grid {
+    grid-template-columns: minmax(370px, 0.86fr) minmax(500px, 1.14fr);
+    min-height: 590px;
+    gap: 24px;
+  }
+
+  .ecosystem-hero h1 {
+    font-size: clamp(2.65rem, 4.2vw, 3.4rem);
+  }
+
+  .hero-benefits {
+    gap: 12px;
+  }
+
+  .hero-benefits article {
+    grid-template-columns: 36px 1fr;
+    gap: 8px;
+  }
+
+  .hero-benefits article > span {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 980px) {
+  .ecosystem-hero-grid {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    gap: 30px;
+  }
+
+  .ecosystem-hero-copy,
+  .ecosystem-hero h1 {
+    max-width: 760px;
+  }
+
+  .ecosystem-network {
+    width: min(100%, 720px);
+    justify-self: center;
+  }
+
+  .hero-benefits {
+    max-width: 680px;
+    margin-top: 34px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ecosystem-hero {
+    padding: 20px 0 30px;
+  }
+
+  .ecosystem-hero-grid {
+    gap: 28px;
+  }
+
+  .ecosystem-hero h1 {
+    font-size: clamp(2.35rem, 11.5vw, 3.1rem);
+  }
+
+  .hero-benefits {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 28px;
+  }
+
+  .hero-benefits article {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 7px;
+    text-align: center;
+  }
+
+  .hero-benefits article > span {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hero-benefits strong {
+    font-size: 0.72rem;
+  }
+
+  .hero-benefits small {
+    font-size: 0.64rem;
+  }
+
+  .ecosystem-network {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+    aspect-ratio: auto;
+  }
+
+  .ecosystem-network::before {
+    inset: 4% 0;
+    border-radius: 20%;
+  }
+
+  .network-connectors {
+    display: none;
+  }
+
+  .network-card,
+  a.network-card:hover,
+  a.network-card:focus-visible {
+    position: relative;
+    inset: auto;
+    width: auto;
+    min-width: 0;
+    min-height: 108px;
+    padding: 12px 6px;
+    transform: none;
+  }
+
+  .network-core {
+    grid-column: 1 / -1;
+    min-height: 138px;
+    margin: 0 14%;
+  }
+
+  .core-k {
+    width: 52px;
+    height: 52px;
+    font-size: 2.35rem;
+  }
+
+  .network-core strong {
+    font-size: 1.15rem;
+  }
+
+  .network-product {
+    grid-column: span 2;
+  }
+
+  .network-product strong {
+    font-size: clamp(0.68rem, 2.8vw, 0.82rem);
+  }
+
+  .network-product small {
+    font-size: 0.6rem;
+  }
+
+  .network-future {
+    grid-column: span 3;
+    min-height: 96px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-benefits strong {
+    font-size: 0.66rem;
+  }
+
+  .hero-benefits small {
+    font-size: 0.59rem;
+  }
+
+  .network-card {
+    border-radius: 7px;
+  }
+}
+
+/* Final network proportion pass: compact artwork with deliberate card spacing. */
+.ecosystem-hero-grid {
+  grid-template-columns: minmax(440px, 0.94fr) minmax(540px, 1.06fr);
+  min-height: clamp(590px, 44vw, 650px);
+  gap: clamp(28px, 3vw, 48px);
+}
+
+.ecosystem-network {
+  width: min(100%, 680px);
+  transform: none;
+}
+
+.ecosystem-hero h1 {
+  font-size: clamp(2.85rem, 3.7vw, 3.95rem);
+}
+
+.network-card {
+  width: 162px;
+  min-height: 114px;
+}
+
+.network-core {
+  width: 202px;
+  min-height: 160px;
+}
+
+.network-future {
+  width: 126px;
+  min-height: 96px;
+}
+
+.network-pro { top: 10.5%; }
+.network-city { left: 19%; top: 38%; }
+.network-map { left: 81%; top: 38%; }
+.network-core { top: 48%; }
+.future-my { left: 10.5%; top: 88%; }
+.future-market { left: 36.8%; top: 88%; }
+.future-space { left: 63.2%; top: 88%; }
+.future-pack { left: 89.5%; top: 88%; }
+
+@media (max-width: 1180px) {
+  .ecosystem-hero-grid {
+    min-height: 540px;
+  }
+
+  .network-card {
+    width: 148px;
+    min-height: 108px;
+  }
+
+  .network-core {
+    width: 184px;
+    min-height: 150px;
+  }
+
+  .network-future {
+    width: 114px;
+    min-height: 90px;
+  }
+}
+
+@media (max-width: 980px) {
+  .ecosystem-hero-grid {
+    min-height: 0;
+  }
+
+  .ecosystem-network {
+    width: min(100%, 660px);
+    margin-block: -18px;
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .ecosystem-network {
+    margin-block: 0;
+    transform: none;
+  }
+
+  .network-card,
+  a.network-card:hover,
+  a.network-card:focus-visible {
+    left: auto;
+    top: auto;
+    width: auto;
+    min-height: 94px;
+    padding: 9px 5px;
+  }
+
+  .network-core {
+    min-height: 118px;
+  }
+
+  .network-future {
+    min-height: 82px;
+  }
+
+  .network-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .network-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+}
+
+/* Reference-matched network: one dominant PRO core, three side products, three lower cards. */
+.ecosystem-network {
+  width: min(100%, 700px);
+}
+
+.network-core {
+  left: 50%;
+  top: 49%;
+  width: 232px;
+  min-height: 184px;
+}
+
+.network-city {
+  --node-accent: #ff2d6f;
+  left: 50%;
+  top: 13%;
+  width: 184px;
+  min-height: 126px;
+}
+
+.network-map {
+  --node-accent: #2f9cff;
+  left: 18%;
+  top: 45%;
+  width: 178px;
+  min-height: 124px;
+}
+
+.network-market {
+  --node-accent: #a75cff;
+  left: 82%;
+  top: 45%;
+  width: 178px;
+  min-height: 124px;
+}
+
+.network-planned {
+  opacity: 0.78;
+}
+
+.network-future {
+  width: 142px;
+  min-height: 104px;
+}
+
+.future-space { left: 20%; top: 86%; }
+.future-my { left: 50%; top: 86%; }
+.future-pack { left: 80%; top: 86%; }
+
+.network-status {
+  position: absolute;
+  left: 50%;
+  top: -11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 22px;
+  padding: 3px 11px;
+  border: 1px solid color-mix(in srgb, var(--node-accent) 45%, var(--border));
+  border-radius: 999px;
+  color: var(--text-secondary);
+  background: var(--background-elevated);
+  font-size: 0.58rem;
+  line-height: 1;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.network-status-core {
+  --node-accent: var(--accent);
+  min-height: 25px;
+  color: var(--accent);
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1180px) and (min-width: 981px) {
+  .network-core {
+    width: 208px;
+    min-height: 170px;
+  }
+
+  .network-city {
+    width: 164px;
+    min-height: 116px;
+  }
+
+  .network-map,
+  .network-market {
+    width: 156px;
+    min-height: 114px;
+  }
+
+  .network-future {
+    width: 124px;
+    min-height: 94px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ecosystem-hero-copy,
+  .ecosystem-hero h1 {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .ecosystem-network {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 100%;
+    justify-self: stretch;
+  }
+
+  .network-core,
+  .network-city,
+  .network-map,
+  .network-market,
+  .network-future {
+    left: auto;
+    top: auto;
+    width: auto;
+  }
+
+  .network-core {
+    min-height: 130px;
+  }
+
+  .network-city,
+  .network-map,
+  .network-market {
+    grid-column: span 2;
+    min-height: 98px;
+  }
+
+  .network-future {
+    grid-column: span 2;
+    min-height: 86px;
+  }
+
+  .network-status {
+    top: -8px;
+    padding-inline: 7px;
+    font-size: 0.5rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .ecosystem-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    gap: 28px;
+  }
+
+  .ecosystem-hero-copy,
+  .ecosystem-hero h1 {
+    width: 100%;
+    max-width: 760px;
+    min-width: 0;
+  }
+
+  .ecosystem-network {
+    grid-column: 1;
+    width: min(100%, 660px);
+    margin-block: -18px;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .ecosystem-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .ecosystem-network {
+    grid-column: 1;
+    width: 100%;
+    margin-block: 0;
+    justify-self: stretch;
+  }
+
+  .ecosystem-hero h1 {
+    font-size: clamp(2.05rem, 10vw, 2.5rem);
+    line-height: 1.06;
+  }
+
+  .ecosystem-lead {
+    margin-top: 16px;
+  }
+
+  .ecosystem-hero .hero-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .ecosystem-hero .hero-actions .button {
+    width: 100%;
+    min-height: 44px;
+    padding-inline: 8px;
+    font-size: 0.7rem;
+  }
+
+  .hero-benefits {
+    margin-top: 20px;
+  }
+
+  .hero-benefits article > span {
+    width: 34px;
+    height: 34px;
+  }
+
+  .network-core {
+    min-height: 108px;
+    margin-inline: 18%;
+  }
+
+  .network-city,
+  .network-map,
+  .network-market {
+    min-height: 82px;
+  }
+
+  .network-future {
+    min-height: 74px;
+  }
+
+  .core-k {
+    width: 44px;
+    height: 44px;
+    font-size: 2rem;
+  }
+
+  .network-core strong {
+    margin-top: 7px;
+    font-size: 1rem;
+  }
+
+  .network-card strong {
+    margin-top: 5px;
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  .ecosystem-hero-grid {
+    grid-template-columns: minmax(340px, 0.9fr) minmax(0, 1.1fr);
+    min-height: 560px;
+    gap: 16px;
+  }
+
+  .ecosystem-hero-copy,
+  .ecosystem-hero h1 {
+    width: auto;
+    max-width: 480px;
+  }
+
+  .ecosystem-network {
+    grid-column: auto;
+    width: 100%;
+    margin-block: 0;
+    justify-self: end;
+    transform: scale(0.82);
+    transform-origin: center;
+  }
+}
