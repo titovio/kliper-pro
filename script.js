@@ -32,24 +32,27 @@ const audience = [
 const currentProducts = [
   {
     title: "KLIPER.PRO",
-    text: "Организуйте заявки, задачи и работу команды в одном пространстве.",
-    kind: "Рабочая среда",
+    text: "Клиенты, сотрудники, специалисты и подрядчики работают в одной системе — от заявки до результата.",
+    kind: "Центр управления рекламой",
+    icon: "icon-monitor",
     visual: "pro",
     image: "/assets/product-kliper-pro-v1.webp",
     href: "/products/kliper-pro/",
   },
   {
     title: "KLIPER.CITY",
-    text: "Показывайте компанию городу через профиль, новости и сервисы.",
-    kind: "Городская среда",
+    text: "Находите места, районы, компании и полезные сервисы через городской контекст и рекомендации.",
+    kind: "Живой цифровой город",
+    icon: "icon-city",
     visual: "city",
     image: "/assets/product-kliper-city-v1.webp",
     href: "/products/kliper-city/",
   },
   {
     title: "KLIPER.MAP",
-    text: "Выбирайте рекламные объекты на карте и планируйте размещение.",
-    kind: "Карта и инфраструктура",
+    text: "Находите рекламные объекты, сравнивайте форматы и переходите к размещению прямо с карты.",
+    kind: "Локальная реклама",
+    icon: "icon-pin",
     visual: "map",
     image: "/assets/product-kliper-map-v1.webp",
     chips: ["ProCups", "Площадка", "Лифты"],
@@ -60,26 +63,26 @@ const currentProducts = [
 const futureProducts = [
   {
     title: "МОЙ КЛИПЕР",
-    text: "Личный кабинет и общий профиль для сервисов KLIPER.",
+    text: "Рекламный кабинет с бонусной системой, маркетологом по подписке, личным менеджером и всеми рекламными продуктами в одном окне.",
     icon: "icon-network",
     status: "Следующий",
     nearest: true,
   },
   {
     title: "KLIPER.MARKET",
-    text: "Маркетплейс товаров и услуг для бизнеса.",
+    text: "Маркетплейс рекламного производства и услуг: типографии, дизайнеры, изготовители, монтажники и специалисты по продвижению.",
     icon: "icon-store",
     status: "В плане",
   },
   {
     title: "KLIPER.SPACE",
-    text: "Инструменты digital-продвижения и коммуникаций.",
+    text: "Единое пространство онлайн-рекламы: размещение на картах, таргетированная реклама, блогеры, каналы и цифровые площадки.",
     icon: "icon-space",
     status: "В плане",
   },
   {
     title: "4PACK",
-    text: "Комплексные решения для бизнеса и брендов.",
+    text: "Комплексная упаковка бизнеса: анализ четырёх направлений, готовая карта развития и все необходимые бизнес-услуги в одном месте.",
     icon: "icon-package",
     status: "В плане",
   },
@@ -98,6 +101,7 @@ const iconPaths = {
   "icon-building": '<path d="M6 21V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v17M3 21h18M9 6h2M13 6h2M9 10h2M13 10h2M9 14h2M13 14h2M10 21v-3h4v3"></path>',
   "icon-city": '<path d="M3 21h18M5 21V10l4-3v14M9 21V3h7v18M16 21v-8h3l2 2v6M12 7h1M12 11h1M12 15h1"></path>',
   "icon-chart": '<path d="M3 3v18h18M7 16l4-5 4 3 4-7"></path><path d="M17 7h2v2"></path>',
+  "icon-monitor": '<rect x="3" y="4" width="18" height="13" rx="2"></rect><path d="M8 21h8M12 17v4M7 8h10M7 11h6"></path>',
   "icon-pin": '<path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle>',
   "icon-store": '<path d="m3 9 2-5h14l2 5M5 13v8h14v-8M9 21v-6h6v6"></path><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"></path>',
   "icon-trophy": '<path d="M8 3h8v5a4 4 0 0 1-8 0V3ZM8 5H5a2 2 0 0 0 0 4h3M16 5h3a2 2 0 0 1 0 4h-3M12 12v5M8 21h8M9 17h6"></path>',
@@ -226,8 +230,13 @@ function renderProducts() {
   futureGrid.innerHTML = "";
 
   currentProducts.forEach((product) => {
-    const card = document.createElement("article");
+    const card = document.createElement("a");
     card.className = `product-card product-card-current product-tone-${product.visual} reveal`;
+    card.href = product.href;
+    if (product.external) {
+      card.target = "_blank";
+      card.rel = "noopener";
+    }
 
     const visual = document.createElement("div");
     visual.className = `product-art product-art-${product.visual}`;
@@ -238,6 +247,9 @@ function renderProducts() {
     image.loading = "lazy";
     image.decoding = "async";
     visual.appendChild(image);
+
+    const icon = createIcon(product.icon);
+    icon.classList.add("product-card-icon");
 
     const status = document.createElement("span");
     status.className = "product-status product-status-live";
@@ -261,20 +273,15 @@ function renderProducts() {
       chips.appendChild(item);
     });
 
-    const link = document.createElement("a");
+    const link = document.createElement("span");
     link.className = "product-link";
-    link.href = product.href;
     link.textContent = "Подробнее";
-    if (product.external) {
-      link.target = "_blank";
-      link.rel = "noopener";
-    }
 
     const footer = document.createElement("div");
     footer.className = "product-card-footer";
     footer.append(link);
 
-    card.append(visual, status, title, label, text);
+    card.append(visual, icon, status, title, label, text);
     if (product.chips) card.appendChild(chips);
     card.appendChild(footer);
     currentGrid.appendChild(card);
@@ -302,6 +309,74 @@ function renderProducts() {
     card.append(top, title, text);
     futureGrid.appendChild(card);
   });
+}
+
+function setupFutureProductsSlider() {
+  const slider = document.querySelector("[data-products-future]");
+  const previousButton = document.querySelector("[data-future-prev]");
+  const nextButton = document.querySelector("[data-future-next]");
+  if (!slider || !previousButton || !nextButton) return;
+
+  const getStep = () => {
+    const card = slider.querySelector(".future-product-card");
+    if (!card) return slider.clientWidth;
+    const styles = getComputedStyle(slider);
+    const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
+    return card.getBoundingClientRect().width + gap;
+  };
+
+  const updateButtons = () => {
+    const maxScroll = Math.max(0, slider.scrollWidth - slider.clientWidth);
+    previousButton.disabled = slider.scrollLeft <= 2;
+    nextButton.disabled = slider.scrollLeft >= maxScroll - 2;
+  };
+
+  const move = (direction) => {
+    slider.scrollBy({ left: direction * getStep(), behavior: "smooth" });
+  };
+
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragStartScroll = 0;
+
+  const stopDragging = (event) => {
+    if (!isDragging) return;
+    isDragging = false;
+    slider.classList.remove("is-dragging");
+    if (event?.pointerId !== undefined && slider.hasPointerCapture(event.pointerId)) {
+      slider.releasePointerCapture(event.pointerId);
+    }
+    updateButtons();
+  };
+
+  previousButton.addEventListener("click", () => move(-1));
+  nextButton.addEventListener("click", () => move(1));
+  slider.addEventListener("scroll", updateButtons, { passive: true });
+  slider.addEventListener("pointerdown", (event) => {
+    if (event.pointerType !== "mouse" || event.button !== 0) return;
+    isDragging = true;
+    dragStartX = event.clientX;
+    dragStartScroll = slider.scrollLeft;
+    slider.classList.add("is-dragging");
+    slider.setPointerCapture(event.pointerId);
+  });
+  slider.addEventListener("pointermove", (event) => {
+    if (!isDragging) return;
+    event.preventDefault();
+    slider.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
+  });
+  slider.addEventListener("pointerup", stopDragging);
+  slider.addEventListener("pointercancel", stopDragging);
+  slider.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    move(event.key === "ArrowLeft" ? -1 : 1);
+  });
+
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(updateButtons).observe(slider);
+  }
+  requestAnimationFrame(updateButtons);
 }
 
 function setupMenu() {
@@ -346,27 +421,45 @@ function setupAuthModal() {
   if (!modal) return;
 
   const closeButton = document.getElementById("closeAuth");
+  const dialog = modal.querySelector('[role="dialog"]');
   const tabs = Array.from(modal.querySelectorAll("[data-auth-tab]"));
+  let previousFocus = null;
   const panels = {
     login: document.getElementById("auth-login"),
     register: document.getElementById("auth-register"),
   };
 
   const setTab = (name) => {
-    tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.authTab === name));
-    Object.entries(panels).forEach(([key, panel]) => panel?.classList.toggle("active", key === name));
+    tabs.forEach((tab) => {
+      const isActive = tab.dataset.authTab === name;
+      tab.classList.toggle("active", isActive);
+      tab.setAttribute("aria-selected", String(isActive));
+      tab.tabIndex = isActive ? 0 : -1;
+    });
+    Object.entries(panels).forEach(([key, panel]) => {
+      const isActive = key === name;
+      panel?.classList.toggle("active", isActive);
+      panel?.setAttribute("aria-hidden", String(!isActive));
+    });
+    dialog?.setAttribute("aria-labelledby", `auth-title-${name}`);
   };
 
   const open = () => {
+    previousFocus = document.activeElement;
     modal.classList.add("active");
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    requestAnimationFrame(() => {
+      const activePanel = modal.querySelector(".auth-panel.active");
+      (activePanel?.querySelector("input") || closeButton)?.focus();
+    });
   };
 
   const close = () => {
     modal.classList.remove("active");
     modal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+    if (previousFocus instanceof HTMLElement) previousFocus.focus();
   };
 
   document.querySelectorAll("[data-auth-open]").forEach((button) => button.addEventListener("click", open));
@@ -376,7 +469,26 @@ function setupAuthModal() {
     if (event.target === modal) close();
   });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") close();
+    if (!modal.classList.contains("active")) return;
+    if (event.key === "Escape") {
+      close();
+      return;
+    }
+    if (event.key === "Tab") {
+      const focusable = Array.from(modal.querySelectorAll('button:not([tabindex="-1"]), input, a[href]')).filter(
+        (element) => element.offsetParent !== null,
+      );
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
   });
 
   const requestedTab = new URLSearchParams(window.location.search).get("auth");
@@ -436,6 +548,7 @@ setTheme(initialTheme);
 renderAudience();
 renderFlow();
 renderProducts();
+setupFutureProductsSlider();
 setupMenu();
 setupHeader();
 setupAuthModal();

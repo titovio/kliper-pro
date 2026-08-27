@@ -35,7 +35,7 @@
         document.documentElement.dataset.theme = queryTheme === "dark" || queryTheme === "light" ? queryTheme : savedTheme || systemTheme;
       })();
     </script>
-    <link rel="stylesheet" href="/styles.css?v=20260826-32" />
+    <link rel="stylesheet" href="/styles.css?v=20260827-5" />
   </head>
   <body class="landing-v2">
     <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -44,7 +44,7 @@
       <nav class="nav" aria-label="Основная навигация">
         <a class="brand" href="#top" aria-label="КЛИПЕР, на главную"><span class="header-brand-logo"><img class="header-logo-dark" src="/assets/kliper-logo-dark.png" alt="Клипер" /><img class="header-logo-light" src="/assets/kliper-logo-light.png" alt="" /></span></a>
         <div class="nav-links">
-          <a href="/">Продукты</a>
+          <a href="/" aria-current="page">Продукты</a>
           <a href="/for-whom/">Для кого</a>
           <a href="/about/">О нас</a>
           <a href="/contacts/">Контакты</a>
@@ -66,7 +66,7 @@
             <h1 id="hero-title">Одна экосистема для <span>города, рекламы и бизнеса</span></h1>
             <p class="ecosystem-lead">Меньше ручной работы. Больше возможностей для роста.</p>
             <div class="hero-actions">
-              <a class="button button-primary button-large" href="/for-whom/?auth=register">Начать работу</a>
+              <a class="button button-primary button-large" href="/for-whom/">Выбрать направление</a>
               <a class="button button-secondary button-large" href="#products">Посмотреть продукты</a>
             </div>
             <div class="hero-benefits" aria-label="Преимущества экосистемы">
@@ -85,72 +85,69 @@
             </div>
           </div>
 
-          <div class="ecosystem-network reveal" aria-label="Схема экосистемы KLIPER: три действующих и четыре будущих продукта связаны с единым ядром">
-            <svg class="network-connectors" viewBox="0 0 760 620" preserveAspectRatio="none" aria-hidden="true">
+          <div class="ecosystem-network reveal" aria-label="Схема экосистемы KLIPER: три действующих продукта связаны с единым фирменным ядром">
+            <svg class="network-connectors" viewBox="0 0 680 500" preserveAspectRatio="none" aria-hidden="true">
               <defs>
                 <linearGradient id="active-connection" x1="0" x2="1"><stop stop-color="#ff1f61"/><stop offset=".5" stop-color="#a749ff"/><stop offset="1" stop-color="#19c9ff"/></linearGradient>
               </defs>
-              <circle cx="380" cy="306" r="188"></circle>
-              <circle cx="380" cy="306" r="244"></circle>
-              <path class="connection-active" d="M380 306V128M380 306 158 282M380 306l222-24"></path>
-              <path class="connection-future" d="M380 306 170 520M380 306v214M380 306l210 214"></path>
+              <circle class="network-orbit network-orbit-inner" cx="340" cy="270" r="154"></circle>
+              <circle class="network-orbit network-orbit-outer" cx="340" cy="270" r="218"></circle>
+              <path class="connection-active" d="M340 270V78M340 270 116 314M340 270l224 44"></path>
             </svg>
 
-            <article class="network-card network-core">
-              <span class="network-status network-status-core">Ядро экосистемы</span>
-              <span class="core-k" aria-hidden="true"></span>
-              <strong>KLIPER.PRO</strong>
-              <small>Центр управления рекламой</small>
-            </article>
+            <span class="network-brand-core" aria-label="КЛИПЕР, ядро экосистемы">
+              <span class="network-brand-mark" aria-hidden="true"><img src="/assets/kliper-logo-dark.png" alt="" /></span>
+            </span>
 
-            <a class="network-card network-product network-city" href="/products/kliper-city/">
-              <span class="network-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V9l6-3v15M9 21V3l7 3v15M16 21v-9l5-2v11"></path><path d="M6 12h.01M6 16h.01M12 8h.01M12 12h.01M12 16h.01M19 15h.01"></path></svg></span>
+            <a class="orbit-product orbit-product-pro" href="/products/kliper-pro/">
+              <span class="orbit-product-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"></rect><path d="M8 21h8M12 17v4M7 8h10M7 11h6"></path></svg></span>
+              <strong>KLIPER.PRO</strong><small>Центр управления рекламой</small>
+            </a>
+            <a class="orbit-product orbit-product-city" href="/products/kliper-city/">
+              <span class="orbit-product-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V9l6-3v15M9 21V3l7 3v15M16 21v-9l5-2v11"></path><path d="M6 12h.01M6 16h.01M12 8h.01M12 12h.01M12 16h.01M19 15h.01"></path></svg></span>
               <strong>KLIPER.CITY</strong><small>Живой цифровой город</small>
             </a>
-            <a class="network-card network-product network-map" href="/products/kliper-map/">
-              <span class="network-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span>
+            <a class="orbit-product orbit-product-map" href="/products/kliper-map/">
+              <span class="orbit-product-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span>
               <strong>KLIPER.MAP</strong><small>Локальная реклама</small>
             </a>
-            <article class="network-card network-product network-market">
-              <span class="network-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2 11h10l3-8H7"></path><circle cx="9" cy="20" r="1"></circle><circle cx="18" cy="20" r="1"></circle></svg></span>
-              <strong>KLIPER.MARKET</strong><small>Товары и услуги</small>
-            </article>
-            <article class="network-card network-future future-space">
-              <span class="network-status">В развитии</span>
-              <span class="network-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 13 12-7v12L4 13Z"></path><path d="M7 14v5h4l-1-4M18 9c1 1 1 5 0 6"></path></svg></span>
-              <strong>KLIPER.SPACE</strong><small>Digital-направление</small>
-            </article>
-            <article class="network-card network-future future-my">
-              <span class="network-status">В развитии</span>
-              <span class="network-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M5 21a7 7 0 0 1 14 0"></path></svg></span>
-              <strong>МОЙ КЛИПЕР</strong><small>Личный кабинет</small>
-            </article>
-            <article class="network-card network-future future-pack">
-              <span class="network-status">В развитии</span>
-              <span class="network-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5-9 5-9-5 9-5Z"></path><path d="m3 7 9 5 9-5M3 7v10l9 5 9-5V7M12 12v10"></path></svg></span>
-              <strong>4PACK</strong><small>Комплексные решения</small>
-            </article>
           </div>
         </div>
       </section>
 
       <section class="v2-section v2-products" id="products" aria-labelledby="products-title">
         <div class="container">
-          <header class="products-heading reveal">
-            <p class="products-eyebrow">Продукты</p>
-            <h2 id="products-title">Продукты KLIPER</h2>
-            <p>Выберите инструмент под текущую задачу: управление работой, городское присутствие или реклама на карте.</p>
+          <header class="products-heading products-list-heading reveal">
+            <h2 id="products-title">Действующие продукты</h2>
           </header>
 
           <div class="current-products-grid" data-products-current aria-label="Действующие продукты KLIPER"></div>
 
           <section class="future-products" aria-labelledby="future-products-title">
-            <div class="future-products-heading reveal">
-              <div><p class="products-eyebrow">План развития</p><h3 id="future-products-title">В разработке</h3></div>
-              <p>Ближайшие направления развития KLIPER без обещаний преждевременного запуска.</p>
+            <div class="future-products-heading products-list-heading reveal">
+              <h3 id="future-products-title">Продукты в разработке</h3>
+              <div class="future-products-heading-actions">
+                <span class="future-products-overview-status">В плане</span>
+                <div class="future-slider-controls" aria-label="Навигация по продуктам в разработке">
+                  <button class="future-slider-button" type="button" data-future-prev aria-label="Предыдущий продукт" aria-controls="future-products-slider" title="Предыдущий продукт">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
+                  </button>
+                  <button class="future-slider-button" type="button" data-future-next aria-label="Следующий продукт" aria-controls="future-products-slider" title="Следующий продукт">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+                  </button>
+                </div>
+              </div>
             </div>
-            <div class="future-products-grid" data-products-future aria-label="Продукты KLIPER в разработке"></div>
+            <div class="future-products-grid" id="future-products-slider" data-products-future aria-label="Продукты KLIPER в разработке" tabindex="0"></div>
           </section>
+        </div>
+      </section>
+
+      <section class="home-proof" aria-label="Проверенные факты о KLIPER">
+        <div class="container home-proof-grid reveal">
+          <article><strong>2013</strong><span>Работаем с задачами рекламы и бизнеса</span></article>
+          <article><strong>3</strong><span>Действующих продукта экосистемы</span></article>
+          <article><strong>4</strong><span>Направления находятся в разработке</span></article>
         </div>
       </section>
 
@@ -169,7 +166,7 @@
         <nav class="v2-footer-column" aria-label="Продукты"><strong>Продукты</strong><a href="/for-whom/">Мой КЛИПЕР</a><a href="/products/kliper-pro/">KLIPER.PRO</a><a href="/products/kliper-city/">KLIPER.CITY</a><a href="/products/kliper-map/">KLIPER.MAP</a></nav>
         <nav class="v2-footer-column" aria-label="Решения"><strong>Решения</strong><a href="/solutions/">Для бизнеса</a><a href="/for-whom/">Для специалистов</a><a href="/for-whom/">Для подрядчиков</a><a href="/contacts/">Для агентств</a></nav>
         <nav class="v2-footer-column" aria-label="О нас"><strong>О нас</strong><a href="/about/">История KLIPER</a><a href="/about/#contacts">Контакты</a><a href="/about/#contacts">Реквизиты</a></nav>
-        <nav class="v2-footer-column" aria-label="Поддержка и документы"><strong>Поддержка</strong><a href="/contacts/">Помощь</a><a href="/contacts/">База знаний</a><a href="/contacts/">Связаться с нами</a><strong class="footer-subhead">Документы</strong><a href="/terms/">Пользовательское соглашение</a><a href="/privacy/">Политика конфиденциальности</a><a href="/consent/">Обработка данных</a></nav>
+        <nav class="v2-footer-column" aria-label="Поддержка и документы"><strong>Поддержка</strong><a href="/contacts/">Связаться с командой</a><strong class="footer-subhead">Документы</strong><a href="/terms/">Пользовательское соглашение</a><a href="/privacy/">Политика конфиденциальности</a><a href="/consent/">Обработка данных</a></nav>
       </div>
     </footer>
 
@@ -185,19 +182,19 @@
           <h3 class="auth-title" id="auth-title-login">Вход в аккаунт</h3>
           <p class="auth-note">Единый аккаунт Клипер для сервисов, заявок, площадок и городских проектов.</p>
           <form class="auth-form" onsubmit="return false;">
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Пароль" />
+            <input type="email" name="email" autocomplete="email" aria-label="Email" placeholder="Email" />
+            <input type="password" name="password" autocomplete="current-password" aria-label="Пароль" placeholder="Пароль" />
             <label class="auth-check"><input type="checkbox" required /><span>Я принимаю <a href="/terms/" target="_blank">Пользовательское соглашение</a>.</span></label>
             <button class="auth-submit" type="submit">Войти</button>
           </form>
         </div>
         <div class="auth-panel" id="auth-register">
-          <h3 class="auth-title">Регистрация</h3>
+          <h3 class="auth-title" id="auth-title-register">Регистрация</h3>
           <p class="auth-note">Создайте общий профиль для работы с экосистемой Клипер.</p>
           <form class="auth-form" onsubmit="return false;">
-            <input type="text" placeholder="Имя или компания" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Пароль" />
+            <input type="text" name="name" autocomplete="name" aria-label="Имя или компания" placeholder="Имя или компания" />
+            <input type="email" name="email" autocomplete="email" aria-label="Email" placeholder="Email" />
+            <input type="password" name="password" autocomplete="new-password" aria-label="Пароль" placeholder="Пароль" />
             <label class="auth-check"><input type="checkbox" required /><span>Я принимаю <a href="/terms/" target="_blank">Пользовательское соглашение</a> и <a href="/privacy/" target="_blank">Политику конфиденциальности</a>.</span></label>
             <button class="auth-submit" type="submit">Создать аккаунт</button>
           </form>
@@ -205,6 +202,6 @@
       </div>
     </div>
 
-    <script src="/script.js?v=20260826-16" defer></script>
+    <script src="/script.js?v=20260827-9" defer></script>
   </body>
 </html>
