@@ -82,6 +82,7 @@ document.querySelectorAll('[data-theme-toggle]').forEach(button => {
 
 const authModal = document.getElementById('authModal');
 const closeAuth = document.getElementById('closeAuth');
+const authDialog = authModal?.querySelector('[role="dialog"]');
 const nav = document.querySelector('.nav');
 const menuToggle = document.querySelector('[data-menu-toggle]');
 const authTabs = Array.from(document.querySelectorAll('[data-auth-tab]'));
@@ -89,6 +90,7 @@ const authPanels = {
   login: document.getElementById('auth-login'),
   register: document.getElementById('auth-register')
 };
+let authPreviousFocus = null;
 
 document.body.classList.remove('page-exit');
 document.body.classList.add('page-ready');
@@ -142,24 +144,58 @@ function prepareReveals(){
 
 function openAuthModal(){
   if(!authModal) return;
+  authPreviousFocus = document.activeElement;
   authModal.classList.add('active');
   authModal.setAttribute('aria-hidden', 'false');
+  if(authDialog && !authDialog.hasAttribute('aria-label') && !authDialog.hasAttribute('aria-labelledby')){
+    authDialog.setAttribute('aria-label', 'Вход и регистрация');
+  }
   document.body.style.overflow = 'hidden';
+  requestAnimationFrame(() => {
+    const activePanel = authModal.querySelector('.auth-panel.active');
+    (activePanel?.querySelector('input') || closeAuth)?.focus();
+  });
 }
 
 function closeAuthModal(){
-  if(!authModal) return;
+  if(!authModal || !authModal.classList.contains('active')) return;
   authModal.classList.remove('active');
   authModal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+  if(authPreviousFocus instanceof HTMLElement) authPreviousFocus.focus();
 }
 
 function setAuthTab(name){
-  authTabs.forEach(tab => tab.classList.toggle('active', tab.dataset.authTab === name));
+  authTabs.forEach(tab => {
+    const isActive = tab.dataset.authTab === name;
+    tab.classList.toggle('active', isActive);
+    tab.setAttribute('role', 'tab');
+    tab.setAttribute('aria-selected', String(isActive));
+    tab.tabIndex = isActive ? 0 : -1;
+  });
   Object.entries(authPanels).forEach(([key, panel]) => {
-    if(panel) panel.classList.toggle('active', key === name);
+    if(!panel) return;
+    const isActive = key === name;
+    panel.classList.toggle('active', isActive);
+    panel.setAttribute('role', 'tabpanel');
+    panel.setAttribute('aria-hidden', String(!isActive));
   });
 }
+
+authTabs.forEach((tab, index) => {
+  const name = tab.dataset.authTab;
+  const panel = authPanels[name];
+  if(!tab.id) tab.id = `auth-tab-${name || index}`;
+  if(panel){
+    tab.setAttribute('aria-controls', panel.id);
+    panel.setAttribute('aria-labelledby', tab.id);
+  }
+});
+document.querySelector('.auth-tabs')?.setAttribute('role', 'tablist');
+document.querySelectorAll('.auth-form input').forEach(input => {
+  if(!input.hasAttribute('aria-label') && input.placeholder) input.setAttribute('aria-label', input.placeholder);
+});
+setAuthTab(authTabs.find(tab => tab.classList.contains('active'))?.dataset.authTab || 'login');
 
 function setupDragScroll(){
   document.querySelectorAll('[data-drag-scroll]').forEach(scroller => {
@@ -254,6 +290,9 @@ if(menuToggle && nav){
     menuToggle.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
   });
   nav.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', closeMenu));
+  window.addEventListener('keydown', event => {
+    if(event.key === 'Escape' && nav.classList.contains('open')) closeMenu();
+  });
 
   if('ResizeObserver' in window){
     new ResizeObserver(updateNavMode).observe(nav);
@@ -269,7 +308,24 @@ if(authModal){
   });
 }
 window.addEventListener('keydown', (e) => {
-  if(e.key === 'Escape') closeAuthModal();
+  if(!authModal?.classList.contains('active')) return;
+  if(e.key === 'Escape'){
+    closeAuthModal();
+    return;
+  }
+  if(e.key !== 'Tab') return;
+  const focusable = Array.from(authModal.querySelectorAll('button:not([disabled]), input:not([disabled]), a[href]'))
+    .filter(element => element.offsetParent !== null);
+  if(!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if(e.shiftKey && document.activeElement === first){
+    e.preventDefault();
+    last.focus();
+  }else if(!e.shiftKey && document.activeElement === last){
+    e.preventDefault();
+    first.focus();
+  }
 });
 authTabs.forEach(tab => tab.addEventListener('click', () => setAuthTab(tab.dataset.authTab)));
 

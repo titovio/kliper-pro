@@ -568,11 +568,7 @@ function setupReveal() {
           entry.target.style.setProperty("--reveal-y", entersFromTop ? "-22px" : "22px");
           entry.target.style.setProperty("--reveal-delay", `${entry.target.dataset.revealDelay || 0}ms`);
           entry.target.classList.add("is-visible");
-        } else {
-          const exitsAbove = entry.boundingClientRect.bottom <= 0;
-          entry.target.style.setProperty("--reveal-y", exitsAbove ? "-18px" : "18px");
-          entry.target.style.setProperty("--reveal-delay", "0ms");
-          entry.target.classList.remove("is-visible");
+          observer.unobserve(entry.target);
         }
       });
     },

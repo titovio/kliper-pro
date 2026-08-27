@@ -422,12 +422,16 @@ a.fw-product-tile:hover {
 }
 
 :root[data-theme="light"] .fw-card-image {
-  opacity: 0.22;
-  filter: saturate(0.75) brightness(1.08) contrast(0.92);
+  opacity: 0.34;
+  filter: saturate(0.82) brightness(1.02) contrast(0.96);
+}
+
+:root[data-theme="light"] .fw-product-tile em {
+  color: #526488;
 }
 
 :root[data-theme="light"] .fw-card-shade {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.82) 38%, #ffffff 72%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.76) 40%, #ffffff 74%);
 }
 
 :root[data-theme="light"] .fw-card-summary {

@@ -1,4 +1,4 @@
-@import url("./site-pages.css?v=17");
+@import url("./site-pages.css?v=19");
 
 .product-page {
   --accent: #ff2d68;
@@ -748,6 +748,12 @@
 
 .city-connection:hover::-webkit-scrollbar-thumb {
   background: rgba(111, 137, 176, 0.48);
+}
+
+.city-connection:focus-visible {
+  border-radius: 6px;
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .city-node {
