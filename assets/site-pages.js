@@ -208,16 +208,59 @@ document.querySelectorAll('[data-auth-open]').forEach(button => button.addEventL
   openAuthModal();
 }));
 if(menuToggle && nav){
+  const navLinks = nav.querySelector('.nav-links');
+  const navBrand = nav.querySelector('.brand');
+  const navActions = nav.querySelector('.nav-actions');
+  const closeMenu = () => {
+    nav.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Открыть меню');
+  };
+
+  let navResizeFrame = 0;
+  const updateNavMode = () => {
+    cancelAnimationFrame(navResizeFrame);
+    navResizeFrame = requestAnimationFrame(() => {
+      if(!navLinks || !navBrand || !navActions) return;
+      nav.classList.remove('is-compact');
+      const styles = getComputedStyle(nav);
+      const paddingLeft = Number.parseFloat(styles.paddingLeft) || 0;
+      const paddingRight = Number.parseFloat(styles.paddingRight) || 0;
+      const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
+      const available = nav.clientWidth - paddingLeft - paddingRight;
+      const required = navBrand.getBoundingClientRect().width
+        + navLinks.scrollWidth
+        + navActions.getBoundingClientRect().width
+        + gap * 2
+        + 8;
+      const navRect = nav.getBoundingClientRect();
+      const brandRect = navBrand.getBoundingClientRect();
+      const linksRect = navLinks.getBoundingClientRect();
+      const actionsRect = navActions.getBoundingClientRect();
+      const overlaps = brandRect.right + gap > linksRect.left
+        || linksRect.right + gap > actionsRect.left
+        || actionsRect.right > navRect.right - paddingRight + 1;
+      const isCompact = window.matchMedia('(max-width: 640px)').matches
+        || required > available
+        || overlaps;
+      nav.classList.toggle('is-compact', isCompact);
+      if(!isCompact) closeMenu();
+    });
+  };
+
   menuToggle.addEventListener('click', () => {
     const isOpen = nav.classList.toggle('open');
     menuToggle.setAttribute('aria-expanded', String(isOpen));
     menuToggle.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
   });
-  nav.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => {
-    nav.classList.remove('open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-    menuToggle.setAttribute('aria-label', 'Открыть меню');
-  }));
+  nav.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', closeMenu));
+
+  if('ResizeObserver' in window){
+    new ResizeObserver(updateNavMode).observe(nav);
+  }else{
+    window.addEventListener('resize', updateNavMode);
+  }
+  updateNavMode();
 }
 if(closeAuth) closeAuth.addEventListener('click', closeAuthModal);
 if(authModal){

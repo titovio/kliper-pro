@@ -382,8 +382,47 @@ function setupFutureProductsSlider() {
 function setupMenu() {
   const toggle = document.querySelector("[data-menu-toggle]");
   const nav = document.querySelector(".nav");
+  const links = nav?.querySelector(".nav-links");
+  const brand = nav?.querySelector(".brand");
+  const actions = nav?.querySelector(".nav-actions");
 
-  if (!toggle || !nav) return;
+  if (!toggle || !nav || !links || !brand || !actions) return;
+
+  const closeMenu = () => {
+    nav.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Открыть меню");
+  };
+
+  let resizeFrame = 0;
+  const updateMode = () => {
+    cancelAnimationFrame(resizeFrame);
+    resizeFrame = requestAnimationFrame(() => {
+      nav.classList.remove("is-compact");
+      const styles = getComputedStyle(nav);
+      const available = nav.clientWidth
+        - (Number.parseFloat(styles.paddingLeft) || 0)
+        - (Number.parseFloat(styles.paddingRight) || 0);
+      const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
+      const required = brand.getBoundingClientRect().width
+        + links.scrollWidth
+        + actions.getBoundingClientRect().width
+        + gap * 2
+        + 8;
+      const navRect = nav.getBoundingClientRect();
+      const brandRect = brand.getBoundingClientRect();
+      const linksRect = links.getBoundingClientRect();
+      const actionsRect = actions.getBoundingClientRect();
+      const overlaps = brandRect.right + gap > linksRect.left
+        || linksRect.right + gap > actionsRect.left
+        || actionsRect.right > navRect.right - (Number.parseFloat(styles.paddingRight) || 0) + 1;
+      const isCompact = window.matchMedia("(max-width: 640px)").matches
+        || required > available
+        || overlaps;
+      nav.classList.toggle("is-compact", isCompact);
+      if (!isCompact) closeMenu();
+    });
+  };
 
   toggle.addEventListener("click", () => {
     const isOpen = nav.classList.toggle("open");
@@ -392,20 +431,21 @@ function setupMenu() {
   });
 
   nav.querySelectorAll(".nav-links a").forEach((link) => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("open");
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-label", "Открыть меню");
-    });
+    link.addEventListener("click", closeMenu);
   });
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
-      nav.classList.remove("open");
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-label", "Открыть меню");
+      closeMenu();
     }
   });
+
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(updateMode).observe(nav);
+  } else {
+    window.addEventListener("resize", updateMode);
+  }
+  updateMode();
 }
 
 function setupHeader() {
