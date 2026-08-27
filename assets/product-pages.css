@@ -729,6 +729,25 @@
   gap: 8px;
   overflow-x: auto;
   padding: 22px 0;
+  scrollbar-color: rgba(111, 137, 176, 0.24) transparent;
+  scrollbar-width: thin;
+}
+
+.city-connection::-webkit-scrollbar {
+  height: 3px;
+}
+
+.city-connection::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.city-connection::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(111, 137, 176, 0.24);
+}
+
+.city-connection:hover::-webkit-scrollbar-thumb {
+  background: rgba(111, 137, 176, 0.48);
 }
 
 .city-node {

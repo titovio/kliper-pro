@@ -161,7 +161,52 @@ function setAuthTab(name){
   });
 }
 
-document.querySelectorAll('[data-auth-open]').forEach(button => button.addEventListener('click', openAuthModal));
+function setupDragScroll(){
+  document.querySelectorAll('[data-drag-scroll]').forEach(scroller => {
+    let dragging = false;
+    let startX = 0;
+    let startScroll = 0;
+
+    const stop = event => {
+      if(!dragging) return;
+      dragging = false;
+      scroller.classList.remove('is-dragging');
+      if(event?.pointerId !== undefined && scroller.hasPointerCapture(event.pointerId)){
+        scroller.releasePointerCapture(event.pointerId);
+      }
+    };
+
+    scroller.addEventListener('pointerdown', event => {
+      if(event.pointerType !== 'mouse' || event.button !== 0 || scroller.scrollWidth <= scroller.clientWidth) return;
+      dragging = true;
+      startX = event.clientX;
+      startScroll = scroller.scrollLeft;
+      scroller.classList.add('is-dragging');
+      scroller.setPointerCapture(event.pointerId);
+    });
+    scroller.addEventListener('pointermove', event => {
+      if(!dragging) return;
+      event.preventDefault();
+      scroller.scrollLeft = startScroll - (event.clientX - startX);
+    });
+    scroller.addEventListener('pointerup', stop);
+    scroller.addEventListener('pointercancel', stop);
+    scroller.addEventListener('keydown', event => {
+      if(event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      const card = scroller.querySelector('.fw-audience-card');
+      const gap = Number.parseFloat(getComputedStyle(scroller).gap) || 0;
+      const step = (card?.getBoundingClientRect().width || scroller.clientWidth) + gap;
+      scroller.scrollBy({left: event.key === 'ArrowLeft' ? -step : step, behavior: 'smooth'});
+    });
+  });
+}
+
+document.querySelectorAll('[data-auth-open]').forEach(button => button.addEventListener('click', () => {
+  const targetTab = button.dataset.authTarget;
+  if(targetTab === 'login' || targetTab === 'register') setAuthTab(targetTab);
+  openAuthModal();
+}));
 if(menuToggle && nav){
   menuToggle.addEventListener('click', () => {
     const isOpen = nav.classList.toggle('open');
@@ -204,3 +249,4 @@ document.querySelectorAll('a[href]').forEach(link => {
 });
 
 prepareReveals();
+setupDragScroll();

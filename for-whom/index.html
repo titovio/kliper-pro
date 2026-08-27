@@ -3,41 +3,129 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Для кого KLIPER — направления экосистемы</title>
-  <meta name="description" content="Единый вход в кабинеты экосистемы Клипер для бизнеса, партнеров, подрядчиков и городских сервисов." />
+  <title>Для кого KLIPER — возможности экосистемы</title>
+  <meta name="description" content="KLIPER для бизнеса, специалистов по рекламе, партнеров, подрядчиков и жителей города." />
   <link rel="icon" href="/assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/assets/favicon-32x32.png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <script src="/assets/theme-bootstrap.js?v=1"></script>
-  <link rel="stylesheet" href="/assets/site-pages.css?v=15">
+  <link rel="stylesheet" href="/assets/site-pages.css?v=16">
+  <link rel="stylesheet" href="/for-whom/for-whom.css?v=3">
 </head>
-<body>
-  <header class="header wrap"><nav class="nav"><a class="brand" href="/"><img src="/assets/auth-logo-kliper-wide.png" alt="Клипер"></a><div class="nav-links"><a href="/">Продукты</a><a class="active" href="/for-whom/">Для кого</a><a href="/about/">О нас</a><a href="/contacts/">Контакты</a></div><div class="nav-actions"><button class="menu-btn" type="button" data-menu-toggle aria-label="Открыть меню" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><button class="login-btn" type="button" data-auth-open aria-label="Войти"><svg viewBox="0 0 24 24" fill="none"><path d="M20 21a8 8 0 0 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg></button></div></nav></header>
+<body class="for-whom-page">
+  <header class="header wrap">
+    <nav class="nav" aria-label="Основная навигация">
+      <a class="brand" href="/" aria-label="KLIPER — на главную"><img src="/assets/auth-logo-kliper-wide.png" alt="KLIPER"></a>
+      <div class="nav-links">
+        <a href="/">Продукты</a>
+        <a class="active" href="/for-whom/" aria-current="page">Для кого</a>
+        <a href="/about/">О нас</a>
+        <a href="/contacts/">Контакты</a>
+      </div>
+      <div class="nav-actions">
+        <button class="menu-btn" type="button" data-menu-toggle aria-label="Открыть меню" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <button class="login-btn" type="button" data-auth-open aria-label="Войти">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
   <main>
-    <section class="hero wrap">
+    <section class="hero wrap" aria-labelledby="fw-title">
       <div class="kicker">Единый аккаунт</div>
-      <h1>Единый вход в <b>Kliper</b></h1>
+      <h1 id="fw-title">Единый вход в <b>Kliper</b></h1>
       <p class="lead">Здесь пользователь выбирает роль, открывает кабинет, переходит в Kliper Map или оставляет заявку без лишних шагов.</p>
-      <div class="actions"><button class="btn btn-primary" type="button" data-auth-open>Войти в аккаунт</button><a class="btn btn-secondary" href="/solutions/">Выбрать продукт</a></div>
-    </section>
-    <section class="section wrap">
-      <div class="section-head"><div><div class="eyebrow">Роли</div><h2>Выберите своё направление</h2></div><p>Каждая роль получает понятный сценарий входа и работает внутри единой экосистемы Kliper.</p></div>
-      <div class="grid cards-4">
-        <article class="card" style="--c:var(--pink)"><div class="icon">Ad</div><h3>Рекламодатель</h3><p>Запуск рекламы через Kliper Map: слой, район, объект, период и заявка в кабинете.</p><div class="card-actions"><button class="btn btn-primary" type="button" data-auth-open>Войти</button></div></article>
-        <article class="card" style="--c:var(--violet)"><div class="icon">Map</div><h3>Владелец объекта</h3><p>Добавление объекта в Kliper Map: кофейня, экран, фасад, поверхность, дом или ЖК.</p><div class="card-actions"><a class="btn btn-primary" href="/contacts/">Добавить объект</a></div></article>
-        <article class="card" style="--c:var(--blue)"><div class="icon">Cup</div><h3>Кофейня</h3><p>Подключение к слою ProCups внутри Kliper Map. ProCups Plus появится как отдельное будущее направление.</p><div class="card-actions"><a class="btn btn-primary" href="/contacts/">Подключиться</a></div></article>
-        <article class="card" style="--c:var(--green)"><div class="icon">City</div><h3>Житель / компания</h3><p>Компании, районы, рекомендации, рейтинги и любимые места в Kliper City.</p><div class="card-actions"><a class="btn btn-primary" href="https://kliper.city" target="_blank" rel="noopener">Открыть</a></div></article>
+      <div class="actions">
+        <button class="btn btn-primary" type="button" data-auth-open data-auth-target="login">Войти в аккаунт</button>
+        <a class="btn btn-secondary" href="/solutions/">Выбрать продукт</a>
       </div>
     </section>
-    <section class="section wrap">
-      <div class="grid cards-2">
-        <article class="card" style="--c:var(--pink)"><h3>Что будет внутри кабинета</h3><p>Профиль, роли, уведомления, заявки, избранные объекты карты, бонусы, документы и история действий.</p><div class="card-actions"><span class="pill">заявки</span><span class="pill">Kliper Map</span><span class="pill">бонусы</span><span class="pill">документы</span></div></article>
-        <article class="card" style="--c:var(--violet)"><h3>Что подключить дальше</h3><p>После подключения backend пользователь сможет входить один раз и попадать в нужный кабинет по своей роли.</p><div class="card-actions"><a class="btn btn-secondary" href="/contacts/">Обсудить интеграцию</a></div></article>
+
+    <section class="section fw-section fw-audiences wrap" aria-labelledby="audiences-title">
+      <header class="fw-section-heading">
+        <div><span class="fw-section-dot" aria-hidden="true"></span><h2 id="audiences-title">Выберите своё направление</h2></div>
+        <p>Каждая роль получает понятный сценарий и нужные инструменты внутри KLIPER.</p>
+      </header>
+
+      <div class="fw-audience-grid" data-drag-scroll tabindex="0" aria-label="Направления KLIPER">
+        <article class="fw-audience-card fw-tone-business">
+          <img class="fw-card-image" src="/assets/product-kliper-pro-v1.webp" alt="" loading="lazy"><div class="fw-card-shade" aria-hidden="true"></div>
+          <div class="fw-card-content">
+            <span class="fw-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12h4"></path></svg></span>
+            <h3>Бизнесу</h3><p class="fw-card-summary">Продвижение, реклама и команда в одном месте.</p>
+            <ul class="fw-check-list"><li>Ищите площадки и услуги</li><li>Заказывайте производство</li><li>Управляйте рекламой и бюджетом</li><li>Работайте с командой по подписке</li><li>Получайте аналитику и отчёты</li></ul>
+            <button class="fw-more" type="button" data-auth-open data-auth-target="register">Создать аккаунт <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+
+        <article class="fw-audience-card fw-tone-specialist">
+          <img class="fw-card-image" src="/assets/for-whom-specialist-workspace-v1.png" alt="" loading="lazy"><div class="fw-card-shade" aria-hidden="true"></div>
+          <div class="fw-card-content">
+            <span class="fw-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg></span>
+            <h3>Специалистам</h3><p class="fw-card-summary">Заказы, инструменты и рабочее пространство.</p>
+            <ul class="fw-check-list"><li>Получайте заказы рядом с вами</li><li>Выполняйте работу в KLIPER.PRO</li><li>Управляйте заявками и статусами</li><li>Развивайте портфолио и рейтинг</li><li>Растите вместе с экосистемой</li></ul>
+            <button class="fw-more" type="button" data-auth-open data-auth-target="register">Начать работу <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+
+        <article class="fw-audience-card fw-tone-partner">
+          <img class="fw-card-image" src="/assets/product-kliper-map-v1.webp" alt="" loading="lazy"><div class="fw-card-shade" aria-hidden="true"></div>
+          <div class="fw-card-content">
+            <span class="fw-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8.5 12 2.2 2.2a3 3 0 0 0 4.2 0l5-5a3 3 0 0 0-4.2-4.2l-2.1 2.1"></path><path d="m15.5 12-2.2-2.2a3 3 0 0 0-4.2 0l-5 5A3 3 0 0 0 8.3 19l2.1-2.1"></path></svg></span>
+            <h3>Партнёрам<br>и подрядчикам</h3><p class="fw-card-summary">Подключайте площадки и услуги. Получайте заказы.</p>
+            <ul class="fw-check-list"><li>Добавляйте площадки и услуги</li><li>Получайте целевые заказы</li><li>Управляйте доступами и ценами</li><li>Контролируйте выплаты и отчёты</li><li>Расширяйте клиентскую базу</li></ul>
+            <a class="fw-more" href="/contacts/">Стать партнёром <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="fw-audience-card fw-tone-resident">
+          <img class="fw-card-image" src="/assets/product-kliper-city-v1.webp" alt="" loading="lazy"><div class="fw-card-shade" aria-hidden="true"></div>
+          <div class="fw-card-content">
+            <span class="fw-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M2.5 21a5.5 5.5 0 0 1 11 0M13 21a4.5 4.5 0 0 1 9 0"></path></svg></span>
+            <h3>Жителям<br>города</h3><p class="fw-card-summary">Компании, места и рекомендации рядом.</p>
+            <ul class="fw-check-list"><li>Находите компании и места</li><li>Читайте отзывы и рейтинги</li><li>Следите за новостями районов</li><li>Рекомендуйте и делитесь</li><li>Участвуйте в жизни города</li></ul>
+            <a class="fw-more" href="https://kliper.city" target="_blank" rel="noopener">Открыть KLIPER.CITY <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section fw-section wrap" aria-labelledby="partners-title">
+      <div class="fw-partners-panel">
+        <header class="fw-panel-heading"><h2 id="partners-title">Кто наши партнёры и подрядчики</h2><a class="fw-panel-action" href="/contacts/">Стать партнёром <span aria-hidden="true">→</span></a></header>
+        <div class="fw-partner-types">
+          <article><span class="fw-partner-icon fw-pink"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg></span><h3>Рекламные<br>площадки</h3></article>
+          <article><span class="fw-partner-icon fw-orange"><svg viewBox="0 0 24 24"><path d="M4 6h14v8a6 6 0 0 1-6 6H10a6 6 0 0 1-6-6V6Z"></path><path d="M18 8h2a3 3 0 0 1 0 6h-2M7 2v2M11 2v2M15 2v2"></path></svg></span><h3>Кофейни<br>ProCups</h3></article>
+          <article><span class="fw-partner-icon fw-violet"><svg viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="7"></rect></svg></span><h3>Типографии<br>и производство</h3></article>
+          <article><span class="fw-partner-icon fw-blue"><svg viewBox="0 0 24 24"><path d="m14 7 3-3 3 3-3 3M10 17l-3 3-3-3 3-3M13 8l-5 5M4 4l16 16"></path></svg></span><h3>Монтажные<br>команды</h3></article>
+          <article><span class="fw-partner-icon fw-green"><svg viewBox="0 0 24 24"><path d="M5 21V4h10v17M15 9h4v12M8 8h2M8 12h2M8 16h2M18 13h.01M18 17h.01M3 21h18"></path></svg></span><h3>Управляющие<br>компании</h3></article>
+          <article><span class="fw-partner-icon fw-yellow"><svg viewBox="0 0 24 24"><path d="m4 7 8-4 8 4-8 4-8-4Z"></path><path d="m4 7 8 4 8-4v10l-8 4-8-4V7ZM12 11v10"></path></svg></span><h3>Другие услуги<br>и сервисы</h3></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fw-section wrap" aria-labelledby="ecosystem-title">
+      <div class="fw-ecosystem-panel">
+        <header class="fw-panel-heading fw-ecosystem-heading"><h2 id="ecosystem-title">Экосистема KLIPER</h2><p>Все продукты связаны между собой<br>и работают на ваш результат.</p></header>
+        <div class="fw-product-chain">
+          <a class="fw-product-tile fw-tone-business" href="/products/kliper-pro/"><span class="fw-product-mark">K</span><strong>KLIPER.PRO</strong><small>Центр управления рекламой</small></a>
+          <a class="fw-product-tile fw-tone-specialist" href="/products/kliper-map/"><span class="fw-product-mark"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span><strong>KLIPER.MAP</strong><small>Локальная реклама</small></a>
+          <div class="fw-product-tile fw-tone-partner"><span class="fw-product-mark"><svg viewBox="0 0 24 24"><path d="m3 9 2-5h14l2 5M5 13v8h14v-8"></path><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"></path></svg></span><strong>KLIPER.MARKET</strong><small>Рекламное производство и услуги</small><em>В разработке</em></div>
+          <a class="fw-product-tile fw-tone-resident" href="https://kliper.city" target="_blank" rel="noopener"><span class="fw-product-mark"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l4-3v14M9 21V3h7v18M16 21v-8h3l2 2v6"></path></svg></span><strong>KLIPER.CITY</strong><small>Живой цифровой город</small></a>
+          <div class="fw-product-tile fw-tone-yellow"><span class="fw-product-mark"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"></circle><path d="M7.5 16a4.5 4.5 0 0 1 9 0M7 18h10"></path></svg></span><strong>МОЙ КЛИПЕР</strong><small>Рекламный кабинет</small><em>В разработке</em></div>
+          <div class="fw-product-tile fw-tone-cyan"><span class="fw-product-mark"><svg viewBox="0 0 24 24"><path d="M14 4c3 0 6 3 6 6-4 1-7 4-8 8-3 0-6-3-6-6 4-1 7-4 8-8Z"></path><path d="m8 16-4 4M15 9h.01"></path></svg></span><strong>KLIPER.SPACE</strong><small>Онлайн-реклама</small><em>В разработке</em></div>
+          <div class="fw-product-tile fw-tone-orange"><span class="fw-product-mark"><svg viewBox="0 0 24 24"><path d="m4 7 8-4 8 4-8 4-8-4Z"></path><path d="m4 7 8 4 8-4v10l-8 4-8-4V7ZM12 11v10"></path></svg></span><strong>4PACK</strong><small>Упаковка бизнеса</small><em>В разработке</em></div>
+        </div>
       </div>
     </section>
   </main>
-  <footer class="footer wrap"><div class="footer-inner"><div><b>Клипер</b> — единый вход в экосистему<div class="legal-links"><a href="/privacy/">Политика</a><a href="/consent/">Согласие</a><a href="/terms/">Соглашение</a></div></div><div class="contacts"><a href="mailto:info@kliper.pro">info@kliper.pro</a><a href="https://t.me/ik_center" target="_blank" rel="noopener">@ik_center</a></div></div></footer>
-  <div class="auth-modal" id="authModal" aria-hidden="true"><div class="auth-box" role="dialog" aria-modal="true"><button class="auth-close" id="closeAuth" type="button" aria-label="Закрыть">×</button><img class="auth-logo" src="/assets/auth-logo-kliper-wide.png" alt="Клипер"><div class="auth-tabs"><button class="auth-tab active" type="button" data-auth-tab="login">Вход</button><button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button></div><div class="auth-panel active" id="auth-login"><h3 class="auth-title">Вход в аккаунт</h3><p class="auth-note">Единый аккаунт Клипер для сервисов, заявок, площадок и городских проектов.</p><form class="auth-form" onsubmit="return false;"><input type="email" placeholder="Email"><input type="password" placeholder="Пароль"><label class="auth-check"><input type="checkbox" required><span>Я принимаю <a href="/terms/" target="_blank">Пользовательское соглашение</a>.</span></label><button class="auth-submit" type="submit">Войти</button></form></div><div class="auth-panel" id="auth-register"><h3 class="auth-title">Регистрация</h3><p class="auth-note">Создайте общий профиль для работы с экосистемой Клипер.</p><form class="auth-form" onsubmit="return false;"><input type="text" placeholder="Имя или компания"><input type="email" placeholder="Email"><input type="password" placeholder="Пароль"><label class="auth-check"><input type="checkbox" required><span>Я принимаю <a href="/terms/" target="_blank">Пользовательское соглашение</a> и <a href="/privacy/" target="_blank">Политику конфиденциальности</a>.</span></label><button class="auth-submit" type="submit">Создать аккаунт</button></form></div></div></div>
-  <script src="/assets/site-pages.js?v=6"></script>
+
+  <footer class="footer wrap fw-footer"><div class="footer-inner"><div><b>© KLIPER 2026</b><div class="legal-links"><a href="/privacy/">Политика конфиденциальности</a><a href="/consent/">Согласие</a><a href="/terms/">Пользовательское соглашение</a></div></div><div class="contacts"><a href="mailto:info@kliper.pro">info@kliper.pro</a><a href="https://t.me/ik_center" target="_blank" rel="noopener">Telegram</a></div></div></footer>
+
+  <div class="auth-modal" id="authModal" aria-hidden="true"><div class="auth-box" role="dialog" aria-modal="true" aria-labelledby="auth-dialog-title"><button class="auth-close" id="closeAuth" type="button" aria-label="Закрыть">×</button><img class="auth-logo" src="/assets/auth-logo-kliper-wide.png" alt="KLIPER"><div class="auth-tabs"><button class="auth-tab active" type="button" data-auth-tab="login">Вход</button><button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button></div><div class="auth-panel active" id="auth-login"><h3 class="auth-title" id="auth-dialog-title">Вход в аккаунт</h3><p class="auth-note">Единый аккаунт KLIPER для сервисов, заявок, площадок и городских проектов.</p><form class="auth-form" onsubmit="return false;"><input type="email" placeholder="Email" aria-label="Email"><input type="password" placeholder="Пароль" aria-label="Пароль"><label class="auth-check"><input type="checkbox" required><span>Я принимаю <a href="/terms/" target="_blank">Пользовательское соглашение</a>.</span></label><button class="auth-submit" type="submit">Войти</button></form></div><div class="auth-panel" id="auth-register"><h3 class="auth-title">Регистрация</h3><p class="auth-note">Создайте общий профиль для работы с экосистемой KLIPER.</p><form class="auth-form" onsubmit="return false;"><input type="text" placeholder="Имя или компания" aria-label="Имя или компания"><input type="email" placeholder="Email" aria-label="Email"><input type="password" placeholder="Пароль" aria-label="Пароль"><label class="auth-check"><input type="checkbox" required><span>Я принимаю <a href="/terms/" target="_blank">Пользовательское соглашение</a> и <a href="/privacy/" target="_blank">Политику конфиденциальности</a>.</span></label><button class="auth-submit" type="submit">Создать аккаунт</button></form></div></div></div>
+  <script src="/assets/site-pages.js?v=7"></script>
 </body>
 </html>

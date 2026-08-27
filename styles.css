@@ -861,22 +861,25 @@ h1 {
   padding: 4px 2px 20px;
   scroll-behavior: smooth;
   scroll-snap-type: inline mandatory;
-  scrollbar-color: var(--border-strong) var(--surface-secondary);
+  scrollbar-color: rgba(111, 137, 176, 0.28) transparent;
   scrollbar-width: thin;
 }
 
 .products-grid::-webkit-scrollbar {
-  height: 8px;
+  height: 3px;
 }
 
 .products-grid::-webkit-scrollbar-track {
-  border-radius: 999px;
-  background: var(--surface-secondary);
+  background: transparent;
 }
 
 .products-grid::-webkit-scrollbar-thumb {
   border-radius: 999px;
-  background: var(--border-strong);
+  background: rgba(111, 137, 176, 0.28);
+}
+
+.products-grid:hover::-webkit-scrollbar-thumb {
+  background: rgba(111, 137, 176, 0.5);
 }
 
 .product-scroll-controls {
@@ -7507,7 +7510,7 @@ a.network-card:focus-visible {
   scroll-behavior: smooth;
   scroll-padding-inline: 2px;
   scroll-snap-type: inline mandatory;
-  scrollbar-color: rgba(111, 137, 176, 0.46) transparent;
+  scrollbar-color: rgba(111, 137, 176, 0.26) transparent;
   scrollbar-width: thin;
   overscroll-behavior-inline: contain;
   cursor: grab;
@@ -7527,7 +7530,7 @@ a.network-card:focus-visible {
 }
 
 .future-products-grid::-webkit-scrollbar {
-  height: 6px;
+  height: 3px;
 }
 
 .future-products-grid::-webkit-scrollbar-track {
@@ -7536,7 +7539,12 @@ a.network-card:focus-visible {
 
 .future-products-grid::-webkit-scrollbar-thumb {
   border-radius: 999px;
-  background: rgba(111, 137, 176, 0.46);
+  background: rgba(111, 137, 176, 0.26);
+}
+
+.future-products-grid:hover::-webkit-scrollbar-thumb,
+.future-products-grid.is-dragging::-webkit-scrollbar-thumb {
+  background: rgba(111, 137, 176, 0.5);
 }
 
 .future-product-card,
