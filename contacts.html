@@ -10,9 +10,11 @@
   <link rel="icon" type="image/png" href="/assets/favicon-32x32.png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <script src="/assets/theme-bootstrap.js?v=1"></script>
-  <link rel="stylesheet" href="/assets/site-pages.css?v=19">
+  <link rel="stylesheet" href="/assets/site-pages.css?v=20">
+  <link rel="stylesheet" href="/assets/about-contacts.css?v=1">
+  <link rel="stylesheet" href="/assets/site-footer.css?v=1">
 </head>
-<body>
+<body class="page-contacts">
   <header class="header wrap"><nav class="nav"><a class="brand" href="/"><img src="/assets/auth-logo-kliper-wide.png" alt="Клипер"></a><div class="nav-links"><a href="/">Продукты</a><a href="/for-whom/">Для кого</a><a href="/about/">О нас</a><a class="active" href="/contacts/">Контакты</a></div><div class="nav-actions"><button class="menu-btn" type="button" data-menu-toggle aria-label="Открыть меню" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><button class="login-btn" type="button" data-auth-open aria-label="Войти"><svg viewBox="0 0 24 24" fill="none"><path d="M20 21a8 8 0 0 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg></button></div></nav></header>
   <main>
     <section class="hero wrap">
@@ -22,24 +24,27 @@
       <div class="actions"><a class="btn btn-primary" href="mailto:info@kliper.pro">Написать на почту</a><a class="btn btn-secondary" href="https://t.me/ik_center" target="_blank" rel="noopener">Telegram</a></div>
     </section>
 
-    <section class="section wrap">
-      <div class="section-head"><div><div class="eyebrow">Заявки</div><h2>Что нужно сделать?</h2></div><p>Выберите ближайший сценарий, чтобы обращение сразу попало в нужное направление.</p></div>
-      <div class="grid cards-3">
-        <article class="card" style="--c:var(--pink)"><div class="icon">Ad</div><h3>Запустить рекламу</h3><p>Выберите слой Kliper Map: ProCups, Площадка или Лифты. Затем район, объект, период и заявка.</p><div class="card-actions"><a class="btn btn-primary" href="mailto:info@kliper.pro?subject=Хочу запустить рекламу через Kliper Map">Отправить заявку</a></div></article>
-        <article class="card" style="--c:var(--violet)"><div class="icon">Map</div><h3>Добавить объект на карту</h3><p>Кофейня, экран, билборд, фасад, поверхность, дом, ЖК или другой рекламный объект для Kliper Map.</p><div class="card-actions"><a class="btn btn-primary" href="mailto:info@kliper.pro?subject=Хочу добавить объект в Kliper Map">Добавить объект</a></div></article>
-        <article class="card" style="--c:var(--blue)"><div class="icon">Cup</div><h3>Подключить кофейню</h3><p>Подключение кофейной точки к слою ProCups внутри Kliper Map. ProCups Plus появится позже.</p><div class="card-actions"><a class="btn btn-primary" href="mailto:info@kliper.pro?subject=Хочу подключить кофейню к ProCups">Подключить</a></div></article>
-      </div>
-    </section>
+    <section class="ac-section"><div class="wrap"><header class="ac-section-heading"><div><div class="eyebrow">Заявки</div><h2>Что нужно сделать?</h2></div><p>Выберите ближайший сценарий, чтобы обращение сразу попало в нужное направление.</p></header><div class="ac-panel ac-scenarios">
+      <article class="ac-scenario ac-pink"><div class="ac-scenario-top"><span class="ac-symbol"><svg viewBox="0 0 24 24"><path d="m4 10 16-5v12L4 13v-3Z"></path><path d="M8 14l1.5 6h3L11 15"></path></svg></span><span class="ac-scenario-number">01</span></div><h3>Запустить рекламу</h3><p>Выберите слой Kliper Map, район, объект и период размещения.</p><a class="ac-scenario-action" href="mailto:info@kliper.pro?subject=Хочу запустить рекламу через Kliper Map">Отправить заявку <span aria-hidden="true">→</span></a></article>
+      <article class="ac-scenario ac-violet"><div class="ac-scenario-top"><span class="ac-symbol"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span><span class="ac-scenario-number">02</span></div><h3>Добавить объект на карту</h3><p>Кофейня, экран, билборд, фасад, дом, ЖК или другая рекламная поверхность.</p><a class="ac-scenario-action" href="mailto:info@kliper.pro?subject=Хочу добавить объект в Kliper Map">Добавить объект <span aria-hidden="true">→</span></a></article>
+      <article class="ac-scenario ac-blue"><div class="ac-scenario-top"><span class="ac-symbol"><svg viewBox="0 0 24 24"><path d="M4 6h14v8a6 6 0 0 1-6 6H10a6 6 0 0 1-6-6V6Z"></path><path d="M18 8h2a3 3 0 0 1 0 6h-2M7 2v2M11 2v2M15 2v2"></path></svg></span><span class="ac-scenario-number">03</span></div><h3>Подключить кофейню</h3><p>Добавим кофейную точку в слой ProCups внутри Kliper Map.</p><a class="ac-scenario-action" href="mailto:info@kliper.pro?subject=Хочу подключить кофейню к ProCups">Подключить <span aria-hidden="true">→</span></a></article>
+    </div></div></section>
 
-    <section class="section wrap">
-      <div class="grid cards-2">
-        <article class="card" style="--c:var(--green)"><h3>Прямые контакты</h3><p>Почта и Telegram для вопросов, подключения объектов, рекламы и городских проектов.</p><div class="card-actions"><a class="btn btn-primary" href="mailto:info@kliper.pro">info@kliper.pro</a><a class="btn btn-secondary" href="https://t.me/ik_center" target="_blank" rel="noopener">@ik_center</a></div></article>
-        <article class="card" style="--c:var(--pink)"><h3>Реквизиты</h3><p>Оператор сайта: ИП Титов Игорь Олегович. ИНН: 890307182374. ОГРНИП: 315890300000072.</p><div class="card-actions"><a class="btn btn-secondary" href="/privacy/">Политика</a><a class="btn btn-secondary" href="/terms/">Соглашение</a></div></article>
-      </div>
-    </section>
+    <section class="ac-section"><div class="wrap"><header class="ac-section-heading"><div><div class="eyebrow">Связь</div><h2>Напрямую с командой</h2></div><p>Для рабочих вопросов, предложений, подключения объектов и партнёрства.</p></header><div class="ac-panel ac-direct">
+      <div class="ac-direct-block ac-green"><span class="ac-symbol"><svg viewBox="0 0 24 24"><path d="M8 10h8M8 14h5"></path><path d="M21 12a8 8 0 0 1-9 8 9 9 0 0 1-4 1l1-3a8 8 0 1 1 12-6Z"></path></svg></span><h3>Прямые контакты</h3><p>Выберите удобный канал. Мы уточним задачу и подскажем следующий шаг.</p><div class="ac-direct-actions"><a class="btn btn-primary" href="mailto:info@kliper.pro">info@kliper.pro</a><a class="btn btn-secondary" href="https://t.me/ik_center" target="_blank" rel="noopener">@ik_center</a></div></div>
+      <div class="ac-direct-block ac-cyan"><span class="ac-symbol"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="M8 8h8M8 12h8M8 16h5"></path></svg></span><h3>Реквизиты</h3><div class="ac-details"><div class="ac-detail"><span>Оператор</span><strong>ИП Титов Игорь Олегович</strong></div><div class="ac-detail"><span>ИНН</span><strong>890307182374</strong></div><div class="ac-detail"><span>ОГРНИП</span><strong>315890300000072</strong></div></div><div class="ac-direct-actions"><a class="btn btn-secondary" href="/privacy/">Политика</a><a class="btn btn-secondary" href="/terms/">Соглашение</a></div></div>
+    </div></div></section>
   </main>
-  <footer class="footer wrap"><div class="footer-inner"><div><b>Клипер</b> — контакты и подключение<div class="legal-links"><a href="/privacy/">Политика</a><a href="/consent/">Согласие</a><a href="/terms/">Соглашение</a></div></div><div class="contacts"><a href="/solutions/">Продукты</a><a href="/for-whom/">Для кого</a></div></div></footer>
+    <footer class="site-footer v2-footer">
+    <div class="container v2-footer-grid">
+      <div class="v2-footer-brand"><a class="brand" href="/"><span class="brand-logo-wrap"><img class="brand-logo brand-logo-dark" src="/assets/kliper-logo-dark.png" alt="КЛИПЕР"><img class="brand-logo brand-logo-light" src="/assets/kliper-logo-light.png" alt="КЛИПЕР"></span></a><p>Единая цифровая экосистема для города, бизнеса, специалистов и рекламной инфраструктуры.</p><small>© 2013–2026 КЛИПЕР</small></div>
+      <nav class="v2-footer-column" aria-label="Продукты"><strong>Продукты</strong><a href="/for-whom/">Мой КЛИПЕР</a><a href="/products/kliper-pro/">KLIPER.PRO</a><a href="/products/kliper-city/">KLIPER.CITY</a><a href="/products/kliper-map/">KLIPER.MAP</a></nav>
+      <nav class="v2-footer-column" aria-label="Решения"><strong>Решения</strong><a href="/solutions/">Для бизнеса</a><a href="/for-whom/">Для специалистов</a><a href="/for-whom/">Для подрядчиков</a><a href="/contacts/">Для агентств</a></nav>
+      <nav class="v2-footer-column" aria-label="О нас"><strong>О нас</strong><a href="/about/">История KLIPER</a><a href="/about/#contacts">Контакты</a><a href="/about/#contacts">Реквизиты</a></nav>
+      <nav class="v2-footer-column" aria-label="Поддержка и документы"><strong>Поддержка</strong><a href="/contacts/">Связаться с командой</a><strong class="footer-subhead">Документы</strong><a href="/terms/">Пользовательское соглашение</a><a href="/privacy/">Политика конфиденциальности</a><a href="/consent/">Обработка данных</a></nav>
+    </div>
+  </footer>
   <div class="auth-modal" id="authModal" aria-hidden="true"><div class="auth-box" role="dialog" aria-modal="true"><button class="auth-close" id="closeAuth" type="button" aria-label="Закрыть">×</button><img class="auth-logo" src="/assets/auth-logo-kliper-wide.png" alt="Клипер"><div class="auth-tabs"><button class="auth-tab active" type="button" data-auth-tab="login">Вход</button><button class="auth-tab" type="button" data-auth-tab="register">Регистрация</button></div><div class="auth-panel active" id="auth-login"><h3 class="auth-title">Вход в аккаунт</h3><p class="auth-note">Единый аккаунт Клипер для сервисов, заявок, площадок и городских проектов.</p><form class="auth-form" onsubmit="return false;"><input type="email" placeholder="Email"><input type="password" placeholder="Пароль"><label class="auth-check"><input type="checkbox" required><span>Я принимаю <a href="/terms/" target="_blank">Пользовательское соглашение</a>.</span></label><button class="auth-submit" type="submit">Войти</button></form></div><div class="auth-panel" id="auth-register"><h3 class="auth-title">Регистрация</h3><p class="auth-note">Создайте общий профиль для работы с экосистемой Клипер.</p><form class="auth-form" onsubmit="return false;"><input type="text" placeholder="Имя или компания"><input type="email" placeholder="Email"><input type="password" placeholder="Пароль"><label class="auth-check"><input type="checkbox" required><span>Я принимаю <a href="/terms/" target="_blank">Пользовательское соглашение</a> и <a href="/privacy/" target="_blank">Политику конфиденциальности</a>.</span></label><button class="auth-submit" type="submit">Создать аккаунт</button></form></div></div></div>
-  <script src="/assets/site-pages.js?v=10"></script>
+  <script src="/assets/site-pages.js?v=12"></script>
 </body>
 </html>

@@ -891,13 +891,13 @@
 }
 
 :root[data-theme="light"] .product-page {
-  --surface: rgba(255, 255, 255, 0.88);
+  --surface: rgba(255, 255, 255, 0.94);
   --surface-strong: #ffffff;
-  --product-line: rgba(7, 20, 62, 0.13);
+  --product-line: rgba(20, 31, 61, 0.13);
   background:
-    radial-gradient(circle at 72% 8%, rgba(var(--accent-2-rgb), 0.09), transparent 28%),
-    radial-gradient(circle at 22% 22%, rgba(var(--accent-rgb), 0.07), transparent 24%),
-    #f4f8ff;
+    radial-gradient(circle at 72% 8%, rgba(var(--accent-2-rgb), 0.065), transparent 28%),
+    radial-gradient(circle at 22% 22%, rgba(var(--accent-rgb), 0.05), transparent 24%),
+    #f5f7fb;
 }
 
 :root[data-theme="light"] .product-menu {
@@ -905,39 +905,39 @@
 }
 
 :root[data-theme="light"] .product-switcher summary {
-  color: #26345f;
+  color: #3c4863;
 }
 
 :root[data-theme="light"] .product-switcher[open] summary,
 :root[data-theme="light"] .product-switcher summary:hover {
-  color: #07143e;
+  color: #101a38;
 }
 
 :root[data-theme="light"] .product-lead,
 :root[data-theme="light"] .section-intro > p,
 :root[data-theme="light"] .split-copy > p,
 :root[data-theme="light"] .product-final p {
-  color: #526488;
+  color: #5e6b84;
 }
 
 :root[data-theme="light"] .product-section.band {
-  background: rgba(232, 240, 253, 0.62);
+  background: rgba(236, 240, 246, 0.72);
 }
 
 :root[data-theme="light"] .step-number {
-  color: #07143e;
+  color: #101a38;
   background: #fff;
 }
 
 :root[data-theme="light"] .showcase-tab[aria-selected="true"] {
-  color: #07143e;
+  color: #101a38;
 }
 
 :root[data-theme="light"] .visual-fact,
 :root[data-theme="light"] .district-overlay div,
 :root[data-theme="light"] .radius-overlay div {
-  color: #07143e;
-  background: rgba(255, 255, 255, 0.92);
+  color: #101a38;
+  background: rgba(255, 255, 255, 0.96);
 }
 
 @media (max-width: 1100px) {

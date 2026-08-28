@@ -1,0 +1,136 @@
+.v2-footer {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 20px;
+  padding: 28px 0 34px;
+  border-top: 1px solid rgba(143, 155, 173, 0.12);
+  color: #f8fbff;
+  background: #030810;
+}
+
+.v2-footer *,
+.v2-footer *::before,
+.v2-footer *::after {
+  box-sizing: border-box;
+}
+
+.v2-footer .container {
+  width: min(calc(100% - 34px), 1160px);
+  margin-inline: auto;
+}
+
+.v2-footer-grid {
+  display: grid;
+  grid-template-columns: 1.25fr repeat(3, 0.8fr) 1.35fr;
+  gap: 34px;
+  align-items: start;
+}
+
+.v2-footer a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.v2-footer a:hover {
+  color: #f51d4f;
+}
+
+.v2-footer-brand .brand {
+  display: inline-flex;
+  align-items: center;
+}
+
+.v2-footer-brand .brand-logo-wrap {
+  position: relative;
+  display: block;
+  width: 148px;
+  height: 29px;
+}
+
+.v2-footer-brand .brand-logo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.v2-footer-brand .brand-logo-dark {
+  opacity: 1;
+}
+
+.v2-footer-brand .brand-logo-light {
+  opacity: 0;
+}
+
+.v2-footer-brand p {
+  max-width: 230px;
+  margin: 18px 0 28px;
+  color: #8f9bad;
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.v2-footer-brand small {
+  color: #8f9bad;
+  font-size: 0.72rem;
+}
+
+.v2-footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  color: #8f9bad;
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.v2-footer-column strong {
+  margin-bottom: 4px;
+  color: #f8fbff;
+  font-size: 0.82rem;
+}
+
+.v2-footer-column .footer-subhead {
+  margin-top: 10px;
+}
+
+@media (max-width: 980px) {
+  .v2-footer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 840px) {
+  .v2-footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .v2-footer {
+    padding: 26px 0 30px;
+  }
+
+  .v2-footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 18px;
+  }
+
+  .v2-footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 380px) {
+  .v2-footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .v2-footer-brand {
+    grid-column: auto;
+  }
+}

@@ -38,8 +38,9 @@
         document.documentElement.dataset.theme = queryTheme === "dark" || queryTheme === "light" ? queryTheme : savedTheme || systemTheme;
       })();
     </script>
-    <link rel="stylesheet" href="/styles.css?v=20260828-2" />
-  </head>
+    <link rel="stylesheet" href="/styles.css?v=20260828-4" />
+    <link rel="stylesheet" href="/assets/site-footer.css?v=1">
+</head>
   <body class="landing-v2">
     <a class="skip-link" href="#main">Перейти к содержимому</a>
 
@@ -69,8 +70,8 @@
             <h1 id="hero-title">Одна экосистема для <span>города, рекламы и бизнеса</span></h1>
             <p class="ecosystem-lead">Меньше ручной работы. Больше возможностей для роста.</p>
             <div class="hero-actions">
-              <a class="button button-primary button-large" href="/for-whom/">Выбрать направление</a>
-              <a class="button button-secondary button-large" href="#products">Посмотреть продукты</a>
+              <a class="button button-primary button-large" href="/for-whom/">Направление</a>
+              <a class="button button-secondary button-large" href="#products">Продукты</a>
             </div>
             <div class="hero-benefits" aria-label="Преимущества экосистемы">
               <article>
@@ -163,15 +164,15 @@
       </section>
     </main>
 
-    <footer class="site-footer v2-footer">
-      <div class="container v2-footer-grid">
-        <div class="v2-footer-brand"><a class="brand" href="#top"><span class="brand-logo-wrap"><img class="brand-logo brand-logo-dark" src="/assets/kliper-logo-dark.png" alt="КЛИПЕР" /><img class="brand-logo brand-logo-light" src="/assets/kliper-logo-light.png" alt="КЛИПЕР" /></span></a><p>Единая цифровая экосистема для города, бизнеса, специалистов и рекламной инфраструктуры.</p><small>© 2013–2026 КЛИПЕР</small></div>
-        <nav class="v2-footer-column" aria-label="Продукты"><strong>Продукты</strong><a href="/for-whom/">Мой КЛИПЕР</a><a href="/products/kliper-pro/">KLIPER.PRO</a><a href="/products/kliper-city/">KLIPER.CITY</a><a href="/products/kliper-map/">KLIPER.MAP</a></nav>
-        <nav class="v2-footer-column" aria-label="Решения"><strong>Решения</strong><a href="/solutions/">Для бизнеса</a><a href="/for-whom/">Для специалистов</a><a href="/for-whom/">Для подрядчиков</a><a href="/contacts/">Для агентств</a></nav>
-        <nav class="v2-footer-column" aria-label="О нас"><strong>О нас</strong><a href="/about/">История KLIPER</a><a href="/about/#contacts">Контакты</a><a href="/about/#contacts">Реквизиты</a></nav>
-        <nav class="v2-footer-column" aria-label="Поддержка и документы"><strong>Поддержка</strong><a href="/contacts/">Связаться с командой</a><strong class="footer-subhead">Документы</strong><a href="/terms/">Пользовательское соглашение</a><a href="/privacy/">Политика конфиденциальности</a><a href="/consent/">Обработка данных</a></nav>
-      </div>
-    </footer>
+      <footer class="site-footer v2-footer">
+    <div class="container v2-footer-grid">
+      <div class="v2-footer-brand"><a class="brand" href="/"><span class="brand-logo-wrap"><img class="brand-logo brand-logo-dark" src="/assets/kliper-logo-dark.png" alt="КЛИПЕР"><img class="brand-logo brand-logo-light" src="/assets/kliper-logo-light.png" alt="КЛИПЕР"></span></a><p>Единая цифровая экосистема для города, бизнеса, специалистов и рекламной инфраструктуры.</p><small>© 2013–2026 КЛИПЕР</small></div>
+      <nav class="v2-footer-column" aria-label="Продукты"><strong>Продукты</strong><a href="/for-whom/">Мой КЛИПЕР</a><a href="/products/kliper-pro/">KLIPER.PRO</a><a href="/products/kliper-city/">KLIPER.CITY</a><a href="/products/kliper-map/">KLIPER.MAP</a></nav>
+      <nav class="v2-footer-column" aria-label="Решения"><strong>Решения</strong><a href="/solutions/">Для бизнеса</a><a href="/for-whom/">Для специалистов</a><a href="/for-whom/">Для подрядчиков</a><a href="/contacts/">Для агентств</a></nav>
+      <nav class="v2-footer-column" aria-label="О нас"><strong>О нас</strong><a href="/about/">История KLIPER</a><a href="/about/#contacts">Контакты</a><a href="/about/#contacts">Реквизиты</a></nav>
+      <nav class="v2-footer-column" aria-label="Поддержка и документы"><strong>Поддержка</strong><a href="/contacts/">Связаться с командой</a><strong class="footer-subhead">Документы</strong><a href="/terms/">Пользовательское соглашение</a><a href="/privacy/">Политика конфиденциальности</a><a href="/consent/">Обработка данных</a></nav>
+    </div>
+  </footer>
 
     <div class="auth-modal" id="authModal" aria-hidden="true">
       <div class="auth-box" role="dialog" aria-modal="true" aria-labelledby="auth-title-login">

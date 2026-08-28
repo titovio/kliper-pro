@@ -40,6 +40,7 @@ if(pageNavActions){
 
 function updateThemeLogos(theme){
   document.querySelectorAll('.brand img,.logo,.auth-logo').forEach(image => {
+    if(image.closest('.v2-footer')) return;
     if(!image.dataset.darkSrc) image.dataset.darkSrc = image.getAttribute('src');
     image.src = theme === 'light' ? '/assets/kliper-logo-light.png' : image.dataset.darkSrc;
   });
@@ -202,11 +203,14 @@ function setupDragScroll(){
     let dragging = false;
     let startX = 0;
     let startScroll = 0;
+    let dragDistance = 0;
+    let suppressClick = false;
 
     const stop = event => {
       if(!dragging) return;
       dragging = false;
       scroller.classList.remove('is-dragging');
+      suppressClick = dragDistance > 6;
       if(event?.pointerId !== undefined && scroller.hasPointerCapture(event.pointerId)){
         scroller.releasePointerCapture(event.pointerId);
       }
@@ -217,16 +221,25 @@ function setupDragScroll(){
       dragging = true;
       startX = event.clientX;
       startScroll = scroller.scrollLeft;
+      dragDistance = 0;
+      suppressClick = false;
       scroller.classList.add('is-dragging');
       scroller.setPointerCapture(event.pointerId);
     });
     scroller.addEventListener('pointermove', event => {
       if(!dragging) return;
+      dragDistance = Math.abs(event.clientX - startX);
       event.preventDefault();
       scroller.scrollLeft = startScroll - (event.clientX - startX);
     });
     scroller.addEventListener('pointerup', stop);
     scroller.addEventListener('pointercancel', stop);
+    scroller.addEventListener('click', event => {
+      if(!suppressClick) return;
+      event.preventDefault();
+      event.stopPropagation();
+      suppressClick = false;
+    }, true);
     scroller.addEventListener('keydown', event => {
       if(event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
       event.preventDefault();

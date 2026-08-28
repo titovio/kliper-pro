@@ -60,9 +60,26 @@
 
 .fw-audience-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-columns: max(300px, 31.5%);
+  grid-auto-flow: column;
+  grid-template-columns: none;
   gap: 14px;
+  overflow-x: auto;
+  padding: 2px 1px 12px;
   overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  cursor: grab;
+}
+
+.fw-audience-grid.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+.fw-audience-card {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .fw-audience-card,
@@ -103,10 +120,17 @@
   opacity: 0.9;
   filter: saturate(1.04) contrast(1.04) brightness(0.88);
   transition: opacity 220ms ease, filter 220ms ease, transform 420ms ease;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 .fw-tone-specialist .fw-card-image {
   object-position: 72% center;
+}
+
+.fw-tone-partner .fw-card-image {
+  object-position: 53% center;
+  filter: saturate(1.08) contrast(1.08) brightness(0.94);
 }
 
 .fw-card-shade {
@@ -271,12 +295,17 @@
 
 .fw-partner-types {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .fw-partner-types article {
+  display: flex;
   min-width: 0;
-  padding: 4px 14px 0;
+  min-height: 154px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 22px 18px;
   text-align: center;
 }
 
@@ -284,23 +313,38 @@
   border-left: 1px solid rgba(111, 137, 176, 0.22);
 }
 
+.fw-partner-types article:nth-child(3n + 1) {
+  border-left: 0;
+}
+
+.fw-partner-types article:nth-child(n + 4) {
+  border-top: 1px solid rgba(111, 137, 176, 0.22);
+}
+
 .fw-partner-icon {
-  width: 48px;
-  height: 48px;
-  margin: 0 auto 12px;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 15px;
+  border: 1px solid rgba(var(--partner-rgb), 0.42);
+  border-radius: 8px;
+  background: rgba(var(--partner-rgb), 0.09);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .fw-partner-icon svg {
-  width: 37px;
-  height: 37px;
+  width: 25px;
+  height: 25px;
+  stroke-width: 1.8;
 }
 
-.fw-pink { color: #ff1d68; }
-.fw-orange { color: #ff9a24; }
-.fw-violet { color: #a455ff; }
-.fw-blue { color: #397cff; }
-.fw-green { color: #4bd95d; }
-.fw-yellow { color: #f5c81f; }
+.fw-pink { --partner-rgb: 255, 29, 104; color: #ff1d68; }
+.fw-orange { --partner-rgb: 255, 154, 36; color: #ff9a24; }
+.fw-violet { --partner-rgb: 164, 85, 255; color: #a455ff; }
+.fw-purple { --partner-rgb: 132, 75, 238; color: #844bee; }
+.fw-blue { --partner-rgb: 57, 124, 255; color: #397cff; }
+.fw-cyan { --partner-rgb: 38, 202, 211; color: #26cad3; }
+.fw-green { --partner-rgb: 75, 217, 93; color: #4bd95d; }
+.fw-yellow { --partner-rgb: 245, 200, 31; color: #f5c81f; }
 
 .fw-partner-types h3 {
   margin: 0;
@@ -408,60 +452,62 @@ a.fw-product-tile:hover {
 }
 
 :root[data-theme="light"] .for-whom-page {
-  background: #f4f8ff;
+  background: #f5f7fb;
 }
 
 :root[data-theme="light"] .fw-section-heading > p,
 :root[data-theme="light"] .fw-ecosystem-heading > p {
-  color: #526488;
+  color: #5e6b84;
 }
 
 :root[data-theme="light"] .fw-audience-card {
   background: #ffffff;
-  box-shadow: 0 18px 54px rgba(30, 60, 115, 0.1);
+  border-color: rgba(20, 31, 61, 0.13);
+  box-shadow: 0 9px 28px rgba(22, 34, 66, 0.065);
 }
 
 :root[data-theme="light"] .fw-card-image {
-  opacity: 0.34;
-  filter: saturate(0.82) brightness(1.02) contrast(0.96);
+  opacity: 0.42;
+  filter: saturate(0.86) brightness(1.01) contrast(1.02);
 }
 
 :root[data-theme="light"] .fw-product-tile em {
-  color: #526488;
+  color: #5e6b84;
 }
 
 :root[data-theme="light"] .fw-card-shade {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.76) 40%, #ffffff 74%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.66) 38%, #ffffff 70%);
 }
 
 :root[data-theme="light"] .fw-card-summary {
-  color: #33466d;
+  color: #3e4c68;
 }
 
 :root[data-theme="light"] .fw-check-list,
 :root[data-theme="light"] .fw-partner-types h3,
 :root[data-theme="light"] .fw-product-tile small {
-  color: #526488;
+  color: #5e6b84;
 }
 
 :root[data-theme="light"] .fw-more {
-  color: #07143e;
+  color: #101a38;
 }
 
 :root[data-theme="light"] .fw-panel-action {
-  border-color: rgba(7, 20, 62, 0.2);
-  color: #07143e;
-  background: rgba(44, 111, 255, 0.04);
+  border-color: rgba(20, 31, 61, 0.17);
+  color: #101a38;
+  background: #f3f5f8;
 }
 
 :root[data-theme="light"] .fw-partners-panel,
 :root[data-theme="light"] .fw-ecosystem-panel {
-  border-color: rgba(7, 20, 62, 0.13);
-  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(20, 31, 61, 0.13);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 9px 28px rgba(22, 34, 66, 0.055);
 }
 
 :root[data-theme="light"] .fw-partner-types article + article {
-  border-left-color: rgba(7, 20, 62, 0.12);
+  border-left-color: rgba(20, 31, 61, 0.12);
 }
 
 :root[data-theme="light"] .fw-product-tile {
@@ -498,37 +544,12 @@ a.fw-product-tile:hover {
 
 @media (max-width: 1100px) {
   .fw-audience-grid {
-    grid-auto-columns: minmax(278px, 43vw);
-    grid-auto-flow: column;
-    grid-template-columns: none;
-    overflow-x: auto;
-    padding: 2px 1px 12px;
-    scroll-snap-type: inline mandatory;
-    cursor: grab;
-  }
-
-  .fw-audience-grid.is-dragging {
-    cursor: grabbing;
-    scroll-snap-type: none;
-    user-select: none;
-  }
-
-  .fw-audience-card {
-    scroll-snap-align: start;
+    grid-auto-columns: max(278px, 43vw);
   }
 
   .fw-audience-card,
   .fw-card-content {
     min-height: 510px;
-  }
-
-  .fw-partner-types {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    row-gap: 24px;
-  }
-
-  .fw-partner-types article:nth-child(4) {
-    border-left: 0;
   }
 
   .fw-product-chain {
@@ -597,12 +618,16 @@ a.fw-product-tile:hover {
   }
 
   .fw-partner-types article {
-    min-height: 132px;
-    padding: 14px 8px;
+    min-height: 146px;
+    padding: 18px 10px;
   }
 
   .fw-partner-types article:nth-child(odd) {
     border-left: 0;
+  }
+
+  .fw-partner-types article:nth-child(even) {
+    border-left: 1px solid rgba(111, 137, 176, 0.2);
   }
 
   .fw-partner-types article:nth-child(n + 3) {
