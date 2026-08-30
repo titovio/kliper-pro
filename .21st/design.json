@@ -62,8 +62,15 @@
       "Cards nested inside cards",
       "Oversized marketing headings inside compact panels",
       "One-note purple or beige palettes"
+    ]
   },
   "decisions": [
+    {
+      "date": "2026-08-30",
+      "area": "homepage hero",
+      "decision": "Lead with the platform promise 'Everything for business promotion'; place all seven product nodes directly on the outer orbit around the approved KLIPER core, keeping PRO, CITY and MAP prominent and MARKET, SPACE, MY KLIPER and 4PACK quieter.",
+      "status": "selected by user"
+    },
     {
       "date": "2026-08-30",
       "area": "magazine commercial page",

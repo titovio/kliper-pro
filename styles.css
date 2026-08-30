@@ -282,9 +282,7 @@ section[id] {
 }
 
 .button::after {
-  content: "→";
-  font-size: 1.1rem;
-  line-height: 1;
+  content: none;
 }
 
 .button:hover {
@@ -6707,23 +6705,24 @@ a.network-card:focus-visible {
   --orbit-color: #2f9cff;
   position: absolute;
   z-index: 4;
-  display: grid;
+  display: block;
   width: 180px;
-  justify-items: center;
+  height: 62px;
   color: var(--text-primary);
   text-align: center;
   text-decoration: none;
   transform: translate(-50%, -50%);
 }
 
-.orbit-product-pro { left: 50%; top: 15%; --orbit-color: #2f9cff; }
-.orbit-product-city { left: 17%; top: 63%; --orbit-color: #ff3c7f; }
-.orbit-product-map { left: 83%; top: 63%; --orbit-color: #9a5cff; }
+.orbit-product-pro { left: 50%; top: 6.7%; --orbit-color: #2f9cff; }
+.orbit-product-city { left: 14.16%; top: 64.25%; --orbit-color: #ff3c7f; }
+.orbit-product-map { left: 85.84%; top: 64.25%; --orbit-color: #9a5cff; }
 
 .orbit-product-icon {
   display: grid;
   width: 62px;
   aspect-ratio: 1;
+  margin: 0 auto;
   place-items: center;
   border: 1px solid color-mix(in srgb, var(--orbit-color) 80%, white 10%);
   border-radius: 50%;
@@ -6756,16 +6755,28 @@ a.network-card:focus-visible {
 }
 
 .orbit-product strong {
-  margin-top: 9px;
+  position: absolute;
+  top: calc(100% + 9px);
+  left: 50%;
+  display: block;
+  width: 180px;
+  margin: 0;
   font-size: 0.9rem;
   line-height: 1.1;
+  transform: translateX(-50%);
 }
 
 .orbit-product small {
-  margin-top: 4px;
+  position: absolute;
+  top: calc(100% + 30px);
+  left: 50%;
+  display: block;
+  width: 160px;
+  margin: 0;
   color: var(--text-secondary);
   font-size: 0.68rem;
-  line-height: 1.25;
+  line-height: 1.35;
+  transform: translateX(-50%);
 }
 
 :root[data-theme="light"] .network-brand-core {
@@ -7918,6 +7929,15 @@ a.network-card:focus-visible {
   border: 1px solid color-mix(in srgb, var(--publication-accent) 58%, transparent);
   border-radius: 8px;
   background: #050d17;
+  cursor: pointer;
+  transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+}
+
+.publication-product:hover,
+.publication-product:focus-within {
+  border-color: color-mix(in srgb, var(--publication-accent) 78%, white 4%);
+  box-shadow: 0 22px 52px color-mix(in srgb, var(--publication-accent) 12%, transparent);
+  transform: translateY(-5px);
 }
 
 .publication-product::before,
@@ -7947,6 +7967,25 @@ a.network-card:focus-visible {
   object-fit: cover;
   object-position: center;
   filter: saturate(0.9) brightness(0.82);
+  transition: transform 320ms ease, filter 320ms ease;
+}
+
+.publication-product:hover .publication-product-bg,
+.publication-product:focus-within .publication-product-bg {
+  filter: saturate(0.98) brightness(0.88);
+  transform: scale(1.025);
+}
+
+.publication-product-hit-area {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.publication-product-hit-area:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--publication-accent) 72%, white 8%);
+  outline-offset: -4px;
 }
 
 .publication-product-copy {
@@ -7958,6 +7997,7 @@ a.network-card:focus-visible {
   flex-direction: column;
   justify-content: center;
   padding: 30px;
+  pointer-events: none;
 }
 
 .publication-product-kicker {
@@ -7990,6 +8030,7 @@ a.network-card:focus-visible {
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 24px;
+  pointer-events: auto;
 }
 
 .publication-product-button {
@@ -8038,6 +8079,14 @@ a.network-card:focus-visible {
   transform: rotate(4deg);
   transform-origin: center bottom;
   filter: drop-shadow(0 20px 28px rgba(0, 0, 0, 0.48));
+  pointer-events: none;
+  transition: transform 320ms ease, filter 320ms ease;
+}
+
+.publication-product:hover .publication-product-cover,
+.publication-product:focus-within .publication-product-cover {
+  filter: drop-shadow(0 26px 34px rgba(0, 0, 0, 0.56));
+  transform: translateY(-6px) rotate(3deg);
 }
 
 .publication-product-cover img {
@@ -8130,7 +8179,218 @@ a.network-card:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .publication-product,
+  .publication-product-bg,
+  .publication-product-cover,
   .publication-product-button {
     transition: none;
+  }
+
+  .publication-product:hover,
+  .publication-product:focus-within,
+  .publication-product:hover .publication-product-bg,
+  .publication-product:focus-within .publication-product-bg,
+  .publication-product:hover .publication-product-cover,
+  .publication-product:focus-within .publication-product-cover {
+    transform: none;
+  }
+}
+
+/* Homepage platform message and complete product orbit. */
+.ecosystem-hero-copy {
+  max-width: 620px;
+}
+
+.ecosystem-hero-copy h1 {
+  width: 100%;
+  max-width: none;
+  font-size: 4rem;
+  line-height: 1.02;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.ecosystem-lead {
+  max-width: 520px;
+  font-size: 0.88rem;
+}
+
+.ecosystem-network {
+  width: min(100%, 680px);
+  aspect-ratio: 1.28;
+}
+
+.network-connectors .connection-future {
+  fill: none;
+  stroke: url(#active-connection);
+  stroke-width: 0.75;
+  stroke-dasharray: 2 8;
+  opacity: 0.2;
+}
+
+.orbit-future {
+  --orbit-color: #9a7bcf;
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 112px;
+  height: 42px;
+  color: color-mix(in srgb, var(--text-secondary) 72%, var(--orbit-color) 28%);
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.orbit-future-market { left: 21.25%; top: 24.45%; --orbit-color: #a477cc; }
+.orbit-future-space { left: 78.75%; top: 24.45%; --orbit-color: #7483c8; }
+.orbit-future-account { left: 34.06%; top: 96.15%; --orbit-color: #608bc1; }
+.orbit-future-pack { left: 65.94%; top: 96.15%; --orbit-color: #8071bd; }
+
+.orbit-future-icon {
+  display: grid;
+  width: 42px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--orbit-color) 46%, transparent);
+  border-radius: 50%;
+  color: color-mix(in srgb, var(--orbit-color) 70%, var(--text-secondary) 30%);
+  background: color-mix(in srgb, var(--orbit-color) 4%, rgba(4, 10, 19, 0.78));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--orbit-color) 8%, transparent);
+}
+
+.orbit-future-icon svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.45;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.orbit-future strong {
+  position: absolute;
+  top: calc(100% + 7px);
+  left: 50%;
+  display: block;
+  width: 112px;
+  margin: 0;
+  font-size: 0.68rem;
+  line-height: 1.1;
+  transform: translateX(-50%);
+}
+
+:root[data-theme="light"] .orbit-future-icon {
+  background: color-mix(in srgb, var(--orbit-color) 5%, white);
+}
+
+@media (max-width: 1180px) and (min-width: 901px) {
+  .ecosystem-hero-copy h1 {
+    font-size: 3.35rem;
+  }
+
+  .ecosystem-network {
+    width: min(100%, 620px);
+  }
+}
+
+@media (max-width: 900px) and (min-width: 721px) {
+  .ecosystem-hero-copy h1 {
+    font-size: 3.15rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .ecosystem-hero-copy h1 {
+    font-size: 2.5rem;
+  }
+
+  .ecosystem-lead {
+    max-width: 34ch;
+  }
+
+  .ecosystem-network {
+    aspect-ratio: 1.05;
+    margin-top: 2px;
+  }
+
+  .network-brand-core {
+    top: 53%;
+  }
+
+  .orbit-product {
+    height: 48px;
+  }
+
+  .orbit-product-pro { top: 14.5%; }
+  .orbit-product-city { left: 14.16%; top: 61.7%; }
+  .orbit-product-map { left: 85.84%; top: 61.7%; }
+
+  .orbit-product strong {
+    top: calc(100% + 7px);
+    width: 108px;
+    margin: 0;
+  }
+
+  .orbit-product small {
+    top: calc(100% + 24px);
+    width: 100px;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .orbit-product-pro small {
+    width: 150px;
+    white-space: nowrap;
+  }
+
+  .orbit-future {
+    width: 80px;
+    height: 34px;
+  }
+
+  .orbit-future-market { left: 21.25%; top: 29.05%; }
+  .orbit-future-space { left: 78.75%; top: 29.05%; }
+  .orbit-future-account { left: 34.06%; top: 87.9%; }
+  .orbit-future-pack { left: 65.94%; top: 87.9%; }
+
+  .orbit-future-icon {
+    width: 34px;
+  }
+
+  .orbit-future-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .orbit-future strong {
+    top: calc(100% + 5px);
+    width: 60px;
+    margin: 0;
+    font-size: 0.54rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .ecosystem-hero-copy h1 {
+    font-size: 2.25rem;
+  }
+
+  .orbit-product strong {
+    width: 100px;
+    font-size: 0.64rem;
+  }
+
+  .orbit-product small {
+    width: 90px;
+    font-size: 0.53rem;
+    line-height: 1.25;
+  }
+}
+
+@media (max-width: 640px) {
+  .ecosystem-lead {
+    font-size: 0.84rem;
   }
 }
