@@ -38,7 +38,7 @@
         document.documentElement.dataset.theme = queryTheme === "dark" || queryTheme === "light" ? queryTheme : savedTheme || systemTheme;
       })();
     </script>
-    <link rel="stylesheet" href="/styles.css?v=20260828-4" />
+    <link rel="stylesheet" href="/styles.css?v=20260830-1" />
     <link rel="stylesheet" href="/assets/site-footer.css?v=1">
 </head>
   <body class="landing-v2">
@@ -127,6 +127,22 @@
 
           <div class="current-products-grid" data-products-current aria-label="Действующие продукты KLIPER"></div>
 
+          <article class="publication-product reveal" aria-labelledby="publication-product-title">
+            <img class="publication-product-bg" src="/assets/novostroyki-tyumeni-card-bg-v1.webp" alt="" loading="lazy" decoding="async">
+            <div class="publication-product-copy">
+              <span class="publication-product-kicker">Офлайн-продукт KLIPER.CITY</span>
+              <h3 id="publication-product-title">Новостройки Тюмени</h3>
+              <p>Издание о жилых комплексах, застройщиках и городской среде Тюмени.</p>
+              <div class="publication-product-actions">
+                <a class="publication-product-button publication-product-button-primary" href="/magazine/#request">Получить выпуск <span aria-hidden="true">→</span></a>
+                <a class="publication-product-button publication-product-button-secondary" href="/magazine/#formats">Подать заявку на размещение <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+            <div class="publication-product-cover" aria-hidden="true">
+              <img src="/assets/novostroyki-tyumeni-cover-v1.webp" alt="" loading="lazy" decoding="async">
+            </div>
+          </article>
+
           <section class="future-products" aria-labelledby="future-products-title">
             <div class="future-products-heading products-list-heading reveal">
               <h3 id="future-products-title">Продукты в разработке</h3>
@@ -150,7 +166,7 @@
       <section class="home-proof" aria-label="Проверенные факты о KLIPER">
         <div class="container home-proof-grid reveal">
           <article><strong>2013</strong><span>Работаем с задачами рекламы и бизнеса</span></article>
-          <article><strong>3</strong><span>Действующих продукта экосистемы</span></article>
+          <article><strong>4</strong><span>Действующих продукта, включая офлайн-издание</span></article>
           <article><strong>4</strong><span>Направления находятся в разработке</span></article>
         </div>
       </section>

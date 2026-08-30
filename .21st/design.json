@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "project": {
+    "name": "kliper-pro",
+    "productType": "static multi-page product website",
+    "stack": ["HTML", "CSS", "JavaScript"]
+  },
+  "sources": {
+    "tokens": [],
+    "components": [],
+    "assets": [
+      "assets"
+    ],
+    "instructions": []
+  },
+  "design": {
+    "colorMode": "dark and light",
+    "colors": {
+      "backgroundDark": "#02060d",
+      "backgroundLight": "#f5f7fb",
+      "textDark": "#f7f8fb",
+      "textLight": "#101a38",
+      "brand": "#ff1760",
+      "city": "#1fd6cf",
+      "violet": "#9d56ff",
+      "blue": "#29a9ff"
+    },
+    "typography": {
+      "family": "Arial, Helvetica, sans-serif",
+      "display": "uppercase, bold, compact line height"
+    },
+    "spacing": {
+      "section": "72-104px desktop, 54-72px mobile"
+    },
+    "radius": {
+      "cards": "8px",
+      "controls": "8px or circular icon buttons"
+    },
+    "shadows": {
+      "dark": "restrained colored edge glow only",
+      "light": "soft neutral elevation"
+    },
+    "motion": {
+      "reveal": "short translate and opacity, disabled for reduced motion"
+    },
+    "density": "structured and information-rich"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": [],
+    "patterns": []
+  },
+  "constraints": {
+    "must": [
+      "Reuse the shared KLIPER header, footer, theme toggle and navigation behavior",
+      "Keep the approved homepage hero unchanged unless explicitly requested",
+      "Use real project copy and responsive layouts",
+      "Keep cards at 8px radius and preserve clear alignment"
+    ],
+    "avoid": [
+      "Decorative gradient orbs and bokeh blobs",
+      "Cards nested inside cards",
+      "Oversized marketing headings inside compact panels",
+      "One-note purple or beige palettes"
+  },
+  "decisions": [
+    {
+      "date": "2026-08-30",
+      "area": "magazine commercial page",
+      "decision": "Use a dark editorial KLIPER.CITY direction with the physical magazine cover as the hero visual, factual distribution proof, compact placement packages, measurable partner results and a final booking CTA.",
+      "status": "approved by user"
+    }
+  ],
+  "evidence": [
+    "styles.css",
+    "assets/site-pages.css",
+    "assets/site-footer.css",
+    "assets/novostroyki-tyumeni-cover-v1.webp",
+    "assets/novostroyki-tyumeni-card-bg-v1.webp"
+  ],
+  "generatedAt": "2026-08-30T01:42:07.128Z"
+}
